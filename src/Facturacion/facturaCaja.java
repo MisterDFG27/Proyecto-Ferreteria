@@ -1,4 +1,4 @@
-package Registro_Vehiculos;
+package Facturacion;
 
 import Conexion.datosP;
 import java.sql.Connection;
@@ -15,14 +15,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author admin
  */
-public class facturaSalida extends javax.swing.JFrame {
+public class facturaCaja extends javax.swing.JFrame {
 
     //----------------En proceso----------------//
     String date;
 
     String fechacalendario;
 
-    public facturaSalida() {
+    public facturaCaja() {
         initComponents();
         setLocationRelativeTo(null);
        
@@ -110,6 +110,7 @@ public class facturaSalida extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tbFactura.setBackground(new java.awt.Color(0, 0, 0));
         tbFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -124,7 +125,7 @@ public class facturaSalida extends javax.swing.JFrame {
         tbFactura.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tbFactura);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 530, 320));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 530, 320));
 
         btnBuscarRegistro.setText("Buscar");
         btnBuscarRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -132,7 +133,7 @@ public class facturaSalida extends javax.swing.JFrame {
                 btnBuscarRegistroActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 510, 370, -1));
+        jPanel1.add(btnBuscarRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 370, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Fecha");
@@ -142,14 +143,14 @@ public class facturaSalida extends javax.swing.JFrame {
         jLabel12.setText("CAJA");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
 
-        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setForeground(new java.awt.Color(0, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Total a Pagar");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, 20));
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, 20));
         jPanel2.add(txtTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 90, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -178,7 +179,7 @@ public class facturaSalida extends javax.swing.JFrame {
         });
         jPanel2.add(btnfacturacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 300, 570));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 290, 620));
 
         btnmenu.setBackground(new java.awt.Color(0, 153, 153));
         btnmenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -202,10 +203,10 @@ public class facturaSalida extends javax.swing.JFrame {
                 btnsalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 635, 100, 40));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 140, -1));
+        jPanel1.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, 100, 40));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1290, 690));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 690));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -265,21 +266,23 @@ public class facturaSalida extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(facturaSalida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(facturaCaja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(facturaSalida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(facturaCaja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(facturaSalida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(facturaCaja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(facturaSalida.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(facturaCaja.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new facturaSalida().setVisible(true);
+                new facturaCaja().setVisible(true);
             }
         });
     }
