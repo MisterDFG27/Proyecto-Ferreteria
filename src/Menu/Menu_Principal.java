@@ -89,7 +89,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         });
         jMenuBar1.add(Mantenimiento);
 
-        CerrarSesion.setForeground(new java.awt.Color(0, 153, 153));
+        CerrarSesion.setForeground(new java.awt.Color(255, 51, 51));
         CerrarSesion.setText("Cerrar Sesión");
         CerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {

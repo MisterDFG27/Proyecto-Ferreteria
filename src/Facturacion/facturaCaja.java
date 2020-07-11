@@ -101,7 +101,6 @@ public class facturaCaja extends javax.swing.JFrame {
         btnfacturacion = new javax.swing.JButton();
         btnmenu = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        btnsalir = new javax.swing.JButton();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,7 +124,7 @@ public class facturaCaja extends javax.swing.JFrame {
         tbFactura.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tbFactura);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 530, 320));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 780, 260));
 
         btnBuscarRegistro.setText("Buscar");
         btnBuscarRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -179,9 +178,9 @@ public class facturaCaja extends javax.swing.JFrame {
         });
         jPanel2.add(btnfacturacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 0, 290, 620));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 290, 680));
 
-        btnmenu.setBackground(new java.awt.Color(0, 153, 153));
+        btnmenu.setBackground(new java.awt.Color(0, 0, 0));
         btnmenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnmenuMouseClicked(evt);
@@ -196,17 +195,9 @@ public class facturaCaja extends javax.swing.JFrame {
         btnmenu.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 20));
 
         jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 90, 40));
-
-        btnsalir.setText("SALIR");
-        btnsalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnsalirActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnsalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 630, 100, 40));
         jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 920, 690));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -248,10 +239,6 @@ public class facturaCaja extends javax.swing.JFrame {
          
     }//GEN-LAST:event_btnfacturacionActionPerformed
 
-    private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-       System.exit(0);
-    }//GEN-LAST:event_btnsalirActionPerformed
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -291,7 +278,6 @@ public class facturaCaja extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarRegistro;
     private javax.swing.JButton btnfacturacion;
     private javax.swing.JPanel btnmenu;
-    private javax.swing.JButton btnsalir;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
