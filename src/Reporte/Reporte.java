@@ -316,6 +316,7 @@ public class Reporte extends javax.swing.JFrame {
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jDateChooser3 = new com.toedter.calendar.JDateChooser();
         jSeparator1 = new javax.swing.JSeparator();
+        jDateChooser4 = new com.toedter.calendar.JDateChooser();
 
         jLabel3.setText("jLabel3");
 
@@ -443,6 +444,7 @@ public class Reporte extends javax.swing.JFrame {
         jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 350, -1, -1));
         jPanel1.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 350, -1, -1));
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 240, 360, 10));
+        jPanel1.add(jDateChooser4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 100, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1160, 533));
 
@@ -550,6 +552,7 @@ public class Reporte extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private com.toedter.calendar.JDateChooser jDateChooser3;
+    private com.toedter.calendar.JDateChooser jDateChooser4;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel28;
