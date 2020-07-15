@@ -11,7 +11,7 @@ public class datosP {
     public Connection conexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conectar=DriverManager.getConnection("jdbc:mysql://localhost/parqueo","root","");
+            conectar=DriverManager.getConnection("jdbc:mysql://localhost/ferreteriabd","root","");
         } catch (Exception e) {
             System.out.print(e.getMessage());
         }
