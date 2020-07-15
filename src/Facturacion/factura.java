@@ -3,14 +3,19 @@ package Facturacion;
 import Conexion.datosP;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class factura extends javax.swing.JFrame {
 
     int cont;
     String date;
-
+ String CantidV;
+ 
     public factura() {
         initComponents();
          txtrequeridoN.setVisible(false);
@@ -45,7 +50,7 @@ public class factura extends javax.swing.JFrame {
         btneliminar = new javax.swing.JButton();
         btnmenu = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tbimprimir = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         txtrequeridoN = new javax.swing.JLabel();
         txtrequeridoC = new javax.swing.JLabel();
@@ -75,7 +80,7 @@ public class factura extends javax.swing.JFrame {
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 210, -1, -1));
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 60, 160, -1));
 
-        cmbmaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbmaterial.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Alambre", "Varilla", "Anticorrosivo", "Arena fina", "Zinc", "Aguarras", "Disco metabo", "Block", "Varilla grafilada", "Tubo galvanizado", "Pala clásica", "Brocha", "Cemento", "Grasa amarilla", "Broca concreto", "Perfil galvanizado", "Inodoro blanco", "Tornillos techo", "Soldadura", "Manguera reforzadora" }));
         jPanel1.add(cmbmaterial, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 160, -1));
         jPanel1.add(txtvendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 60, 140, -1));
 
@@ -103,8 +108,8 @@ public class factura extends javax.swing.JFrame {
         btnmenu.setText("MENU");
         jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 80, 30));
 
-        jTable1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tbimprimir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        tbimprimir.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -115,7 +120,7 @@ public class factura extends javax.swing.JFrame {
                 "Id_factura", "Nombre_cliente", "Producto", "Cantidad", "Id_vendedor", "Forma_pago"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tbimprimir);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, 660, 140));
 
@@ -129,7 +134,7 @@ public class factura extends javax.swing.JFrame {
         jPanel1.add(txtrequeridoC, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
 
         txtrequeridoV.setText("REQUERIDO");
-        jPanel1.add(txtrequeridoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, -1, -1));
+        jPanel1.add(txtrequeridoV, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, -1));
 
         jLabel7.setText("FECHA");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
@@ -143,6 +148,59 @@ public class factura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void mostrardatosTotalVehiculosDiaregistro(String valor) {
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Facturacion");
+
+        tbimprimir.setModel(modelo);
+        String sql = "";
+        if (valor.equals("")) {
+            sql = "SELECT númeroPlaca FROM registro WHERE fk_estado = 'D'";
+
+        }
+        String[] datos = new String[1];
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+
+                datos[0] = rs.getString(1);
+
+                modelo.addRow(datos);
+            }
+            tbimprimir.setModel(modelo);
+
+            txtcantidad.setText("" + tbimprimir.getRowCount());
+
+            //Bloquear la opcion a los 0
+            CantidV = txtcantidad.getText();
+
+            if (Integer.parseInt(CantidV) == 0) {
+
+                txtnombre.setEnabled(false);
+                txtFechaI.setEnabled(false);
+                txtcantidad.setEnabled(false);
+                txtvendedor.setEnabled(false);
+
+            } else {
+                txtnombre.setEnabled(true);
+                txtFechaI.setEnabled(true);
+                txtcantidad.setEnabled(true);
+                txtvendedor.setEnabled(true);
+
+            }
+            //-----------------------
+
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        tbimprimir.setVisible(true);
+
+    }
+
+
+    
     private void btnfacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturarActionPerformed
 
         cont = 0;
@@ -199,7 +257,7 @@ public class factura extends javax.swing.JFrame {
             txtrequeridoV.setVisible(false);
             txtrequeridofecha.setVisible(false);
 
-            //mostrardatosTotalVehiculosDiaregistro("");
+            mostrardatosTotalVehiculosDiaregistro("");
 
             JOptionPane.showMessageDialog(this, "Registro agregado");
         }
@@ -253,7 +311,7 @@ public class factura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tbimprimir;
     private com.toedter.calendar.JDateChooser txtFechaI;
     private javax.swing.JTextField txtcantidad;
     private javax.swing.JTextField txtnombre;
@@ -263,4 +321,6 @@ public class factura extends javax.swing.JFrame {
     private javax.swing.JLabel txtrequeridofecha;
     private javax.swing.JTextField txtvendedor;
     // End of variables declaration//GEN-END:variables
+ datosP cc = new datosP();
+    Connection cn = cc.conexion();
 }

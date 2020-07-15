@@ -97,11 +97,27 @@
         <Component class="javax.swing.JComboBox" name="cmbmaterial">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="20">
+                <StringItem index="0" value="Alambre"/>
+                <StringItem index="1" value="Varilla"/>
+                <StringItem index="2" value="Anticorrosivo"/>
+                <StringItem index="3" value="Arena fina"/>
+                <StringItem index="4" value="Zinc"/>
+                <StringItem index="5" value="Aguarras"/>
+                <StringItem index="6" value="Disco metabo"/>
+                <StringItem index="7" value="Block"/>
+                <StringItem index="8" value="Varilla grafilada"/>
+                <StringItem index="9" value="Tubo galvanizado"/>
+                <StringItem index="10" value="Pala cl&#xe1;sica"/>
+                <StringItem index="11" value="Brocha"/>
+                <StringItem index="12" value="Cemento"/>
+                <StringItem index="13" value="Grasa amarilla"/>
+                <StringItem index="14" value="Broca concreto"/>
+                <StringItem index="15" value="Perfil galvanizado"/>
+                <StringItem index="16" value="Inodoro blanco"/>
+                <StringItem index="17" value="Tornillos techo"/>
+                <StringItem index="18" value="Soldadura"/>
+                <StringItem index="19" value="Manguera reforzadora"/>
               </StringArray>
             </Property>
           </Properties>
@@ -211,7 +227,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="jTable1">
+            <Component class="javax.swing.JTable" name="tbimprimir">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="14" style="1"/>
@@ -303,7 +319,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="340" y="230" width="-1" height="-1"/>
+              <AbsoluteConstraints x="300" y="210" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
