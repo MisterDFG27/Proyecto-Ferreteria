@@ -1,6 +1,6 @@
 package Registros;
 
-import Conexion.datosP;
+import Conexion.Conexión;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
@@ -271,7 +271,7 @@ public class Empleados extends javax.swing.JFrame {
         if (cont == 0) {
 
             try {
-                datosP cc = new datosP();
+                Conexión cc = new Conexión();
                 Connection cn = cc.conexion();
 
                 PreparedStatement pst = cn.prepareStatement("INSERT INTO usuario(nombreUsuario,"

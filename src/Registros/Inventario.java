@@ -1,6 +1,6 @@
 package Registros;
 
-import Conexion.datosP;
+import Conexion.Conexión;
 import Menu.Menu_Principal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -159,7 +159,7 @@ public class Inventario extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       cont = 0;
         
-        datosP cc = new datosP();
+        Conexión cc = new Conexión();
         Connection cn = cc.conexion();
        
         if (txtCantIngr.getText().equals("")) {

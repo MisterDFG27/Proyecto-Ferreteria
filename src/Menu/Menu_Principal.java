@@ -1,6 +1,6 @@
 package Menu;
 
-import Conexion.datosP;
+import Conexion.Conexión;
 import Facturacion.facturaCaja;
 import java.sql.Connection;
 
@@ -240,6 +240,6 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JPopupMenu jPopupMenu1;
     public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
-   datosP cc = new datosP();
+   Conexión cc = new Conexión();
     Connection cn = cc.conexion();
 }

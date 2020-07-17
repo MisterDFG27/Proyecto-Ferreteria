@@ -5,7 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 
 
-public class datosP {
+public class Conexión {
     
      Connection conectar=null;
     public Connection conexion(){

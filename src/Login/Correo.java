@@ -265,6 +265,6 @@ DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JTextField txtpass;
     private javax.swing.JTextField txtusu;
     // End of variables declaration//GEN-END:variables
-Conexion.datosP cc = new Conexion.datosP();
+Conexion.Conexión cc = new Conexion.Conexión();
     java.sql.Connection cn = cc.conexion();
 }

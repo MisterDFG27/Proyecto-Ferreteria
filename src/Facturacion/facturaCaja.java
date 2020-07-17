@@ -1,6 +1,6 @@
 package Facturacion;
 
-import Conexion.datosP;
+import Conexion.Conexión;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -294,6 +294,6 @@ public class facturaCaja extends javax.swing.JFrame {
     private javax.swing.JTextField txtMonto;
     private javax.swing.JTextField txtTotalPagar;
     // End of variables declaration//GEN-END:variables
-  datosP cc = new datosP();
+  Conexión cc = new Conexión();
     Connection cn = cc.conexion();
 }

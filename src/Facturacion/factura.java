@@ -1,6 +1,6 @@
 package Facturacion;
 
-import Conexion.datosP;
+import Conexion.Conexión;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -230,7 +230,7 @@ public class factura extends javax.swing.JFrame {
         if (cont == 0) {
 
             try {
-                datosP cc = new datosP();
+                Conexión cc = new Conexión();
                 Connection cn = cc.conexion();
                 processCalendar();
 
@@ -321,6 +321,6 @@ public class factura extends javax.swing.JFrame {
     private javax.swing.JLabel txtrequeridofecha;
     private javax.swing.JTextField txtvendedor;
     // End of variables declaration//GEN-END:variables
- datosP cc = new datosP();
+ Conexión cc = new Conexión();
     Connection cn = cc.conexion();
 }

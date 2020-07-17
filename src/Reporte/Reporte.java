@@ -1,6 +1,6 @@
 package Reporte;
 
-import Conexion.datosP;
+import Conexion.Conexión;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -568,6 +568,6 @@ public class Reporte extends javax.swing.JFrame {
     private javax.swing.JTable tbMontoR;
     private javax.swing.JLabel txtVerAll;
     // End of variables declaration//GEN-END:variables
-    datosP cc = new datosP();
+    Conexión cc = new Conexión();
     Connection cn = cc.conexion();
 }
