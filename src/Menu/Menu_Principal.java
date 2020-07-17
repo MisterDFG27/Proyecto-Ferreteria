@@ -27,6 +27,8 @@ public class Menu_Principal extends javax.swing.JFrame {
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         Factura = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         Mantenimiento = new javax.swing.JMenu();
         CerrarSesion = new javax.swing.JMenu();
 
@@ -64,20 +66,47 @@ public class Menu_Principal extends javax.swing.JFrame {
         });
 
         jMenuItem1.setText("Empleado");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         EmpleadoR.add(jMenuItem1);
 
         jMenuItem2.setText("Inventario");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         EmpleadoR.add(jMenuItem2);
 
         jMenuBar1.add(EmpleadoR);
 
-        Factura.setText("Facturar");
+        Factura.setText("Facturación");
         Factura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         Factura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 FacturaMouseClicked(evt);
             }
         });
+        Factura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FacturaActionPerformed(evt);
+            }
+        });
+
+        jMenuItem3.setText("Facturar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        Factura.add(jMenuItem3);
+
+        jMenuItem4.setText("Caja");
+        Factura.add(jMenuItem4);
+
         jMenuBar1.add(Factura);
 
         Mantenimiento.setText("Reporte");
@@ -85,6 +114,11 @@ public class Menu_Principal extends javax.swing.JFrame {
         Mantenimiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MantenimientoMouseClicked(evt);
+            }
+        });
+        Mantenimiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MantenimientoActionPerformed(evt);
             }
         });
         jMenuBar1.add(Mantenimiento);
@@ -124,6 +158,36 @@ public class Menu_Principal extends javax.swing.JFrame {
     private void MantenimientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MantenimientoMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_MantenimientoMouseClicked
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        Registros.Empleados e = new Registros.Empleados();
+        e.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        Registros.Inventario e = new Registros.Inventario();
+        e.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void FacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FacturaActionPerformed
+       Facturacion.facturaCaja e = new Facturacion.facturaCaja();
+        e.setVisible(true);
+        dispose();  
+    }//GEN-LAST:event_FacturaActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        Facturacion.factura e = new Facturacion.factura();
+        e.setVisible(true);
+        dispose();       
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void MantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoActionPerformed
+       Reporte.Reporte r = new Reporte.Reporte();
+       r.setVisible(true);
+       dispose();
+    }//GEN-LAST:event_MantenimientoActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -170,6 +234,8 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
     public javax.swing.JTextField txtusuario;
