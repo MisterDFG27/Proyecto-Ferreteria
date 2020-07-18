@@ -274,7 +274,7 @@ public class Empleados extends javax.swing.JFrame {
                 Conexión cc = new Conexión();
                 Connection cn = cc.conexion();
 
-                PreparedStatement pst = cn.prepareStatement("INSERT INTO usuario(nombreUsuario,"
+                PreparedStatement pst = cn.prepareStatement("INSERT INTO usuarios(nombreUsuario,"
                         + "contraseña,Cedula,nombre,primerApellido,segundoApellido,email,fk_tipoUsuario) VALUES (?,?,?,?,?,?,?,?)");
                 pst.setString(1, txtUsuario.getText());
                 pst.setString(2, txtContraseña.getText());

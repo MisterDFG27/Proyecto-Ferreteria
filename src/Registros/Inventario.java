@@ -158,179 +158,541 @@ public class Inventario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       cont = 0;
-        
+
         Conexión cc = new Conexión();
         Connection cn = cc.conexion();
-       
+
         if (txtCantIngr.getText().equals("")) {
-            txtCantIngr.setVisible(true);
+            lblReqIng1.setVisible(true);
             cont++;
         } else {
-            txtCantIngr.setVisible(false);
+            lblReqIng1.setVisible(false);
 
         }
-        try {
+        if (cont == 0) {
+            try {
 
-            
-            opcion = cmbProductIngre.getSelectedIndex();
+                opcion = cmbProductIngre.getSelectedIndex();
 
-            switch (opcion) {
-                
-                case 0:
-                     String alambre;
-                     alambre= String.valueOf(cmbProductIngre.getSelectedItem());
-                PreparedStatement pst = cn.prepareStatement("INSERT INTO inventario(alambre) VALUES (?)");
-                pst.setString(1, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 1:
-                     
+                switch (opcion) {
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Varilla) VALUES (?)");
-                pst.setString(2, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 2:
-                     
+                    case 0:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Anticorrosivo) VALUES (?)");
-                pst.setString(3, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                    
-                case 3:
-                     
+                        PreparedStatement pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, txtCantIngr.getText());
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        
+                        pst.executeUpdate();
+                        pst.close();
+                        break;
+                    case 1:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Arena fina) VALUES (?)");
-                pst.setString(4, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 4:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, txtCantIngr.getText());
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        pst.close();
+                        break;
+                    case 2:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Zinc) VALUES (?)");
-                pst.setString(5, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 5:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, txtCantIngr.getText());
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Aguarras) VALUES (?)");
-                pst.setString(6, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                    
-                case 6:
-                     
+                    case 3:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Disco metabo) VALUES (?)");
-                pst.setString(7, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 7:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, txtCantIngr.getText());
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 4:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Block) VALUES (?)");
-                pst.setString(8, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 8:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, txtCantIngr.getText());
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 5:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Varilla grafilada) VALUES (?)");
-                pst.setString(9, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                    
-                case 9:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, txtCantIngr.getText());
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Tubo galvanizado) VALUES (?)");
-                pst.setString(10, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 10:
-                     
+                    case 6:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Pala clasica) VALUES (?)");
-                pst.setString(11, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 11:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, txtCantIngr.getText());
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 7:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Brocha) VALUES (?)");
-                pst.setString(12, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                    
-                case 12:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, txtCantIngr.getText());
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 8:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Cemento) VALUES (?)");
-                pst.setString(13, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 13:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, txtCantIngr.getText());
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Grasa amarilla) VALUES (?)");
-                pst.setString(14, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                    
-                case 14:
-                     
+                    case 9:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Broca concreto) VALUES (?)");
-                pst.setString(15, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 15:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, txtCantIngr.getText());
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 10:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Perfil galvanizado) VALUES (?)");
-                pst.setString(16, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 16:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, txtCantIngr.getText());
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 11:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Inodoro blanco) VALUES (?)");
-                pst.setString(17, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                    
-                case 17:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, txtCantIngr.getText());
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Tornillos techo) VALUES (?)");
-                pst.setString(18, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 18:
-                     
+                    case 12:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Soldadura) VALUES (?)");
-                pst.setString(19, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                case 19:
-                     
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, txtCantIngr.getText());
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 13:
 
-                 pst = cn.prepareStatement("INSERT INTO inventario(Manguera reforzada) VALUES (?)");
-                pst.setString(20, txtCantIngr.getText());
-                pst.executeUpdate();
-                    break;
-                    
-                
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, txtCantIngr.getText());
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+
+                    case 14:
+
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, txtCantIngr.getText());
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 15:
+
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, txtCantIngr.getText());
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 16:
+
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, txtCantIngr.getText());
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+
+                    case 17:
+
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, txtCantIngr.getText());
+                        pst.setString(19, "");
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 18:
+
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");            
+                        pst.setString(19, txtCantIngr.getText());
+                        pst.setString(20, "");
+                        pst.executeUpdate();
+                        break;
+                    case 19:
+
+                        pst = cn.prepareStatement("INSERT INTO inventario(Alambre,Varilla,Anticorrosivo,Arenafina,Zinc,Aguarras,Discometabo,Block,Varillagrafilada,Tubogalvanizado,Palaclasica,Brocha,Cemento,Grasaamarilla,Brocaconcreto,Perfilgalvanizado,Inodoroblanco,Tornillostecho,Soldadura,Marguerareforzadora) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+                        pst.setString(1, "");
+                        pst.setString(2, "");
+                        pst.setString(3, "");
+                        pst.setString(4, "");
+                        pst.setString(5, "");
+                        pst.setString(6, "");
+                        pst.setString(7, "");
+                        pst.setString(8, "");
+                        pst.setString(9, "");
+                        pst.setString(10, "");
+                        pst.setString(11, "");
+                        pst.setString(12, "");
+                        pst.setString(13, "");
+                        pst.setString(14, "");
+                        pst.setString(15, "");
+                        pst.setString(16, "");
+                        pst.setString(17, "");
+                        pst.setString(18, "");
+                        pst.setString(19, "");
+                        pst.setString(20, txtCantIngr.getText());
+                        pst.executeUpdate();
+                        break;
+
+                }
+
+            } catch (Exception e) {
+                System.out.print(e);
             }
-        
-        
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error");
-        }
             txtCantIngr.setText("");
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
