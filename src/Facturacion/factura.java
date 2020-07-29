@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class factura extends javax.swing.JFrame {
 
-    int cont;
+    int cont, precio;
     String date;
  String CantidV;
  
@@ -148,61 +148,17 @@ public class factura extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void mostrardatosTotalVehiculosDiaregistro(String valor) {
-
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Facturacion");
-
-        tbimprimir.setModel(modelo);
-        String sql = "";
-        if (valor.equals("")) {
-            sql = "SELECT númeroPlaca FROM registro WHERE fk_estado = 'D'";
-
-        }
-        String[] datos = new String[1];
-        try {
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-
-                datos[0] = rs.getString(1);
-
-                modelo.addRow(datos);
-            }
-            tbimprimir.setModel(modelo);
-
-            txtcantidad.setText("" + tbimprimir.getRowCount());
-
-            //Bloquear la opcion a los 0
-            CantidV = txtcantidad.getText();
-
-            if (Integer.parseInt(CantidV) == 0) {
-
-                txtnombre.setEnabled(false);
-                txtFechaI.setEnabled(false);
-                txtcantidad.setEnabled(false);
-                txtvendedor.setEnabled(false);
-
-            } else {
-                txtnombre.setEnabled(true);
-                txtFechaI.setEnabled(true);
-                txtcantidad.setEnabled(true);
-                txtvendedor.setEnabled(true);
-
-            }
-            //-----------------------
-
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        tbimprimir.setVisible(true);
-
-    }
-
-
+  
     
     private void btnfacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturarActionPerformed
 
+        String material = cmbmaterial.getSelectedItem().toString();
+        int cantidad = Integer.parseInt(txtcantidad.getText());
+        
+       precio==material*cantidad;
+        
+        
+        
         cont = 0;
 
         if (txtnombre.getText().equals("")) {
@@ -229,19 +185,21 @@ public class factura extends javax.swing.JFrame {
 
         if (cont == 0) {
 
+                
             try {
                 Conexión cc = new Conexión();
                 Connection cn = cc.conexion();
                 processCalendar();
 
-                PreparedStatement pst = cn.prepareStatement("INSERT INTO registro(númeroPlaca,"
-                        + "fecha,horaEntrada,fk_tipoVehiculo,fk_usuario,fk_estado) VALUES (?,?,?,?,?,?)");
+                PreparedStatement pst = cn.prepareStatement("INSERT INTO facturas(nombre_Cliente,"
+                        + "fecha,fk_idVendedor,Nombre_producto,Cantidad,Precio) VALUES (?,?,?,?,?,?)");
                 pst.setString(1, txtnombre.getText());
                 pst.setString(2, date);
                 pst.setString(3, (String) cmbmaterial.getSelectedItem());
                 pst.setString(4, txtcantidad.getText());
                 pst.setString(5, txtvendedor.getText());
-                pst.setString(6, (String) cmbpago.getSelectedItem());
+                pst.setString(6, precio);
+               
 
                 pst.executeUpdate();
 
@@ -257,7 +215,7 @@ public class factura extends javax.swing.JFrame {
             txtrequeridoV.setVisible(false);
             txtrequeridofecha.setVisible(false);
 
-            mostrardatosTotalVehiculosDiaregistro("");
+            
 
             JOptionPane.showMessageDialog(this, "Registro agregado");
         }
