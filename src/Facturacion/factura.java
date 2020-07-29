@@ -154,11 +154,14 @@ public class factura extends javax.swing.JFrame {
 
         String material = cmbmaterial.getSelectedItem().toString();
         int cantidad = Integer.parseInt(txtcantidad.getText());
+       
         
-       precio==material*cantidad;
-        
-        
-        
+        if(cmbmaterial.getSelectedIndex()==1){
+             precio=1000*cantidad;
+        }else  if(cmbmaterial.getSelectedIndex()==2){
+             precio=1000*cantidad;
+       }
+             
         cont = 0;
 
         if (txtnombre.getText().equals("")) {
@@ -192,13 +195,13 @@ public class factura extends javax.swing.JFrame {
                 processCalendar();
 
                 PreparedStatement pst = cn.prepareStatement("INSERT INTO facturas(nombre_Cliente,"
-                        + "fecha,fk_idVendedor,Nombre_producto,Cantidad,Precio) VALUES (?,?,?,?,?,?)");
+                        + "Fecha,Nombre_producto,Cantidad,fk_idVendedor,Precio) VALUES (?,?,?,?,?,?)");
                 pst.setString(1, txtnombre.getText());
                 pst.setString(2, date);
                 pst.setString(3, (String) cmbmaterial.getSelectedItem());
                 pst.setString(4, txtcantidad.getText());
                 pst.setString(5, txtvendedor.getText());
-                pst.setString(6, precio);
+                pst.setInt(6, precio);
                
 
                 pst.executeUpdate();
@@ -215,7 +218,7 @@ public class factura extends javax.swing.JFrame {
             txtrequeridoV.setVisible(false);
             txtrequeridofecha.setVisible(false);
 
-            
+        
 
             JOptionPane.showMessageDialog(this, "Registro agregado");
         }
