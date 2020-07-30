@@ -145,8 +145,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_EmpleadoRMouseClicked
 
     private void FacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturaMouseClicked
-        facturaCaja m = new facturaCaja();
-        m.setVisible(true);
+       
     }//GEN-LAST:event_FacturaMouseClicked
 
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
@@ -184,7 +183,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void MantenimientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MantenimientoActionPerformed
-       Reporte.Reporte r = new Reporte.Reporte();
+       Reporte.Productos r = new Reporte.Productos();
        r.setVisible(true);
        dispose();
     }//GEN-LAST:event_MantenimientoActionPerformed
