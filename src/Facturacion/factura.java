@@ -7,11 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class factura extends javax.swing.JFrame {
-
+DefaultTableModel modelo ;
     int cont, precio;
     String date;
  String CantidV;
@@ -22,6 +23,11 @@ public class factura extends javax.swing.JFrame {
             txtrequeridoC.setVisible(false);
             txtrequeridoV.setVisible(false);
             txtrequeridofecha.setVisible(false);
+            String principal[]= {"Nombre_cliente", "Fecha", "material","cantidad","vendedor", "Formapago"};
+        String datos [][]={}; 
+        modelo = new DefaultTableModel(datos,principal);
+        tbimprimir.setModel(modelo); 
+       setLocationRelativeTo(null);
     }
 
     public void processCalendar() {
@@ -138,6 +144,8 @@ public class factura extends javax.swing.JFrame {
 
         jLabel7.setText("FECHA");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+
+        txtFechaI.setDateFormatString("yyyy-MM-dd");
         jPanel1.add(txtFechaI, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 110, 150, -1));
 
         txtrequeridofecha.setText("REQUERIDO");
@@ -159,6 +167,42 @@ public class factura extends javax.swing.JFrame {
         if(cmbmaterial.getSelectedIndex()==1){
              precio=1000*cantidad;
         }else  if(cmbmaterial.getSelectedIndex()==2){
+             precio=1000*cantidad;
+       }else if(cmbmaterial.getSelectedIndex()==3){
+             precio=1000*cantidad;
+        }else  if(cmbmaterial.getSelectedIndex()==4){
+             precio=1000*cantidad;
+       }else if(cmbmaterial.getSelectedIndex()==5){
+             precio=1000*cantidad;
+        }else  if(cmbmaterial.getSelectedIndex()==6){
+             precio=1000*cantidad;
+       }else if(cmbmaterial.getSelectedIndex()==7){
+             precio=1000*cantidad;
+        }else  if(cmbmaterial.getSelectedIndex()==8){
+             precio=1000*cantidad;
+       }else if(cmbmaterial.getSelectedIndex()==9){
+             precio=1000*cantidad;
+        }else  if(cmbmaterial.getSelectedIndex()==10){
+             precio=1000*cantidad;
+       }else if(cmbmaterial.getSelectedIndex()==11){
+             precio=1000*cantidad;
+        }else  if(cmbmaterial.getSelectedIndex()==12){
+             precio=1000*cantidad;
+       }else if(cmbmaterial.getSelectedIndex()==13){
+             precio=1000*cantidad;
+        }else  if(cmbmaterial.getSelectedIndex()==14){
+             precio=1000*cantidad;
+       }else if(cmbmaterial.getSelectedIndex()==15){
+             precio=1000*cantidad;
+        }else  if(cmbmaterial.getSelectedIndex()==16){
+             precio=1000*cantidad;
+       }else if(cmbmaterial.getSelectedIndex()==17){
+             precio=1000*cantidad;
+        }else  if(cmbmaterial.getSelectedIndex()==18){
+             precio=1000*cantidad;
+       }else if(cmbmaterial.getSelectedIndex()==19){
+             precio=1000*cantidad;
+        }else  if(cmbmaterial.getSelectedIndex()==20){
              precio=1000*cantidad;
        }
              
@@ -189,15 +233,14 @@ public class factura extends javax.swing.JFrame {
         if (cont == 0) {
 
                 
-            try {
+           try {
                 Conexión cc = new Conexión();
                 Connection cn = cc.conexion();
-                processCalendar();
 
                 PreparedStatement pst = cn.prepareStatement("INSERT INTO facturas(nombre_Cliente,"
                         + "Fecha,Nombre_producto,Cantidad,fk_idVendedor,Precio) VALUES (?,?,?,?,?,?)");
                 pst.setString(1, txtnombre.getText());
-                pst.setString(2, date);
+                pst.setDate(2, (java.sql.Date) txtFechaI.getDate());
                 pst.setString(3, (String) cmbmaterial.getSelectedItem());
                 pst.setString(4, txtcantidad.getText());
                 pst.setString(5, txtvendedor.getText());
@@ -210,8 +253,6 @@ public class factura extends javax.swing.JFrame {
                 System.out.print(e);
             }
 
-            txtnombre.setText("");
-            txtvendedor.setText("");
 
             txtrequeridoN.setVisible(false);
             txtrequeridoC.setVisible(false);
@@ -222,6 +263,14 @@ public class factura extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Registro agregado");
         }
+        String nombre = txtnombre.getText();
+        Date fecha = txtFechaI.getDate();
+        String materia =cmbmaterial.getSelectedItem().toString();
+       String cantida = txtcantidad.getText();
+        String vendedor = txtvendedor.getText();
+        String formapago = cmbpago.getSelectedItem().toString();
+        Object datos [] = {nombre,fecha,materia,cantida, vendedor,formapago};
+        modelo.addRow(datos);
 
     }//GEN-LAST:event_btnfacturarActionPerformed
 

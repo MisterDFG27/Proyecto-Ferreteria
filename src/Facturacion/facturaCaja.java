@@ -25,36 +25,32 @@ public class facturaCaja extends javax.swing.JFrame {
     public facturaCaja() {
         initComponents();
         setLocationRelativeTo(null);
-       
+        mostrardatos("");
     }
 
     public void processCalendar() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        //yyyy-MM-dd
-   //     fechacalendario = dateFormat.format(txtFecha.getDate());
+         fechacalendario = dateFormat.format(txtFecha.getDate());
 
     }
 
-    public void mostrarVehiculoFacturar(String valor) {
+    void mostrardatos(String valor) {
 
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID Registro");
-        modelo.addColumn("Placa");
+        modelo.addColumn("nombre cliente");
+        modelo.addColumn("fk_idvendedor");
         modelo.addColumn("Fecha");
-        modelo.addColumn("Hora Entrada");
-        modelo.addColumn("Hora Salida");
-        modelo.addColumn("Tipo de vehículo");
-        modelo.addColumn("Estado");
+        modelo.addColumn("Nombre_producto");
+        modelo.addColumn("cantidad");
+        modelo.addColumn("Precio");
 
         tbFactura.setModel(modelo);
-        processCalendar();
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT id_registo, númeroPlaca, fecha, horaEntrada, fk_tipoVehiculo, horaSalida, fk_estado FROM registro "
-                    +  "' and fecha = '" + fechacalendario + "'";
+            sql = "SELECT nombre_  Cliente, fk_idVendedor, Fecha, Nombre_producto, Cantidad, Precio FROM `facturas`";
 
         }
-        String[] datos = new String[7];
+        String[] datos = new String[6];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -64,9 +60,8 @@ public class facturaCaja extends javax.swing.JFrame {
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                datos[4] = rs.getString(6);
-                datos[5] = rs.getString(5);
-                datos[6] = rs.getString(7);
+                datos[4] = rs.getString(5);
+                datos[5] = rs.getString(6);
 
                 modelo.addRow(datos);
             }
@@ -74,11 +69,7 @@ public class facturaCaja extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        tbFactura.setVisible(true);
-
     }
-
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -101,7 +92,7 @@ public class facturaCaja extends javax.swing.JFrame {
         btnfacturacion = new javax.swing.JButton();
         btnmenu = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        txtFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -195,7 +186,7 @@ public class facturaCaja extends javax.swing.JFrame {
         btnmenu.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 20));
 
         jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 90, 40));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
+        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 680));
 
@@ -204,7 +195,7 @@ public class facturaCaja extends javax.swing.JFrame {
 
     private void btnBuscarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRegistroActionPerformed
 
-        mostrarVehiculoFacturar("");
+
     }//GEN-LAST:event_btnBuscarRegistroActionPerformed
 
     private void btnmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmenuMouseClicked
@@ -212,31 +203,31 @@ public class facturaCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_btnmenuMouseClicked
 
     private void btnfacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturacionActionPerformed
-         JOptionPane.showMessageDialog(null,"ALMACEN-------------"
-                 +"\nCEDULA:3-029-321847"
-                 +"\n100 MTR OESTE PARQUE DE GUACIMO"
-                 +"\nTEL:23956584"
-                 +"\n------------------------------"
-                 +"\n           CONTADO      "
-                 +"\n------------------------------"
-                 +"\nFACTURA :"+txtIDregistro.getText()
-                 +"\nCLIENTE: "
-                 +"\nVENDEDOR:"
-                 +"\nFECHA:"
-                 +"\n------------------------"
-                 +"\n------------------------"
-                 +"\nSUBTOTAL:"
-                 +"\nDESCUENTO"
-                 +"\nIVA:"
-                 +"\nOTROS CARGOS"
-                 +"\n--------------------------"
-                 +"\nTOTAL:"
-                 +"\n--------------------------"
-                 +"\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                         +"\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
-                 +"\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
-                         +"\nFECHA 30/09/1987 DE DGTD"   );
-         
+        JOptionPane.showMessageDialog(null, "ALMACEN-------------"
+                + "\nCEDULA:3-029-321847"
+                + "\n100 MTR OESTE PARQUE DE GUACIMO"
+                + "\nTEL:23956584"
+                + "\n------------------------------"
+                + "\n           CONTADO      "
+                + "\n------------------------------"
+                + "\nFACTURA :" + txtIDregistro.getText()
+                + "\nCLIENTE: "
+                + "\nVENDEDOR:"
+                + "\nFECHA:"
+                + "\n------------------------"
+                + "\n------------------------"
+                + "\nSUBTOTAL:"
+                + "\nDESCUENTO"
+                + "\nIVA:"
+                + "\nOTROS CARGOS"
+                + "\n--------------------------"
+                + "\nTOTAL:"
+                + "\n--------------------------"
+                + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                + "\nFECHA 30/09/1987 DE DGTD");
+
     }//GEN-LAST:event_btnfacturacionActionPerformed
 
     public static void main(String args[]) {
@@ -278,7 +269,6 @@ public class facturaCaja extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarRegistro;
     private javax.swing.JButton btnfacturacion;
     private javax.swing.JPanel btnmenu;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -290,6 +280,7 @@ public class facturaCaja extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbFactura;
+    private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtIDregistro;
     private javax.swing.JTextField txtMonto;
     private javax.swing.JTextField txtTotalPagar;
