@@ -12,27 +12,27 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 public class factura extends javax.swing.JFrame {
-DefaultTableModel modelo ;
+
+    DefaultTableModel modelo;
     int cont, precio;
     String date;
- String CantidV;
- 
+    String CantidV;
+
     public factura() {
         initComponents();
-         txtrequeridoN.setVisible(false);
-            txtrequeridoC.setVisible(false);
-            txtrequeridoV.setVisible(false);
-            txtrequeridofecha.setVisible(false);
-            String principal[]= {"Nombre_cliente", "Fecha", "material","cantidad","vendedor", "Formapago"};
-        String datos [][]={}; 
-        modelo = new DefaultTableModel(datos,principal);
-        tbimprimir.setModel(modelo); 
-       setLocationRelativeTo(null);
+        txtrequeridoN.setVisible(false);
+        txtrequeridoC.setVisible(false);
+        txtrequeridoV.setVisible(false);
+        txtrequeridofecha.setVisible(false);
+        String principal[] = {"Nombre_cliente", "Fecha", "material", "cantidad", "vendedor", "Formapago"};
+        String datos[][] = {};
+        modelo = new DefaultTableModel(datos, principal);
+        tbimprimir.setModel(modelo);
+        setLocationRelativeTo(null);
     }
 
     public void processCalendar() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        //yyyy-MM-dd
         date = dateFormat.format(txtFechaI.getDate());
 
     }
@@ -112,7 +112,7 @@ DefaultTableModel modelo ;
 
         btnmenu.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnmenu.setText("MENU");
-        jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 280, 80, 30));
+        jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 270, 80, 30));
 
         tbimprimir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         tbimprimir.setModel(new javax.swing.table.DefaultTableModel(
@@ -151,61 +151,59 @@ DefaultTableModel modelo ;
         txtrequeridofecha.setText("REQUERIDO");
         jPanel1.add(txtrequeridofecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 520));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 510));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-  
-    
-    private void btnfacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturarActionPerformed
 
+    private void btnfacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturarActionPerformed
+/*
         String material = cmbmaterial.getSelectedItem().toString();
         int cantidad = Integer.parseInt(txtcantidad.getText());
-       
-        
-        if(cmbmaterial.getSelectedIndex()==1){
-             precio=1000*cantidad;
-        }else  if(cmbmaterial.getSelectedIndex()==2){
-             precio=1000*cantidad;
-       }else if(cmbmaterial.getSelectedIndex()==3){
-             precio=1000*cantidad;
-        }else  if(cmbmaterial.getSelectedIndex()==4){
-             precio=1000*cantidad;
-       }else if(cmbmaterial.getSelectedIndex()==5){
-             precio=1000*cantidad;
-        }else  if(cmbmaterial.getSelectedIndex()==6){
-             precio=1000*cantidad;
-       }else if(cmbmaterial.getSelectedIndex()==7){
-             precio=1000*cantidad;
-        }else  if(cmbmaterial.getSelectedIndex()==8){
-             precio=1000*cantidad;
-       }else if(cmbmaterial.getSelectedIndex()==9){
-             precio=1000*cantidad;
-        }else  if(cmbmaterial.getSelectedIndex()==10){
-             precio=1000*cantidad;
-       }else if(cmbmaterial.getSelectedIndex()==11){
-             precio=1000*cantidad;
-        }else  if(cmbmaterial.getSelectedIndex()==12){
-             precio=1000*cantidad;
-       }else if(cmbmaterial.getSelectedIndex()==13){
-             precio=1000*cantidad;
-        }else  if(cmbmaterial.getSelectedIndex()==14){
-             precio=1000*cantidad;
-       }else if(cmbmaterial.getSelectedIndex()==15){
-             precio=1000*cantidad;
-        }else  if(cmbmaterial.getSelectedIndex()==16){
-             precio=1000*cantidad;
-       }else if(cmbmaterial.getSelectedIndex()==17){
-             precio=1000*cantidad;
-        }else  if(cmbmaterial.getSelectedIndex()==18){
-             precio=1000*cantidad;
-       }else if(cmbmaterial.getSelectedIndex()==19){
-             precio=1000*cantidad;
-        }else  if(cmbmaterial.getSelectedIndex()==20){
-             precio=1000*cantidad;
-       }
-             
+
+        if (cmbmaterial.getSelectedIndex() == 1) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 2) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 3) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 4) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 5) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 6) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 7) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 8) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 9) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 10) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 11) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 12) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 13) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 14) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 15) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 16) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 17) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 18) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 19) {
+            precio = 1000 * cantidad;
+        } else if (cmbmaterial.getSelectedIndex() == 20) {
+            precio = 1000 * cantidad;
+        }
+
         cont = 0;
 
         if (txtnombre.getText().equals("")) {
@@ -232,8 +230,7 @@ DefaultTableModel modelo ;
 
         if (cont == 0) {
 
-                
-           try {
+            try {
                 Conexión cc = new Conexión();
                 Connection cn = cc.conexion();
 
@@ -245,7 +242,6 @@ DefaultTableModel modelo ;
                 pst.setString(4, txtcantidad.getText());
                 pst.setString(5, txtvendedor.getText());
                 pst.setInt(6, precio);
-               
 
                 pst.executeUpdate();
 
@@ -253,23 +249,20 @@ DefaultTableModel modelo ;
                 System.out.print(e);
             }
 
-
             txtrequeridoN.setVisible(false);
             txtrequeridoC.setVisible(false);
             txtrequeridoV.setVisible(false);
             txtrequeridofecha.setVisible(false);
 
-        
-
             JOptionPane.showMessageDialog(this, "Registro agregado");
-        }
+        }*/
         String nombre = txtnombre.getText();
         Date fecha = txtFechaI.getDate();
-        String materia =cmbmaterial.getSelectedItem().toString();
-       String cantida = txtcantidad.getText();
+        String materia = cmbmaterial.getSelectedItem().toString();
+        String cantida = txtcantidad.getText();
         String vendedor = txtvendedor.getText();
         String formapago = cmbpago.getSelectedItem().toString();
-        Object datos [] = {nombre,fecha,materia,cantida, vendedor,formapago};
+        Object datos[] = {nombre, fecha, materia, cantida, vendedor, formapago};
         modelo.addRow(datos);
 
     }//GEN-LAST:event_btnfacturarActionPerformed
