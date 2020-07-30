@@ -30,7 +30,7 @@ public class facturaCaja extends javax.swing.JFrame {
 
     public void processCalendar() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-         fechacalendario = dateFormat.format(txtFecha.getDate());
+        fechacalendario = dateFormat.format(txtFecha.getDate());
 
     }
 
@@ -47,7 +47,7 @@ public class facturaCaja extends javax.swing.JFrame {
         tbFactura.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT nombre_  Cliente, fk_idVendedor, Fecha, Nombre_producto, Cantidad, Precio FROM `facturas`";
+            sql = "SELECT nombre_Cliente, fk_idVendedor, Fecha, Nombre_producto, Cantidad, Precio FROM `facturas`";
 
         }
         String[] datos = new String[6];
@@ -82,8 +82,6 @@ public class facturaCaja extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        txtTotalPagar = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtMonto = new javax.swing.JTextField();
@@ -137,12 +135,6 @@ public class facturaCaja extends javax.swing.JFrame {
         jPanel2.setForeground(new java.awt.Color(0, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Total a Pagar");
-        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, 20));
-        jPanel2.add(txtTotalPagar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 90, -1));
-
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Monto");
@@ -150,7 +142,7 @@ public class facturaCaja extends javax.swing.JFrame {
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("ID factura");
+        jLabel14.setText("Cliente");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
         jPanel2.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 90, -1));
         jPanel2.add(txtIDregistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 90, -1));
@@ -167,7 +159,7 @@ public class facturaCaja extends javax.swing.JFrame {
                 btnfacturacionActionPerformed(evt);
             }
         });
-        jPanel2.add(btnfacturacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, -1, -1));
+        jPanel2.add(btnfacturacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 290, 680));
 
@@ -203,25 +195,29 @@ public class facturaCaja extends javax.swing.JFrame {
     }//GEN-LAST:event_btnmenuMouseClicked
 
     private void btnfacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturacionActionPerformed
+        int monto = Integer.parseInt(txtMonto.getText());
+        double iva = monto * 0.13;
+        double descuento = monto * 0.25;
+        int cargos=0;
+        double total=monto+iva-descuento;
+
         JOptionPane.showMessageDialog(null, "ALMACEN-------------"
-                + "\nCEDULA:3-029-321847"
+                + "\nCEDULA: 3-029-321847"
                 + "\n100 MTR OESTE PARQUE DE GUACIMO"
-                + "\nTEL:23956584"
+                + "\nTEL: 23956584"
                 + "\n------------------------------"
                 + "\n           CONTADO      "
                 + "\n------------------------------"
-                + "\nFACTURA :" + txtIDregistro.getText()
-                + "\nCLIENTE: "
-                + "\nVENDEDOR:"
-                + "\nFECHA:"
+                + "\nCLIENTE: "+ txtIDregistro.getText()
+                + "\nFECHA: "+"30-7-2020"
                 + "\n------------------------"
                 + "\n------------------------"
-                + "\nSUBTOTAL:"
-                + "\nDESCUENTO"
-                + "\nIVA:"
-                + "\nOTROS CARGOS"
+                + "\nSUBTOTAL: "+ monto
+                + "\nDESCUENTO: "+ descuento
+                + "\nIVA: "+ iva
+                + "\nOTROS CARGOS: "+ cargos
                 + "\n--------------------------"
-                + "\nTOTAL:"
+                + "\nTOTAL: "+total
                 + "\n--------------------------"
                 + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
                 + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
@@ -275,7 +271,6 @@ public class facturaCaja extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -283,7 +278,6 @@ public class facturaCaja extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtIDregistro;
     private javax.swing.JTextField txtMonto;
-    private javax.swing.JTextField txtTotalPagar;
     // End of variables declaration//GEN-END:variables
   Conexión cc = new Conexión();
     Connection cn = cc.conexion();
