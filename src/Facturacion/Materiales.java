@@ -13,6 +13,9 @@ public class Materiales extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         mostrardatos("");
+        txtcod.setVisible(false);
+        txtprod.setVisible(false);
+        txtprecio.setVisible(false);
     }
     
      void mostrardatos(String valor) {
@@ -98,8 +101,14 @@ public class Materiales extends javax.swing.JFrame {
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 10, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 641, 480));
+
+        txtprecio.setEditable(false);
         getContentPane().add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 60, -1));
+
+        txtprod.setEditable(false);
         getContentPane().add(txtprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 60, -1));
+
+        txtcod.setEditable(false);
         getContentPane().add(txtcod, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 70, -1));
 
         pack();
@@ -117,6 +126,9 @@ public class Materiales extends javax.swing.JFrame {
         txtcod.setText(String.valueOf(tbmateriales.getValueAt(seleccionar,0)));
         txtprod.setText(String.valueOf(tbmateriales.getValueAt(seleccionar,1)));
         txtprecio.setText(String.valueOf(tbmateriales.getValueAt(seleccionar,2)));
+        txtcod.setVisible(false);
+        txtprod.setVisible(false);
+        txtprecio.setVisible(false);
     }//GEN-LAST:event_tbmaterialesMouseClicked
 
     /**

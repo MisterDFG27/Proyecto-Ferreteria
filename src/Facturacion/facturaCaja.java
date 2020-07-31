@@ -83,6 +83,7 @@ DefaultTableModel modelo ;
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbFactura = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
         btnfacturar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -96,6 +97,10 @@ DefaultTableModel modelo ;
         txtdescuento = new javax.swing.JTextField();
         btnmenu = new javax.swing.JButton();
         lbhora = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtusuario1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtusuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -103,8 +108,6 @@ DefaultTableModel modelo ;
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbFactura.setBackground(new java.awt.Color(0, 0, 0));
-        tbFactura.setForeground(new java.awt.Color(0, 255, 255));
         tbFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -119,7 +122,12 @@ DefaultTableModel modelo ;
         tbFactura.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tbFactura);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 780, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 780, 260));
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel2.setText("Bienvenido:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, -1, -1));
 
         btnfacturar.setText("Facturar");
         btnfacturar.addActionListener(new java.awt.event.ActionListener() {
@@ -169,21 +177,39 @@ DefaultTableModel modelo ;
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
         jPanel2.add(txtdescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 90, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 290, 680));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, -10, 290, 670));
 
-        btnmenu.setText("Menu");
+        btnmenu.setBackground(new java.awt.Color(0, 0, 0));
+        btnmenu.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnmenu.setForeground(new java.awt.Color(255, 255, 255));
+        btnmenu.setText("MENU");
         btnmenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnmenuActionPerformed(evt);
             }
         });
-        jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, -1));
+        jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 550, 90, 40));
 
         lbhora.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbhora.setText("jLabel1");
         jPanel1.add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 680));
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel3.setText("Bienvenido:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, -1, -1));
+
+        txtusuario1.setEditable(false);
+        jPanel1.add(txtusuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 680, 130, 30));
+
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel4.setText("Bienvenido:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 560, -1, -1));
+
+        txtusuario.setEditable(false);
+        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 130, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -237,7 +263,9 @@ DefaultTableModel modelo ;
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenuActionPerformed
-       
+Menu.Menu_Principal m = new Menu.Menu_Principal();
+                m.setVisible(true);
+                dispose();       
     }//GEN-LAST:event_btnmenuActionPerformed
 
     public static void main(String args[]) {
@@ -283,6 +311,9 @@ DefaultTableModel modelo ;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -292,6 +323,8 @@ DefaultTableModel modelo ;
     private javax.swing.JTextField txtMonto;
     private javax.swing.JTextField txtdescuento;
     private javax.swing.JTextField txtnombre;
+    public javax.swing.JTextField txtusuario;
+    public javax.swing.JTextField txtusuario1;
     // End of variables declaration//GEN-END:variables
   Conexión cc = new Conexión();
     Connection cn = cc.conexion();

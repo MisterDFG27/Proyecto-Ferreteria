@@ -61,6 +61,9 @@ public class Empleados extends javax.swing.JFrame {
         chVerContra = new javax.swing.JCheckBox();
         btnmenu = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        txtusuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,15 +76,16 @@ public class Empleados extends javax.swing.JFrame {
         jLabel1.setText("Registro de empleados");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
 
-        btnguardar.setBackground(new java.awt.Color(0, 153, 153));
+        btnguardar.setBackground(new java.awt.Color(0, 0, 0));
         btnguardar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnguardar.setForeground(new java.awt.Color(255, 255, 255));
         btnguardar.setText("Guardar");
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 410, 180, 50));
+        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 180, 50));
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 145, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -109,7 +113,6 @@ public class Empleados extends javax.swing.JFrame {
         jPanel1.add(txtSegundoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 145, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(0, 153, 153));
         jLabel9.setText("Datos de Usuario");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
 
@@ -139,42 +142,41 @@ public class Empleados extends javax.swing.JFrame {
 
         jLabel13.setBackground(new java.awt.Color(153, 153, 153));
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 153, 153));
         jLabel13.setText("Datos Personales");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
 
         lblRequeridoCedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoCedula.setForeground(new java.awt.Color(0, 153, 153));
+        lblRequeridoCedula.setForeground(new java.awt.Color(255, 51, 51));
         lblRequeridoCedula.setText("Requerido");
         jPanel1.add(lblRequeridoCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
 
         lblRequeridoNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoNombre.setForeground(new java.awt.Color(0, 153, 153));
+        lblRequeridoNombre.setForeground(new java.awt.Color(255, 51, 51));
         lblRequeridoNombre.setText("Requerido");
         jPanel1.add(lblRequeridoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
 
         lblRequeridoAP1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoAP1.setForeground(new java.awt.Color(0, 153, 153));
+        lblRequeridoAP1.setForeground(new java.awt.Color(255, 51, 51));
         lblRequeridoAP1.setText("Requerido");
         jPanel1.add(lblRequeridoAP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
 
         lblRequeridoCE.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoCE.setForeground(new java.awt.Color(0, 153, 153));
+        lblRequeridoCE.setForeground(new java.awt.Color(255, 51, 51));
         lblRequeridoCE.setText("Requerido");
         jPanel1.add(lblRequeridoCE, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
 
         lblRequeridoUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoUsuario.setForeground(new java.awt.Color(0, 153, 153));
+        lblRequeridoUsuario.setForeground(new java.awt.Color(255, 51, 51));
         lblRequeridoUsuario.setText("Requerido");
         jPanel1.add(lblRequeridoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, -1, -1));
 
         lblRequeridoContraseña.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoContraseña.setForeground(new java.awt.Color(0, 153, 153));
+        lblRequeridoContraseña.setForeground(new java.awt.Color(255, 51, 51));
         lblRequeridoContraseña.setText("Requerido");
         jPanel1.add(lblRequeridoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
 
         lblRequeridoAP2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoAP2.setForeground(new java.awt.Color(0, 153, 153));
+        lblRequeridoAP2.setForeground(new java.awt.Color(255, 51, 51));
         lblRequeridoAP2.setText("Requerido");
         jPanel1.add(lblRequeridoAP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
         jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 110, -1));
@@ -187,7 +189,7 @@ public class Empleados extends javax.swing.JFrame {
         });
         jPanel1.add(chVerContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 130, -1));
 
-        btnmenu.setBackground(new java.awt.Color(0, 153, 153));
+        btnmenu.setBackground(new java.awt.Color(0, 0, 0));
         btnmenu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnmenuMouseClicked(evt);
@@ -201,7 +203,19 @@ public class Empleados extends javax.swing.JFrame {
         jLabel14.setText("Menú");
         btnmenu.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 20));
 
-        jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 570, 90, 40));
+        jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 590, 90, 40));
+
+        jLabel15.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel15.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel15.setText("Bienvenido:");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel16.setText("Bienvenido:");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 600, -1, -1));
+
+        txtusuario.setEditable(false);
+        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 130, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 630));
 
@@ -318,7 +332,12 @@ public class Empleados extends javax.swing.JFrame {
     }//GEN-LAST:event_chVerContraActionPerformed
 
     private void btnmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmenuMouseClicked
-          dispose();
+        Menu.Menu_Principal m = new Menu.Menu_Principal();
+                m.setVisible(true);
+                dispose();
+
+                m.txtusuario.setText(txtusuario.getText());  
+        
     }//GEN-LAST:event_btnmenuMouseClicked
 
     public static void main(String args[]) {
@@ -365,6 +384,8 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -388,5 +409,6 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtnombre;
+    public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }

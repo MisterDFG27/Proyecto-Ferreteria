@@ -18,6 +18,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
        
+       
 
     }
 
@@ -31,7 +32,7 @@ public class Login extends javax.swing.JFrame {
                 cap = rs.getString("fk_tipoUsuario");
             }
             if (cap.equals("1")) {
-                Menu_Principal m = new Menu_Principal();
+                Menu.Menu_Principal m = new Menu.Menu_Principal();
                 m.setVisible(true);
                 dispose();
 
@@ -39,10 +40,8 @@ public class Login extends javax.swing.JFrame {
 
                 
             } else if (cap.equals("2")) {
-                Menu_Principal m = new Menu_Principal();
+                Menu.Menu_Empleado m = new Menu.Menu_Empleado();
                 m.setVisible(true);
-                m.Registro.setVisible(false);
-                m.Reporte.setVisible(false);
                 dispose();
   
                 m.txtusuario.setText(txtusuario.getText());
@@ -74,22 +73,27 @@ public class Login extends javax.swing.JFrame {
         txtusuario = new javax.swing.JTextField();
         btnrecuperar = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("Usuario");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
+        jPanel2.add(jLabel1);
+        jLabel1.setBounds(200, 140, 59, 22);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Contraseña");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
-        jPanel2.add(PwClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 136, -1));
-        jPanel2.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 136, -1));
+        jPanel2.add(jLabel2);
+        jLabel2.setBounds(180, 230, 88, 22);
+        jPanel2.add(PwClave);
+        PwClave.setBounds(160, 270, 136, 20);
+        jPanel2.add(txtusuario);
+        txtusuario.setBounds(160, 170, 136, 20);
 
         btnrecuperar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnrecuperar.setText("Recuperación de contraseña");
@@ -98,7 +102,8 @@ public class Login extends javax.swing.JFrame {
                 btnrecuperarMouseClicked(evt);
             }
         });
-        jPanel2.add(btnrecuperar, new org.netbeans.lib.awtextra.AbsoluteConstraints(254, 522, -1, -1));
+        jPanel2.add(btnrecuperar);
+        btnrecuperar.setBounds(254, 522, 220, 22);
 
         btnIngresar.setBackground(new java.awt.Color(0, 0, 0));
         btnIngresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -109,7 +114,13 @@ public class Login extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, 179, 45));
+        jPanel2.add(btnIngresar);
+        btnIngresar.setBounds(140, 340, 179, 45);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("Inicio de sesión");
+        jPanel2.add(jLabel3);
+        jLabel3.setBounds(160, 70, 160, 50);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 550));
 
@@ -139,7 +150,7 @@ public class Login extends javax.swing.JFrame {
 
                 //Cargamos el Driver MySQL
                 Class.forName("com.mysql.jdbc.Driver");
-                conect = DriverManager.getConnection("jdbc:mysql://localhost/ferreteriabd", "root", "");
+                conect = DriverManager.getConnection("jdbc:mysql://localhost:3308/ferreteriabd", "root", "");
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error " + e);
@@ -187,6 +198,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel btnrecuperar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables

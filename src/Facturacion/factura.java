@@ -15,22 +15,25 @@ public class factura extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
      String date;
+     String datesolo;
     public factura() {
         initComponents();
-       
+     
         String principal[] = {"Codigo producto", "Descripción", "Precio unitario", "Cantidad"};
         String datos[][] = {};
         modelo = new DefaultTableModel(datos, principal);
         tbimprimir1.setModel(modelo);
         setLocationRelativeTo(null);
+        txtvendedor.setText(""+txtusuario.getText());
+        
+        
     }
-
     public void processCalendar() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        date = dateFormat.format(txtFechaI1.getDate());
-
+        datesolo = dateFormat.format(txtFecha.getDate());
+        
     }
-
+  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -40,8 +43,8 @@ public class factura extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        txtnombre3 = new javax.swing.JTextField();
-        txtvendedor1 = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
+        txtvendedor = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         btnfacturar1 = new javax.swing.JButton();
         btneliminar1 = new javax.swing.JButton();
@@ -50,16 +53,16 @@ public class factura extends javax.swing.JFrame {
         tbimprimir1 = new javax.swing.JTable();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtFechaI1 = new com.toedter.calendar.JDateChooser();
+        txtFecha = new com.toedter.calendar.JDateChooser();
         jLabel19 = new javax.swing.JLabel();
-        txtnombre4 = new javax.swing.JTextField();
+        txtapellido = new javax.swing.JTextField();
         jLabel20 = new javax.swing.JLabel();
-        txtnombre5 = new javax.swing.JTextField();
+        txtcedula = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        txtvendedor = new javax.swing.JTextField();
+        txtid = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
@@ -74,6 +77,8 @@ public class factura extends javax.swing.JFrame {
         jLabel27 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         txtsubtotal = new javax.swing.JTextField();
+        txtusuario = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -89,8 +94,8 @@ public class factura extends javax.swing.JFrame {
 
         jLabel15.setText("Subtotal:");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 380, -1, -1));
-        jPanel2.add(txtnombre3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 100, -1));
-        jPanel2.add(txtvendedor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 190, 100, -1));
+        jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 100, 100, -1));
+        jPanel2.add(txtvendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 180, 110, 30));
 
         jLabel16.setText("Cantidad:");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, -1, -1));
@@ -108,14 +113,16 @@ public class factura extends javax.swing.JFrame {
         btneliminar1.setText("Cargar Proforma");
         jPanel2.add(btneliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 160, 30));
 
+        btnmenu1.setBackground(new java.awt.Color(0, 0, 0));
         btnmenu1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnmenu1.setForeground(new java.awt.Color(255, 255, 255));
         btnmenu1.setText("MENU");
         btnmenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnmenu1ActionPerformed(evt);
             }
         });
-        jPanel2.add(btnmenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 80, 40));
+        jPanel2.add(btnmenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 670, 80, 40));
 
         tbimprimir1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         tbimprimir1.setModel(new javax.swing.table.DefaultTableModel(
@@ -139,19 +146,21 @@ public class factura extends javax.swing.JFrame {
         jLabel18.setText("Fecha:");
         jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 190, -1, -1));
 
-        txtFechaI1.setDateFormatString("yyyy-MM-dd");
-        jPanel2.add(txtFechaI1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 110, 30));
+        txtFecha.setDateFormatString("yyyy-MM-dd");
+        txtFecha.setMaxSelectableDate(new java.util.Date(253370790110000L));
+        txtFecha.setMinSelectableDate(new java.util.Date(-62135744290000L));
+        jPanel2.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 140, 30));
 
         jLabel19.setText("Apellido:");
         jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 100, -1, -1));
 
-        txtnombre4.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
-        txtnombre4.setToolTipText("");
-        jPanel2.add(txtnombre4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 100, -1));
+        txtapellido.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
+        txtapellido.setToolTipText("");
+        jPanel2.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 100, -1));
 
         jLabel20.setText("Cedula:");
         jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
-        jPanel2.add(txtnombre5, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 100, -1));
+        jPanel2.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 100, -1));
 
         jLabel21.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(51, 51, 51));
@@ -168,9 +177,7 @@ public class factura extends javax.swing.JFrame {
         jLabel23.setForeground(new java.awt.Color(153, 153, 153));
         jLabel23.setText("Materiales:");
         jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
-
-        txtvendedor.setEditable(false);
-        jPanel2.add(txtvendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 70, -1));
+        jPanel2.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 70, -1));
 
         jLabel3.setText("Id factura:");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 190, -1, -1));
@@ -220,6 +227,14 @@ public class factura extends javax.swing.JFrame {
         txtsubtotal.setText("0");
         jPanel2.add(txtsubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 130, 30));
 
+        txtusuario.setEditable(false);
+        jPanel2.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 680, 130, 30));
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setText("Bienvenido:");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, -1, -1));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 710));
 
         pack();
@@ -227,7 +242,32 @@ public class factura extends javax.swing.JFrame {
 
 
     private void btnfacturar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturar1ActionPerformed
-        // TODO add your handling code here:
+        try {
+               
+
+                PreparedStatement pst = cn.prepareStatement("INSERT INTO datosfactura(id, Cedula, Nombre, Apellido, Fecha, Vendedor, Subtotal) VALUES (?,?,?,?,?,?,?)");
+                pst.setString(1, txtid.getText());
+                pst.setString(2, txtcedula.getText());
+                pst.setString(3, txtnombre.getText());
+                pst.setString(4, txtapellido.getText());
+                pst.setString(5, datesolo);
+                pst.setString(7, txtvendedor.getText());
+                pst.setString(8, txtsubtotal.getText());
+
+                pst.executeUpdate();
+
+            } catch (Exception e) {
+                System.out.print(e);
+            }
+
+            txtid.setText("");
+            txtapellido.setText("");
+            txtcedula.setText("");
+            txtnombre.setText("");
+            txtvendedor.setText("");
+            txtsubtotal.setText("");
+            JOptionPane.showMessageDialog(this, "Guardado con exito");
+
     }//GEN-LAST:event_btnfacturar1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -272,7 +312,9 @@ public class factura extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnmenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenu1ActionPerformed
-        // TODO add your handling code here:
+                 Menu.Menu_Principal m = new Menu.Menu_Principal();
+                m.setVisible(true);
+                dispose();
     }//GEN-LAST:event_btnmenu1ActionPerformed
 
     public static void main(String args[]) {
@@ -316,6 +358,7 @@ public class factura extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
@@ -337,17 +380,18 @@ public class factura extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable tbimprimir1;
-    private com.toedter.calendar.JDateChooser txtFechaI1;
+    private com.toedter.calendar.JDateChooser txtFecha;
+    private javax.swing.JTextField txtapellido;
     private javax.swing.JSpinner txtcantidad;
+    private javax.swing.JTextField txtcedula;
     public static javax.swing.JTextField txtcodp;
-    private javax.swing.JTextField txtnombre3;
-    private javax.swing.JTextField txtnombre4;
-    private javax.swing.JTextField txtnombre5;
+    private javax.swing.JTextField txtid;
+    private javax.swing.JTextField txtnombre;
     public static javax.swing.JTextField txtpreciop;
     public static javax.swing.JTextField txtprodp;
     private javax.swing.JTextField txtsubtotal;
+    public javax.swing.JTextField txtusuario;
     private javax.swing.JTextField txtvendedor;
-    private javax.swing.JTextField txtvendedor1;
     // End of variables declaration//GEN-END:variables
  Conexión cc = new Conexión();
     Connection cn = cc.conexion();

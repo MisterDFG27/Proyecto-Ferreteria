@@ -253,6 +253,8 @@ public class Productos extends javax.swing.JFrame {
         btnfiltrofechas = new javax.swing.JButton();
         btnfiltrodia = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
+        txtusuario = new javax.swing.JTextField();
 
         jLabel3.setText("jLabel3");
 
@@ -374,42 +376,55 @@ public class Productos extends javax.swing.JFrame {
         jLabel28.setText("Menú");
         btnmenu1.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 20));
 
-        jPanel1.add(btnmenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 90, 40));
+        jPanel1.add(btnmenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 500, 90, 40));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Fecha Inicial");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 350, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, -1, -1));
 
         dateunica.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(dateunica, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 150, -1, -1));
+        jPanel1.add(dateunica, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 150, 100, 30));
 
         dateinicial.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(dateinicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 380, -1, -1));
+        jPanel1.add(dateinicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 380, 110, 30));
 
         datefinal.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(datefinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 380, -1, -1));
+        jPanel1.add(datefinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 380, 110, 30));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, 20, 530));
 
+        btnfiltrofechas.setBackground(new java.awt.Color(0, 0, 0));
+        btnfiltrofechas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnfiltrofechas.setForeground(new java.awt.Color(255, 255, 255));
         btnfiltrofechas.setText("Filtrar");
         btnfiltrofechas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnfiltrofechasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnfiltrofechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 430, -1, -1));
+        jPanel1.add(btnfiltrofechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 430, 80, 30));
 
+        btnfiltrodia.setBackground(new java.awt.Color(0, 0, 0));
+        btnfiltrodia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnfiltrodia.setForeground(new java.awt.Color(255, 255, 255));
         btnfiltrodia.setText("Filtrar");
         btnfiltrodia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnfiltrodiaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnfiltrodia, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 200, -1, -1));
+        jPanel1.add(btnfiltrodia, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 200, 80, 30));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 270, 410, 10));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 520));
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setText("Bienvenido:");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, -1, -1));
+
+        txtusuario.setEditable(false);
+        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 120, 30));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 540));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -433,8 +448,11 @@ public class Productos extends javax.swing.JFrame {
 
     private void btnmenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmenu1MouseClicked
        
-        //m.setVisible(true);
-        //dispose();
+       Menu.Menu_Principal m = new Menu.Menu_Principal();
+                m.setVisible(true);
+                dispose();
+
+                m.txtusuario.setText(txtusuario.getText());
     }//GEN-LAST:event_btnmenu1MouseClicked
 
     private void btnfiltrodiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfiltrodiaActionPerformed
@@ -497,6 +515,7 @@ public class Productos extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser datefinal;
     private com.toedter.calendar.JDateChooser dateinicial;
     private com.toedter.calendar.JDateChooser dateunica;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel28;
@@ -512,6 +531,7 @@ public class Productos extends javax.swing.JFrame {
     private javax.swing.JTable tbDatos;
     private javax.swing.JTable tbMontoR;
     private javax.swing.JLabel txtVerAll;
+    public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
     Conexión cc = new Conexión();
     Connection cn = cc.conexion();
