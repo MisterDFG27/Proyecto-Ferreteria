@@ -11,7 +11,7 @@ public class Conexión {
     public Connection conexion(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            conectar=DriverManager.getConnection("jdbc:mysql://localhost/ferreteriabd","root","");
+            conectar=DriverManager.getConnection("jdbc:mysql://localhost:3308/ferreteriabd","root","");
         } catch (Exception e) {
             System.out.print(e.getMessage());
         }

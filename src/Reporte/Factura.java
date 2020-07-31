@@ -11,20 +11,21 @@ import javax.swing.table.DefaultTableModel;
 
 public class Factura extends javax.swing.JFrame {
 
-   String datesolo, date1, date2;
+    String datesolo, date1, date2;
 
     public Factura() {
         initComponents();
         setLocationRelativeTo(null);
-    mostrardatos("");
+        mostrardatos("");
         mostrarMontototal("");
     }
- public void processCalendar() {
+
+    public void processCalendar() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         datesolo = dateFormat.format(jdatefecha1.getDate());
-        
+
     }
-    
+
     public void processCalendar2f() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         date1 = dateFormat.format(jdateinicial.getDate());
@@ -40,18 +41,15 @@ public class Factura extends javax.swing.JFrame {
         modelo.addColumn("Vendedor");
         modelo.addColumn("Fecha");
         modelo.addColumn("Hora");
-          modelo.addColumn("Codigo Productos");
+        modelo.addColumn("Codigo Productos");
         modelo.addColumn("Nombre Producto");
         modelo.addColumn("Cantidad");
         modelo.addColumn("Precio");
-          modelo.addColumn("Sub Total");
+        modelo.addColumn("Sub Total");
         modelo.addColumn("Descuento");
         modelo.addColumn("IVA");
         modelo.addColumn("Total");
-        
-        
-        
-        
+
         tbreporte.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
@@ -68,11 +66,11 @@ public class Factura extends javax.swing.JFrame {
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                 datos[4] = rs.getString(5);
+                datos[4] = rs.getString(5);
                 datos[5] = rs.getString(6);
                 datos[6] = rs.getString(7);
                 datos[7] = rs.getString(8);
-                 datos[8] = rs.getString(9);
+                datos[8] = rs.getString(9);
                 datos[9] = rs.getString(10);
                 datos[10] = rs.getString(11);
                 datos[11] = rs.getString(12);
@@ -106,7 +104,7 @@ public class Factura extends javax.swing.JFrame {
 
                 modelo.addRow(datos);
             }
-             tbmonto.setModel(modelo);
+            tbmonto.setModel(modelo);
         } catch (SQLException ex) {
             System.out.println(ex);
 
@@ -122,15 +120,15 @@ public class Factura extends javax.swing.JFrame {
         modelo.addColumn("Vendedor");
         modelo.addColumn("Fecha");
         modelo.addColumn("Hora");
-          modelo.addColumn("Codigo Productos");
+        modelo.addColumn("Codigo Productos");
         modelo.addColumn("Nombre Producto");
         modelo.addColumn("Cantidad");
         modelo.addColumn("Precio");
-          modelo.addColumn("Sub Total");
+        modelo.addColumn("Sub Total");
         modelo.addColumn("Descuento");
         modelo.addColumn("IVA");
         modelo.addColumn("Total");
-        
+
         processCalendar();
         tbreporte.setModel(modelo);
         String sql = "";
@@ -144,15 +142,15 @@ public class Factura extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
 
-               datos[0] = rs.getString(1);
+                datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                 datos[4] = rs.getString(5);
+                datos[4] = rs.getString(5);
                 datos[5] = rs.getString(6);
                 datos[6] = rs.getString(7);
                 datos[7] = rs.getString(8);
-                 datos[8] = rs.getString(9);
+                datos[8] = rs.getString(9);
                 datos[9] = rs.getString(10);
                 datos[10] = rs.getString(11);
                 datos[11] = rs.getString(12);
@@ -205,11 +203,11 @@ public class Factura extends javax.swing.JFrame {
         modelo.addColumn("Vendedor");
         modelo.addColumn("Fecha");
         modelo.addColumn("Hora");
-          modelo.addColumn("Codigo Productos");
+        modelo.addColumn("Codigo Productos");
         modelo.addColumn("Nombre Producto");
         modelo.addColumn("Cantidad");
         modelo.addColumn("Precio");
-          modelo.addColumn("Sub Total");
+        modelo.addColumn("Sub Total");
         modelo.addColumn("Descuento");
         modelo.addColumn("IVA");
         modelo.addColumn("Total");
@@ -218,7 +216,7 @@ public class Factura extends javax.swing.JFrame {
         tbreporte.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT * FROM `facturas` WHERE Fecha between = '" + date1 + "' and '" + date2 + "'";
+            sql = "SELECT * FROM facturas WHERE Fecha BETWEEN '" + date1 + "' AND '" + date2 + "'";
 
         }
         String[] datos = new String[13];
@@ -227,15 +225,15 @@ public class Factura extends javax.swing.JFrame {
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
 
-                   datos[0] = rs.getString(1);
+                datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                 datos[4] = rs.getString(5);
+                datos[4] = rs.getString(5);
                 datos[5] = rs.getString(6);
                 datos[6] = rs.getString(7);
                 datos[7] = rs.getString(8);
-                 datos[8] = rs.getString(9);
+                datos[8] = rs.getString(9);
                 datos[9] = rs.getString(10);
                 datos[10] = rs.getString(11);
                 datos[11] = rs.getString(12);
@@ -273,7 +271,7 @@ public class Factura extends javax.swing.JFrame {
 
                 modelo.addRow(datos);
             }
-           tbmonto.setModel(modelo);
+            tbmonto.setModel(modelo);
         } catch (SQLException ex) {
             System.out.println(ex);
 
@@ -474,21 +472,18 @@ public class Factura extends javax.swing.JFrame {
 
     private void btnFiltrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrarMouseClicked
 
-       
     }//GEN-LAST:event_btnFiltrarMouseClicked
 
     private void txtmostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtmostrarMouseClicked
         mostrardatos("");
-    
+
     }//GEN-LAST:event_txtmostrarMouseClicked
 
     private void btnTotalRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTotalRMouseClicked
-       // mostrarMontoTotal("");
+        // mostrarMontoTotal("");
     }//GEN-LAST:event_btnTotalRMouseClicked
 
     private void btnFitrar2FechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFitrar2FechasMouseClicked
-
-       
 
     }//GEN-LAST:event_btnFitrar2FechasMouseClicked
 
@@ -497,11 +492,11 @@ public class Factura extends javax.swing.JFrame {
     }//GEN-LAST:event_btnmenu1MouseClicked
 
     private void btnfiltro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfiltro1ActionPerformed
-      Consultafechaunica("");
+        Consultafechaunica("");
     }//GEN-LAST:event_btnfiltro1ActionPerformed
 
     private void btnfiltro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfiltro2ActionPerformed
-       Consulta2fechas("");
+        Consulta2fechas("");
     }//GEN-LAST:event_btnfiltro2ActionPerformed
 
     public static void main(String args[]) {

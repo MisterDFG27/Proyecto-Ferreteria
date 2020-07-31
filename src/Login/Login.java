@@ -68,7 +68,6 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         PwClave = new javax.swing.JPasswordField();
@@ -82,25 +81,17 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel3.setText("Iniciar sesión");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 230, -1));
-
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Usuario");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Contraseña");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, -1));
         jPanel2.add(PwClave, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 136, -1));
         jPanel2.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 136, -1));
 
         btnrecuperar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnrecuperar.setForeground(new java.awt.Color(0, 0, 0));
         btnrecuperar.setText("Recuperación de contraseña");
         btnrecuperar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -196,7 +187,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel btnrecuperar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
