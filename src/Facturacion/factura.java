@@ -110,6 +110,11 @@ public class factura extends javax.swing.JFrame {
 
         btnmenu1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnmenu1.setText("MENU");
+        btnmenu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmenu1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnmenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 670, 80, 40));
 
         tbimprimir1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -265,6 +270,10 @@ public class factura extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void btnmenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenu1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnmenu1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

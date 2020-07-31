@@ -7,25 +7,33 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author admin
- */
-public class facturaCaja extends javax.swing.JFrame {
 
-    //----------------En proceso----------------//
+public class facturaCaja extends javax.swing.JFrame implements Runnable  {
+DefaultTableModel modelo ;
+
+   
     String date;
 
     String fechacalendario;
+    String hora, minutos, segundos, ampm;
+    Calendar calendario;
+    Thread hora1;
 
     public facturaCaja() {
         initComponents();
         setLocationRelativeTo(null);
         mostrardatos("");
+        hora1 = new Thread (this);
+        hora1.start();
+                 
+        
     }
 
     
@@ -65,6 +73,7 @@ public class facturaCaja extends javax.swing.JFrame {
         } catch (SQLException ex) {
             System.out.println(ex);
         }
+        tbFactura.setModel(modelo); 
     }
 
     @SuppressWarnings("unchecked")
@@ -74,17 +83,17 @@ public class facturaCaja extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbFactura = new javax.swing.JTable();
-        btnBuscarRegistro = new javax.swing.JButton();
+        btnfacturar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtMonto = new javax.swing.JTextField();
-        txtIDregistro = new javax.swing.JTextField();
+        txtnombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        btnfacturacion = new javax.swing.JButton();
-        btnmenu = new javax.swing.JPanel();
-        jLabel28 = new javax.swing.JLabel();
+        btnImprimir = new javax.swing.JButton();
+        btnmenu = new javax.swing.JButton();
+        lbhora = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -93,6 +102,7 @@ public class facturaCaja extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbFactura.setBackground(new java.awt.Color(0, 0, 0));
+        tbFactura.setForeground(new java.awt.Color(0, 255, 255));
         tbFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -109,13 +119,13 @@ public class facturaCaja extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 780, 260));
 
-        btnBuscarRegistro.setText("Buscar");
-        btnBuscarRegistro.addActionListener(new java.awt.event.ActionListener() {
+        btnfacturar.setText("Facturar");
+        btnfacturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarRegistroActionPerformed(evt);
+                btnfacturarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 370, -1));
+        jPanel1.add(btnfacturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 370, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel12.setText("CAJA");
@@ -135,7 +145,7 @@ public class facturaCaja extends javax.swing.JFrame {
         jLabel14.setText("Cliente");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
         jPanel2.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 90, -1));
-        jPanel2.add(txtIDregistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 90, -1));
+        jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 90, -1));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -143,47 +153,49 @@ public class facturaCaja extends javax.swing.JFrame {
         jLabel11.setText("Factura");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
-        btnfacturacion.setText("Facturar");
-        btnfacturacion.addActionListener(new java.awt.event.ActionListener() {
+        btnImprimir.setText("Imprimir");
+        btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnfacturacionActionPerformed(evt);
+                btnImprimirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnfacturacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
+        jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 290, 680));
 
-        btnmenu.setBackground(new java.awt.Color(0, 0, 0));
-        btnmenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnmenuMouseClicked(evt);
+        btnmenu.setText("Menu");
+        btnmenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnmenuActionPerformed(evt);
             }
         });
-        btnmenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 520, -1, -1));
 
-        jLabel28.setBackground(new java.awt.Color(67, 81, 141));
-        jLabel28.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText("Menú");
-        btnmenu.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 20));
-
-        jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 90, 40));
+        lbhora.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lbhora.setText("jLabel1");
+        jPanel1.add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBuscarRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarRegistroActionPerformed
+    private void btnfacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturarActionPerformed
+ int filaselect = tbFactura.getSelectedRow();
+        if (filaselect >= 0) {
+            txtnombre.setText(tbFactura.getValueAt(filaselect, 0).toString());
+            txtMonto.setText(tbFactura.getValueAt(filaselect, 5).toString());
+           
+            
+            modelo.removeRow(filaselect);  
+        }else{
+            JOptionPane.showMessageDialog(this, "Fila no seleccionada");
+        
+        }
 
+    }//GEN-LAST:event_btnfacturarActionPerformed
 
-    }//GEN-LAST:event_btnBuscarRegistroActionPerformed
-
-    private void btnmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmenuMouseClicked
-        dispose();
-    }//GEN-LAST:event_btnmenuMouseClicked
-
-    private void btnfacturacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturacionActionPerformed
+    private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         int monto = Integer.parseInt(txtMonto.getText());
         double iva = monto * 0.13;
         double descuento = monto * 0.25;
@@ -197,7 +209,7 @@ public class facturaCaja extends javax.swing.JFrame {
                 + "\n------------------------------"
                 + "\n           CONTADO      "
                 + "\n------------------------------"
-                + "\nCLIENTE: "+ txtIDregistro.getText()
+                + "\nCLIENTE: "+ txtnombre.getText()
                 + "\nFECHA: "+"30-7-2020"
                 + "\n------------------------"
                 + "\n------------------------"
@@ -213,7 +225,11 @@ public class facturaCaja extends javax.swing.JFrame {
                 + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
                 + "\nFECHA 30/09/1987 DE DGTD");
 
-    }//GEN-LAST:event_btnfacturacionActionPerformed
+    }//GEN-LAST:event_btnImprimirActionPerformed
+
+    private void btnmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenuActionPerformed
+       
+    }//GEN-LAST:event_btnmenuActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -251,21 +267,61 @@ public class facturaCaja extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscarRegistro;
-    private javax.swing.JButton btnfacturacion;
-    private javax.swing.JPanel btnmenu;
+    private javax.swing.JButton btnImprimir;
+    private javax.swing.JButton btnfacturar;
+    private javax.swing.JButton btnmenu;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbhora;
     private javax.swing.JTable tbFactura;
-    private javax.swing.JTextField txtIDregistro;
     private javax.swing.JTextField txtMonto;
+    private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
   Conexión cc = new Conexión();
     Connection cn = cc.conexion();
+    //Reloj
+    public void run() {
+        Thread control = Thread.currentThread();
+        while (control==hora1){
+        calcula();
+        lbhora.setText(hora+":"+minutos+":"+segundos+" "+ampm);
+        
+            try{
+                Thread.sleep(1000);
+                
+            }catch(InterruptedException e){
+                
+            }
+            
+        }
+    }
+    private void calcula() {
+        Calendar calendario = new GregorianCalendar();
+        Date fecha = new Date();
+        
+        calendario.setTime(fecha);
+        ampm = calendario.get(Calendar.AM_PM) == Calendar.AM ? "AM":"PM";
+        
+        if(ampm.equals("PM")){
+            int h = calendario.get(Calendar.HOUR_OF_DAY);
+            hora = h > 9? " " + h :"0" + h;
+            
+        }else{
+            hora=calendario.get(Calendar.HOUR_OF_DAY) > 9? " "
+                    +calendario.get(Calendar.HOUR_OF_DAY) :"0"
+                    +calendario.get(Calendar.HOUR_OF_DAY);
+        }
+        minutos = calendario.get(Calendar.MINUTE) >9? " "
+                +calendario.get(Calendar.MINUTE):"0"
+                +calendario.get(Calendar.MINUTE);
+        
+        segundos = calendario.get(Calendar.SECOND) >9? " "
+                +calendario.get(Calendar.SECOND):"0"
+                +calendario.get(Calendar.SECOND);
+    }
 }
