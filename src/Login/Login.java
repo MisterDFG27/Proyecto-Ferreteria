@@ -41,6 +41,8 @@ public class Login extends javax.swing.JFrame {
             } else if (cap.equals("2")) {
                 Menu_Principal m = new Menu_Principal();
                 m.setVisible(true);
+                m.Registro.setVisible(false);
+                m.Reporte.setVisible(false);
                 dispose();
   
                 m.txtusuario.setText(txtusuario.getText());
