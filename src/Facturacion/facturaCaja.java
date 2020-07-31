@@ -92,6 +92,8 @@ DefaultTableModel modelo ;
         txtnombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        txtdescuento = new javax.swing.JTextField();
         btnmenu = new javax.swing.JButton();
         lbhora = new javax.swing.JLabel();
 
@@ -159,7 +161,13 @@ DefaultTableModel modelo ;
                 btnImprimirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 300, -1, -1));
+        jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Descuento");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+        jPanel2.add(txtdescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 90, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 290, 680));
 
@@ -197,8 +205,9 @@ DefaultTableModel modelo ;
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         int monto = Integer.parseInt(txtMonto.getText());
+        int porciento= Integer.parseInt(txtdescuento.getText());
         double iva = monto * 0.13;
-        double descuento = monto * 0.25;
+        double descuento = monto * porciento;
         int cargos=0;
         double total=monto+iva-descuento;
 
@@ -270,6 +279,7 @@ DefaultTableModel modelo ;
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnfacturar;
     private javax.swing.JButton btnmenu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -280,6 +290,7 @@ DefaultTableModel modelo ;
     private javax.swing.JLabel lbhora;
     private javax.swing.JTable tbFactura;
     private javax.swing.JTextField txtMonto;
+    private javax.swing.JTextField txtdescuento;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
   Conexión cc = new Conexión();
