@@ -28,11 +28,7 @@ public class facturaCaja extends javax.swing.JFrame {
         mostrardatos("");
     }
 
-    public void processCalendar() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        fechacalendario = dateFormat.format(txtFecha.getDate());
-
-    }
+    
 
     void mostrardatos(String valor) {
 
@@ -79,7 +75,6 @@ public class facturaCaja extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbFactura = new javax.swing.JTable();
         btnBuscarRegistro = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
@@ -90,7 +85,6 @@ public class facturaCaja extends javax.swing.JFrame {
         btnfacturacion = new javax.swing.JButton();
         btnmenu = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
-        txtFecha = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -113,7 +107,7 @@ public class facturaCaja extends javax.swing.JFrame {
         tbFactura.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tbFactura);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 780, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 780, 260));
 
         btnBuscarRegistro.setText("Buscar");
         btnBuscarRegistro.addActionListener(new java.awt.event.ActionListener() {
@@ -121,11 +115,7 @@ public class facturaCaja extends javax.swing.JFrame {
                 btnBuscarRegistroActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBuscarRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 500, 370, -1));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Fecha");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, -1, -1));
+        jPanel1.add(btnBuscarRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 370, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel12.setText("CAJA");
@@ -178,7 +168,6 @@ public class facturaCaja extends javax.swing.JFrame {
         btnmenu.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 20));
 
         jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 90, 40));
-        jPanel1.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 680));
 
@@ -265,7 +254,6 @@ public class facturaCaja extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarRegistro;
     private javax.swing.JButton btnfacturacion;
     private javax.swing.JPanel btnmenu;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -275,7 +263,6 @@ public class facturaCaja extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbFactura;
-    private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtIDregistro;
     private javax.swing.JTextField txtMonto;
     // End of variables declaration//GEN-END:variables
