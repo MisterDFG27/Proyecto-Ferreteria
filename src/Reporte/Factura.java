@@ -11,45 +11,54 @@ import javax.swing.table.DefaultTableModel;
 
 public class Factura extends javax.swing.JFrame {
 
-    String date;
-    String date2;
+   String datesolo, date1, date2;
 
     public Factura() {
         initComponents();
         setLocationRelativeTo(null);
+    mostrardatos("");
+        mostrarMontototal("");
+    }
+ public void processCalendar() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        datesolo = dateFormat.format(jdatefecha1.getDate());
+        
+    }
     
-    }
-
-    public void processCalendar() {
+    public void processCalendar2f() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        //yyyy-MM-dd
-//        date = dateFormat.format(txtFecha1.getDate());
-
+        date1 = dateFormat.format(jdateinicial.getDate());
+        date2 = dateFormat.format(jdatefinal.getDate());
     }
 
-    public void processCalendar2() {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
- //       date2 = dateFormat.format(txtFecha2.getDate());
-
-    }
-
+    //Mostrar tabla
     void mostrardatos(String valor) {
 
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Número Placa");
-        modelo.addColumn("Hora entrada");
-        modelo.addColumn("Hora salida");
-        modelo.addColumn("Monto Total");
-        modelo.addColumn("Tipo de vehículo");
-
-        tbDatos.setModel(modelo);
+        modelo.addColumn("idfactura");
+        modelo.addColumn("nombre");
+        modelo.addColumn("Vendedor");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Hora");
+          modelo.addColumn("Codigo Productos");
+        modelo.addColumn("Nombre Producto");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Precio");
+          modelo.addColumn("Sub Total");
+        modelo.addColumn("Descuento");
+        modelo.addColumn("IVA");
+        modelo.addColumn("Total");
+        
+        
+        
+        
+        tbreporte.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT númeroPlaca , horaEntrada , horaSalida, montoTotal, fk_tipoVehiculo "
-                    + "FROM registro a INNER JOIN factura b on b.fk_registro = a.id_registo";
+            sql = " SELECT * FROM `facturas` ";
 
         }
-        String[] datos = new String[5];
+        String[] datos = new String[13];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -59,114 +68,114 @@ public class Factura extends javax.swing.JFrame {
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                datos[4] = rs.getString(5);
-
+                 datos[4] = rs.getString(5);
+                datos[5] = rs.getString(6);
+                datos[6] = rs.getString(7);
+                datos[7] = rs.getString(8);
+                 datos[8] = rs.getString(9);
+                datos[9] = rs.getString(10);
+                datos[10] = rs.getString(11);
+                datos[11] = rs.getString(12);
+                datos[12] = rs.getString(13);
                 modelo.addRow(datos);
             }
-            tbDatos.setModel(modelo);
+            tbreporte.setModel(modelo);
         } catch (SQLException ex) {
             System.out.println(ex);
-            // Logger.getLogger(ingresoproductos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    void mostrarFiltro(String valor) {
+    //Suma total tabla
+    void mostrarMontototal(String valor) {
 
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Número Placa");
-        modelo.addColumn("Hora entrada");
-        modelo.addColumn("Hora salida");
-        modelo.addColumn("Monto total");
-        modelo.addColumn("Tipo de vehículo");
+        modelo.addColumn("Monto total ");
 
-        tbDatos.setModel(modelo);
-        processCalendar();
+        tbmonto.setModel(modelo);
         String sql = "";
-
         if (valor.equals("")) {
-
-           /* sql = "Select númeroPlaca , horaEntrada , horaSalida, montoTotal, fk_tipoVehiculo "
-                    + "From registro a INNER JOIN factura b on b.fk_registro = a.id_registo where fk_tipoVehiculo= " + cmbTipoVehiculo.getSelectedItem()
-                    + " AND fecha='" + date + "'";
-
+            sql = "Select SUM(Total) FROM `facturas`";
         }
-
-        String[] datos = new String[5];
+        String[] datos = new String[1];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
 
                 datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
-                datos[4] = rs.getString(5);
 
                 modelo.addRow(datos);
             }
-            tbDatos.setModel(modelo);
+             tbmonto.setModel(modelo);
         } catch (SQLException ex) {
             System.out.println(ex);
 
         }
     }
 
-    void mostrarFiltro2Fechas(String valor) {
+    //Consulta 1 fecha
+    void Consultafechaunica(String valor) {
 
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Número Placa");
-        modelo.addColumn("Hora entrada");
-        modelo.addColumn("Hora salida");
-        modelo.addColumn("Monto total");
-        modelo.addColumn("Tipo de vehículo");
-
-        tbDatos.setModel(modelo);
+        modelo.addColumn("idfactura");
+        modelo.addColumn("nombre");
+        modelo.addColumn("Vendedor");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Hora");
+          modelo.addColumn("Codigo Productos");
+        modelo.addColumn("Nombre Producto");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Precio");
+          modelo.addColumn("Sub Total");
+        modelo.addColumn("Descuento");
+        modelo.addColumn("IVA");
+        modelo.addColumn("Total");
+        
         processCalendar();
-        processCalendar2();
+        tbreporte.setModel(modelo);
         String sql = "";
-
         if (valor.equals("")) {
-
-            sql = "Select númeroPlaca , horaEntrada , horaSalida, montoTotal, fk_tipoVehiculo "
-                    + "From registro a INNER JOIN factura b on b.fk_registro = a.id_registo where fk_tipoVehiculo= " + cmbTipoVehiculo.getSelectedItem()
-                    + " AND fecha between'" + date + "' and '" + date2 + "'  ";
+            sql = "SELECT  * FROM `facturas` WHERE Fecha = '" + datesolo + "'";
 
         }
-
-        String[] datos = new String[5];
+        String[] datos = new String[13];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
 
-                datos[0] = rs.getString(1);
+               datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                datos[4] = rs.getString(5);
-
+                 datos[4] = rs.getString(5);
+                datos[5] = rs.getString(6);
+                datos[6] = rs.getString(7);
+                datos[7] = rs.getString(8);
+                 datos[8] = rs.getString(9);
+                datos[9] = rs.getString(10);
+                datos[10] = rs.getString(11);
+                datos[11] = rs.getString(12);
+                datos[12] = rs.getString(13);
                 modelo.addRow(datos);
             }
-            tbDatos.setModel(modelo);
+            tbreporte.setModel(modelo);
         } catch (SQLException ex) {
             System.out.println(ex);
-
         }
     }
 
+    //Suma total consulta 1 fecha
     void mostrarMonto(String valor) {
 
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Suma total de montos de datos filtados");
+        modelo.addColumn("Monto total del dia");
 
-        tbmontoT.setModel(modelo);
+        tbmonto.setModel(modelo);
         processCalendar();
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT sum(montoTotal) FROM registro a INNER JOIN factura b on b.fk_registro = a.id_registo "
-                    + "WHERE fk_tipoVehiculo= " + cmbTipoVehiculo.getSelectedItem()
-                    + "  AND fecha='" + date + "'";
+            sql = "Select SUM(Total) FROM `facturas` WHERE Fecha = '" + datesolo + "'";
 
         }
 
@@ -180,114 +189,94 @@ public class Factura extends javax.swing.JFrame {
 
                 modelo.addRow(datos);
             }
-            tbmontoT.setModel(modelo);
+            tbmonto.setModel(modelo);
         } catch (SQLException ex) {
             System.out.println(ex);
 
         }
     }
 
-    void mostrarMonto2Fecha(String valor) {
+    //Consulta 2 fecha
+    void Consulta2fechas(String valor) {
 
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Suma total de montos de datos filtados");
-
-        tbmontoT.setModel(modelo);
-        processCalendar();
-        processCalendar2();
-        String sql = "";
-        if (valor.equals("")) {
-            sql = "SELECT sum(montoTotal) FROM registro a INNER JOIN factura b on b.fk_registro = a.id_registo "
-                    + "WHERE fk_tipoVehiculo= " + cmbTipoVehiculo.getSelectedItem()
-                    + "  AND fecha between'" + date + "' and '" + date2 + "'";
-
-        }
-
-        String[] datos = new String[1];
-        try {
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-
-                datos[0] = rs.getString(1);
-
-                modelo.addRow(datos);
-            }
-            tbmontoT.setModel(modelo);
-        } catch (SQLException ex) {
-            System.out.println(ex);
-
-        }
-    }
-
-    void mostrarMontoTotal(String valor) {
-
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Suma total");
-
-        tbMontoR.setModel(modelo);
-
-        String sql = "";
-        if (valor.equals("")) {
-            sql = "SELECT sum(montoTotal) FROM registro a INNER JOIN factura b on b.fk_registro = a.id_registo";
-
-        }
-
-        String[] datos = new String[1];
-        try {
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-
-                datos[0] = rs.getString(1);
-
-                modelo.addRow(datos);
-            }
-            tbMontoR.setModel(modelo);
-        } catch (SQLException ex) {
-            System.out.println(ex);
-
-        }
-    }
-
-    void mostrarDatosPorPlaca(String valor) {
-
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Número Placa");
-        modelo.addColumn("Hora entrada");
-        modelo.addColumn("Hora salida");
+        modelo.addColumn("idfactura");
+        modelo.addColumn("nombre");
+        modelo.addColumn("Vendedor");
         modelo.addColumn("Fecha");
-        modelo.addColumn("Monto total");
-        modelo.addColumn("Tipo de vehículo");
+        modelo.addColumn("Hora");
+          modelo.addColumn("Codigo Productos");
+        modelo.addColumn("Nombre Producto");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Precio");
+          modelo.addColumn("Sub Total");
+        modelo.addColumn("Descuento");
+        modelo.addColumn("IVA");
+        modelo.addColumn("Total");
 
-        tbDatos.setModel(modelo);
+        processCalendar2f();
+        tbreporte.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "Select númeroPlaca , horaEntrada , horaSalida, fecha, montoTotal, fk_tipoVehiculo "
-                    + "From registro a INNER JOIN factura b  on b.fk_registro = a.id_registo "
-                    + "where númeroPlaca ='" + txtPlaca.getText() + "'";
+            sql = "SELECT * FROM `facturas` WHERE Fecha between = '" + date1 + "' and '" + date2 + "'";
 
         }
-
-        String[] datos = new String[6];
+        String[] datos = new String[13];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
 
-                datos[0] = rs.getString(1);
+                   datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                datos[4] = rs.getString(5);
+                 datos[4] = rs.getString(5);
                 datos[5] = rs.getString(6);
+                datos[6] = rs.getString(7);
+                datos[7] = rs.getString(8);
+                 datos[8] = rs.getString(9);
+                datos[9] = rs.getString(10);
+                datos[10] = rs.getString(11);
+                datos[11] = rs.getString(12);
+                datos[12] = rs.getString(13);
 
                 modelo.addRow(datos);
             }
-            tbDatos.setModel(modelo);
+            tbreporte.setModel(modelo);
         } catch (SQLException ex) {
             System.out.println(ex);
-*/
+        }
+    }
+
+    //Suma total consulta 2 fechas
+    void mostrarMonto2fechas(String valor) {
+
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Monto total del dia");
+
+        tbmonto.setModel(modelo);
+        processCalendar2f();
+        String sql = "";
+        if (valor.equals("")) {
+            sql = "SELECT SUM(Total) FROM `facturas` WHERE Fecha between = '" + date1 + "' and '" + date2 + "'";
+
+        }
+
+        String[] datos = new String[1];
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+
+                datos[0] = rs.getString(1);
+
+                modelo.addRow(datos);
+            }
+           tbmonto.setModel(modelo);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+
         }
     }
 
@@ -298,8 +287,8 @@ public class Factura extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tbDatos = new javax.swing.JTable();
-        txtVerAll = new javax.swing.JLabel();
+        tbreporte = new javax.swing.JTable();
+        txtmostrar = new javax.swing.JLabel();
         btnTotalR = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -310,17 +299,17 @@ public class Factura extends javax.swing.JFrame {
         btnmenu1 = new javax.swing.JPanel();
         jLabel28 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
+        jdatefecha1 = new com.toedter.calendar.JDateChooser();
+        jdateinicial = new com.toedter.calendar.JDateChooser();
+        jdatefinal = new com.toedter.calendar.JDateChooser();
         jSeparator1 = new javax.swing.JSeparator();
-        btnfiltro2fechas = new javax.swing.JButton();
-        btnfiltrodia = new javax.swing.JButton();
+        btnfiltro2 = new javax.swing.JButton();
+        btnbuscar = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        tbMontoR1 = new javax.swing.JTable();
-        btnfiltrodia1 = new javax.swing.JButton();
+        tbmonto = new javax.swing.JTable();
+        btnfiltro1 = new javax.swing.JButton();
 
         jLabel3.setText("jLabel3");
 
@@ -331,7 +320,7 @@ public class Factura extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        tbDatos.setModel(new javax.swing.table.DefaultTableModel(
+        tbreporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -350,20 +339,19 @@ public class Factura extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tbDatos.setGridColor(new java.awt.Color(255, 255, 255));
-        jScrollPane1.setViewportView(tbDatos);
+        tbreporte.setGridColor(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setViewportView(tbreporte);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 780, 230));
 
-        txtVerAll.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtVerAll.setForeground(new java.awt.Color(0, 0, 0));
-        txtVerAll.setText("Ver todos los registros facturados");
-        txtVerAll.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtmostrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtmostrar.setText("Ver todos los registros facturados");
+        txtmostrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtVerAllMouseClicked(evt);
+                txtmostrarMouseClicked(evt);
             }
         });
-        jPanel1.add(txtVerAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
+        jPanel1.add(txtmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, -1, -1));
 
         btnTotalR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btnTotalR.setText("Monto total registrado");
@@ -391,7 +379,6 @@ public class Factura extends javax.swing.JFrame {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 360, -1, -1));
 
         btnFiltrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnFiltrar.setForeground(new java.awt.Color(0, 0, 0));
         btnFiltrar.setText("Filtrar por 1 fecha");
         btnFiltrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -401,7 +388,6 @@ public class Factura extends javax.swing.JFrame {
         jPanel1.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 150, -1, -1));
 
         btnFitrar2Fechas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnFitrar2Fechas.setForeground(new java.awt.Color(0, 0, 0));
         btnFitrar2Fechas.setText("Filtrar por 2 fechas");
         btnFitrar2Fechas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -429,25 +415,36 @@ public class Factura extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel10.setText("Fecha Inicial");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 360, -1, -1));
-        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 190, -1, -1));
-        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 390, -1, -1));
-        jPanel1.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 390, -1, -1));
+
+        jdatefecha1.setDateFormatString("yyyy-MM-dd");
+        jPanel1.add(jdatefecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 190, -1, -1));
+
+        jdateinicial.setDateFormatString("yyyy-MM-dd");
+        jPanel1.add(jdateinicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 390, -1, -1));
+
+        jdatefinal.setDateFormatString("yyyy-MM-dd");
+        jPanel1.add(jdatefinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 390, -1, -1));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 80, 20, 450));
 
-        btnfiltro2fechas.setText("Filtrar");
-        jPanel1.add(btnfiltro2fechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 450, -1, -1));
+        btnfiltro2.setText("Filtrar");
+        btnfiltro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfiltro2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnfiltro2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 450, -1, -1));
 
-        btnfiltrodia.setText("Buscar");
-        jPanel1.add(btnfiltrodia, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, -1));
+        btnbuscar.setText("Buscar");
+        jPanel1.add(btnbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, -1));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 300, 440, 10));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("Fecha Unica");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 190, -1, -1));
 
-        tbMontoR1.setModel(new javax.swing.table.DefaultTableModel(
+        tbmonto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
                 {},
@@ -458,12 +455,17 @@ public class Factura extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPane5.setViewportView(tbMontoR1);
+        jScrollPane5.setViewportView(tbmonto);
 
         jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 170, 50));
 
-        btnfiltrodia1.setText("Filtrar");
-        jPanel1.add(btnfiltrodia1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 240, -1, -1));
+        btnfiltro1.setText("Filtrar");
+        btnfiltro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnfiltro1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnfiltro1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 240, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 1240, 533));
 
@@ -472,35 +474,13 @@ public class Factura extends javax.swing.JFrame {
 
     private void btnFiltrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFiltrarMouseClicked
 
-        /*try {
-//            txtFecha2.setEnabled(false);
-  //          txtFecha2.setDate(null);
-            mostrarFiltro("");
-           // mostrarMonto("");
-
-          /*  DefaultTableModel tb = (DefaultTableModel) tbMontoR.getModel();
-            int a = tbMontoR.getRowCount() - 1;
-            for (int i = a; i >= 0; i--) {
-                tb.removeRow(tb.getRowCount() - 1);
-            }
-        } catch (Exception i) {
-
-        }*/
+       
     }//GEN-LAST:event_btnFiltrarMouseClicked
 
-    private void txtVerAllMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtVerAllMouseClicked
+    private void txtmostrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtmostrarMouseClicked
         mostrardatos("");
-       // mostrarMontoTotal("");
-      //  txtFecha1.setDate(null);
-    //    txtFecha2.setDate(null);
-       /* DefaultTableModel tb = (DefaultTableModel) tbmontoT.getModel();
-        int a = tbmontoT.getRowCount() - 1;
-        for (int i = a; i >= 0; i--) {
-            tb.removeRow(tb.getRowCount() - 1);
-
-        }*/
-
-    }//GEN-LAST:event_txtVerAllMouseClicked
+    
+    }//GEN-LAST:event_txtmostrarMouseClicked
 
     private void btnTotalRMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTotalRMouseClicked
        // mostrarMontoTotal("");
@@ -508,27 +488,21 @@ public class Factura extends javax.swing.JFrame {
 
     private void btnFitrar2FechasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnFitrar2FechasMouseClicked
 
-        /*try {
-
-          //  txtFecha2.setEnabled(true);
-            /*mostrarFiltro2Fechas("");
-            mostrarMonto2Fecha("");
-
-            DefaultTableModel tb = (DefaultTableModel) tbMontoR.getModel();
-            int a = tbMontoR.getRowCount() - 1;
-            for (int i = a; i >= 0; i--) {
-                tb.removeRow(tb.getRowCount() - 1);
-            }
-
-        } catch (Exception i) {
-
-        }*/
+       
 
     }//GEN-LAST:event_btnFitrar2FechasMouseClicked
 
     private void btnmenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmenu1MouseClicked
         dispose();
     }//GEN-LAST:event_btnmenu1MouseClicked
+
+    private void btnfiltro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfiltro1ActionPerformed
+      Consultafechaunica("");
+    }//GEN-LAST:event_btnfiltro1ActionPerformed
+
+    private void btnfiltro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfiltro2ActionPerformed
+       Consulta2fechas("");
+    }//GEN-LAST:event_btnfiltro2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -597,13 +571,10 @@ public class Factura extends javax.swing.JFrame {
     private javax.swing.JLabel btnFiltrar;
     private javax.swing.JLabel btnFitrar2Fechas;
     private javax.swing.JLabel btnTotalR;
-    private javax.swing.JButton btnfiltro2fechas;
-    private javax.swing.JButton btnfiltrodia;
-    private javax.swing.JButton btnfiltrodia1;
+    private javax.swing.JButton btnbuscar;
+    private javax.swing.JButton btnfiltro1;
+    private javax.swing.JButton btnfiltro2;
     private javax.swing.JPanel btnmenu1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -617,9 +588,12 @@ public class Factura extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable tbDatos;
-    private javax.swing.JTable tbMontoR1;
-    private javax.swing.JLabel txtVerAll;
+    private com.toedter.calendar.JDateChooser jdatefecha1;
+    private com.toedter.calendar.JDateChooser jdatefinal;
+    private com.toedter.calendar.JDateChooser jdateinicial;
+    private javax.swing.JTable tbmonto;
+    private javax.swing.JTable tbreporte;
+    private javax.swing.JLabel txtmostrar;
     // End of variables declaration//GEN-END:variables
     Conexión cc = new Conexión();
     Connection cn = cc.conexion();
