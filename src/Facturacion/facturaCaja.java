@@ -14,11 +14,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+public class facturaCaja extends javax.swing.JFrame implements Runnable {
 
-public class facturaCaja extends javax.swing.JFrame implements Runnable  {
-DefaultTableModel modelo ;
+    DefaultTableModel modelo;
 
-   
     String date;
 
     String fechacalendario;
@@ -30,13 +29,10 @@ DefaultTableModel modelo ;
         initComponents();
         setLocationRelativeTo(null);
         mostrardatos("");
-        hora1 = new Thread (this);
+        hora1 = new Thread(this);
         hora1.start();
-                 
-        
-    }
 
-    
+    }
 
     void mostrardatos(String valor) {
 
@@ -73,7 +69,7 @@ DefaultTableModel modelo ;
         } catch (SQLException ex) {
             System.out.println(ex);
         }
-        tbFactura.setModel(modelo); 
+        tbFactura.setModel(modelo);
     }
 
     @SuppressWarnings("unchecked")
@@ -93,8 +89,6 @@ DefaultTableModel modelo ;
         txtnombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        txtdescuento = new javax.swing.JTextField();
         btnmenu = new javax.swing.JButton();
         lbhora = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -171,12 +165,6 @@ DefaultTableModel modelo ;
         });
         jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Descuento");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
-        jPanel2.add(txtdescuento, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 90, -1));
-
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, -10, 290, 670));
 
         btnmenu.setBackground(new java.awt.Color(0, 0, 0));
@@ -215,57 +203,112 @@ DefaultTableModel modelo ;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnfacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturarActionPerformed
- int filaselect = tbFactura.getSelectedRow();
+        int filaselect = tbFactura.getSelectedRow();
         if (filaselect >= 0) {
             txtnombre.setText(tbFactura.getValueAt(filaselect, 0).toString());
             txtMonto.setText(tbFactura.getValueAt(filaselect, 5).toString());
-           
-            
-            modelo.removeRow(filaselect);  
-        }else{
+
+            modelo.removeRow(filaselect);
+        } else {
             JOptionPane.showMessageDialog(this, "Fila no seleccionada");
-        
+
         }
 
     }//GEN-LAST:event_btnfacturarActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
         int monto = Integer.parseInt(txtMonto.getText());
-        int porciento= Integer.parseInt(txtdescuento.getText());
-        double iva = monto * 0.13;
-        double descuento = monto * porciento;
-        int cargos=0;
-        double total=monto+iva-descuento;
-
-        JOptionPane.showMessageDialog(null, "ALMACEN-------------"
+        if (monto < 100000) {
+            double iva = monto * 0.13;
+            double descuento = monto * 0.15;
+            int cargos = 0;
+            double total = monto + iva - descuento;
+            JOptionPane.showMessageDialog(null, "ALMACEN-------------"
                 + "\nCEDULA: 3-029-321847"
                 + "\n100 MTR OESTE PARQUE DE GUACIMO"
                 + "\nTEL: 23956584"
                 + "\n------------------------------"
                 + "\n           CONTADO      "
                 + "\n------------------------------"
-                + "\nCLIENTE: "+ txtnombre.getText()
-                + "\nFECHA: "+"30-7-2020"
+                + "\nCLIENTE: " + txtnombre.getText()
+                + "\nFECHA: " + "30-7-2020"
                 + "\n------------------------"
                 + "\n------------------------"
-                + "\nSUBTOTAL: "+ monto
-                + "\nDESCUENTO: "+ descuento
-                + "\nIVA: "+ iva
-                + "\nOTROS CARGOS: "+ cargos
+                + "\nSUBTOTAL: " + monto
+                + "\nDESCUENTO: " + descuento
+                + "\nIVA: " + iva
+                + "\nOTROS CARGOS: " + cargos
                 + "\n--------------------------"
-                + "\nTOTAL: "+total
+                + "\nTOTAL: " + total
                 + "\n--------------------------"
                 + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
                 + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
                 + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
                 + "\nFECHA 30/09/1987 DE DGTD");
+        } else if (monto >= 100000 & monto < 500000) {
+            double iva = monto * 0.13;
+            double descuento = monto * 0.20;
+            int cargos = 0;
+            double total = monto + iva - descuento;
+            JOptionPane.showMessageDialog(null, "ALMACEN-------------"
+                + "\nCEDULA: 3-029-321847"
+                + "\n100 MTR OESTE PARQUE DE GUACIMO"
+                + "\nTEL: 23956584"
+                + "\n------------------------------"
+                + "\n           CONTADO      "
+                + "\n------------------------------"
+                + "\nCLIENTE: " + txtnombre.getText()
+                + "\nFECHA: " + "30-7-2020"
+                + "\n------------------------"
+                + "\n------------------------"
+                + "\nSUBTOTAL: " + monto
+                + "\nDESCUENTO: " + descuento
+                + "\nIVA: " + iva
+                + "\nOTROS CARGOS: " + cargos
+                + "\n--------------------------"
+                + "\nTOTAL: " + total
+                + "\n--------------------------"
+                + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                + "\nFECHA 30/09/1987 DE DGTD");
+        } else if (monto >= 500000) {
+            double iva = monto * 0.13;
+            double descuento = monto * 0.25;
+            int cargos = 0;
+            double total = monto + iva - descuento;
+            JOptionPane.showMessageDialog(null, "ALMACEN-------------"
+                + "\nCEDULA: 3-029-321847"
+                + "\n100 MTR OESTE PARQUE DE GUACIMO"
+                + "\nTEL: 23956584"
+                + "\n------------------------------"
+                + "\n           CONTADO      "
+                + "\n------------------------------"
+                + "\nCLIENTE: " + txtnombre.getText()
+                + "\nFECHA: " + "30-7-2020"
+                + "\n------------------------"
+                + "\n------------------------"
+                + "\nSUBTOTAL: " + monto
+                + "\nDESCUENTO: " + descuento
+                + "\nIVA: " + iva
+                + "\nOTROS CARGOS: " + cargos
+                + "\n--------------------------"
+                + "\nTOTAL: " + total
+                + "\n--------------------------"
+                + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                + "\nFECHA 30/09/1987 DE DGTD");
+        }
+
+        
 
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenuActionPerformed
-Menu.Menu_Principal m = new Menu.Menu_Principal();
-                m.setVisible(true);
-                dispose();       
+        Menu.Menu_Principal m = new Menu.Menu_Principal();
+        m.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnmenuActionPerformed
 
     public static void main(String args[]) {
@@ -307,7 +350,6 @@ Menu.Menu_Principal m = new Menu.Menu_Principal();
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnfacturar;
     private javax.swing.JButton btnmenu;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -321,51 +363,52 @@ Menu.Menu_Principal m = new Menu.Menu_Principal();
     private javax.swing.JLabel lbhora;
     private javax.swing.JTable tbFactura;
     private javax.swing.JTextField txtMonto;
-    private javax.swing.JTextField txtdescuento;
     private javax.swing.JTextField txtnombre;
     public javax.swing.JTextField txtusuario;
     public javax.swing.JTextField txtusuario1;
     // End of variables declaration//GEN-END:variables
   Conexión cc = new Conexión();
     Connection cn = cc.conexion();
+
     //Reloj
     public void run() {
         Thread control = Thread.currentThread();
-        while (control==hora1){
-        calcula();
-        lbhora.setText(hora+":"+minutos+":"+segundos+" "+ampm);
-        
-            try{
+        while (control == hora1) {
+            calcula();
+            lbhora.setText(hora + ":" + minutos + ":" + segundos + " " + ampm);
+
+            try {
                 Thread.sleep(1000);
-                
-            }catch(InterruptedException e){
-                
+
+            } catch (InterruptedException e) {
+
             }
-            
+
         }
     }
+
     private void calcula() {
         Calendar calendario = new GregorianCalendar();
         Date fecha = new Date();
-        
+
         calendario.setTime(fecha);
-        ampm = calendario.get(Calendar.AM_PM) == Calendar.AM ? "AM":"PM";
-        
-        if(ampm.equals("PM")){
+        ampm = calendario.get(Calendar.AM_PM) == Calendar.AM ? "AM" : "PM";
+
+        if (ampm.equals("PM")) {
             int h = calendario.get(Calendar.HOUR_OF_DAY);
-            hora = h > 9? " " + h :"0" + h;
-            
-        }else{
-            hora=calendario.get(Calendar.HOUR_OF_DAY) > 9? " "
-                    +calendario.get(Calendar.HOUR_OF_DAY) :"0"
-                    +calendario.get(Calendar.HOUR_OF_DAY);
+            hora = h > 9 ? " " + h : "0" + h;
+
+        } else {
+            hora = calendario.get(Calendar.HOUR_OF_DAY) > 9 ? " "
+                    + calendario.get(Calendar.HOUR_OF_DAY) : "0"
+                    + calendario.get(Calendar.HOUR_OF_DAY);
         }
-        minutos = calendario.get(Calendar.MINUTE) >9? " "
-                +calendario.get(Calendar.MINUTE):"0"
-                +calendario.get(Calendar.MINUTE);
-        
-        segundos = calendario.get(Calendar.SECOND) >9? " "
-                +calendario.get(Calendar.SECOND):"0"
-                +calendario.get(Calendar.SECOND);
+        minutos = calendario.get(Calendar.MINUTE) > 9 ? " "
+                + calendario.get(Calendar.MINUTE) : "0"
+                + calendario.get(Calendar.MINUTE);
+
+        segundos = calendario.get(Calendar.SECOND) > 9 ? " "
+                + calendario.get(Calendar.SECOND) : "0"
+                + calendario.get(Calendar.SECOND);
     }
 }
