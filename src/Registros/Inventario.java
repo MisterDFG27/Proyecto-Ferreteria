@@ -16,8 +16,8 @@ public class Inventario extends javax.swing.JFrame {
         
         txtCantTotRet.setEditable(false);
         txtCantTotalIngr.setEditable(false);
-        txtCantIngr.setVisible(false);
-        lblReqRet12.setVisible(false);
+        lblReqIng1.setVisible(false);
+        lblReqRet1.setVisible(false);
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -38,7 +38,7 @@ public class Inventario extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         txtCantTotRet = new javax.swing.JTextField();
         lblReqRet1 = new javax.swing.JLabel();
-        lblReqRet12 = new javax.swing.JTextField();
+        txtCantRet = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jComboBox3 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
@@ -100,12 +100,12 @@ public class Inventario extends javax.swing.JFrame {
         lblReqRet1.setText("Requerido");
         jPanel1.add(lblReqRet1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 260, -1, -1));
 
-        lblReqRet12.addActionListener(new java.awt.event.ActionListener() {
+        txtCantRet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lblReqRet12ActionPerformed(evt);
+                txtCantRetActionPerformed(evt);
             }
         });
-        jPanel1.add(lblReqRet12, new org.netbeans.lib.awtextra.AbsoluteConstraints(704, 247, 111, 44));
+        jPanel1.add(txtCantRet, new org.netbeans.lib.awtextra.AbsoluteConstraints(704, 247, 111, 44));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Cantidad total:");
@@ -152,9 +152,9 @@ public class Inventario extends javax.swing.JFrame {
         obj.setVisible(true);
     }//GEN-LAST:event_btMenuActionPerformed
 
-    private void lblReqRet12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblReqRet12ActionPerformed
+    private void txtCantRetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCantRetActionPerformed
 
-    }//GEN-LAST:event_lblReqRet12ActionPerformed
+    }//GEN-LAST:event_txtCantRetActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       cont = 0;
@@ -746,8 +746,8 @@ public class Inventario extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblReqIng1;
     private javax.swing.JLabel lblReqRet1;
-    private javax.swing.JTextField lblReqRet12;
     private javax.swing.JTextField txtCantIngr;
+    private javax.swing.JTextField txtCantRet;
     private javax.swing.JTextField txtCantTotRet;
     private javax.swing.JTextField txtCantTotalIngr;
     // End of variables declaration//GEN-END:variables
