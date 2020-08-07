@@ -37,20 +37,21 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
     void mostrardatos(String valor) {
 
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("nombre cliente");
-        modelo.addColumn("fk_idvendedor");
+        modelo.addColumn("Id");
+        modelo.addColumn("Cedula");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
         modelo.addColumn("Fecha");
-        modelo.addColumn("Nombre_producto");
-        modelo.addColumn("cantidad");
-        modelo.addColumn("Precio");
+        modelo.addColumn("Vendedor");
+        modelo.addColumn("Subtotal");
 
         tbFactura.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT nombre_Cliente, fk_idVendedor, Fecha, Nombre_producto, Cantidad, Precio FROM `facturas`";
+            sql = "SELECT * FROM `datosfactura`";
 
         }
-        String[] datos = new String[6];
+        String[] datos = new String[7];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -62,6 +63,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
                 datos[3] = rs.getString(4);
                 datos[4] = rs.getString(5);
                 datos[5] = rs.getString(6);
+                datos[6] = rs.getString(7);
 
                 modelo.addRow(datos);
             }
@@ -129,7 +131,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
                 btnfacturarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnfacturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, 370, -1));
+        jPanel1.add(btnfacturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 370, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel12.setText("CAJA");
@@ -205,8 +207,8 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
     private void btnfacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturarActionPerformed
         int filaselect = tbFactura.getSelectedRow();
         if (filaselect >= 0) {
-            txtnombre.setText(tbFactura.getValueAt(filaselect, 0).toString());
-            txtMonto.setText(tbFactura.getValueAt(filaselect, 5).toString());
+            txtnombre.setText(tbFactura.getValueAt(filaselect, 2).toString());
+            txtMonto.setText(tbFactura.getValueAt(filaselect, 6).toString());
 
             modelo.removeRow(filaselect);
         } else {

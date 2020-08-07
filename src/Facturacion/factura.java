@@ -16,6 +16,7 @@ public class factura extends javax.swing.JFrame {
     DefaultTableModel modelo;
      String date;
      String datesolo;
+     int cont;
     public factura() {
         initComponents();
      
@@ -39,6 +40,7 @@ public class factura extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -138,7 +140,7 @@ public class factura extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tbimprimir1);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 480, 710, 140));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 710, 140));
 
         jLabel17.setText("Nombre:");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 100, -1, -1));
@@ -159,8 +161,8 @@ public class factura extends javax.swing.JFrame {
         jPanel2.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 100, -1));
 
         jLabel20.setText("Cedula:");
-        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 100, -1, -1));
-        jPanel2.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 100, -1));
+        jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
+        jPanel2.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 100, -1));
 
         jLabel21.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(51, 51, 51));
@@ -208,6 +210,11 @@ public class factura extends javax.swing.JFrame {
 
         btneliminar2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btneliminar2.setText("ELIMINAR");
+        btneliminar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminar2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(btneliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 420, 100, 30));
 
         jLabel27.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -242,17 +249,50 @@ public class factura extends javax.swing.JFrame {
 
 
     private void btnfacturar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturar1ActionPerformed
-        try {
-               
+         cont = 0;
 
-                PreparedStatement pst = cn.prepareStatement("INSERT INTO datosfactura(id, Cedula, Nombre, Apellido, Fecha, Vendedor, Subtotal) VALUES (?,?,?,?,?,?,?)");
-                pst.setString(1, txtid.getText());
-                pst.setString(2, txtcedula.getText());
-                pst.setString(3, txtnombre.getText());
-                pst.setString(4, txtapellido.getText());
-                pst.setString(5, datesolo);
-                pst.setString(7, txtvendedor.getText());
-                pst.setString(8, txtsubtotal.getText());
+        if (txtcedula.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
+            cont++;
+        } 
+
+        if (txtnombre.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
+            cont++;
+        } 
+
+        if (txtid.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
+            cont++;
+        } 
+        if (txtapellido.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
+            cont++;
+        } 
+
+        if (txtvendedor.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
+            cont++;
+        }
+
+        if (txtsubtotal.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
+            cont++;
+        }
+
+        if (cont == 0) {
+
+          try {
+               Conexión cc = new Conexión();
+               Connection cn = cc.conexion();
+               processCalendar();
+                PreparedStatement pst = cn.prepareStatement("INSERT INTO datosfactura(Cedula,Nombre,Apellido,Fecha,Vendedor,Subtotal) VALUES (?,?,?,?,?,?)");
+                pst.setString(1, txtcedula.getText());
+                pst.setString(2, txtnombre.getText());
+                pst.setString(3, txtapellido.getText());
+                pst.setString(4, datesolo);
+                pst.setString(5, txtvendedor.getText());
+                pst.setString(6, txtsubtotal.getText());
 
                 pst.executeUpdate();
 
@@ -267,6 +307,7 @@ public class factura extends javax.swing.JFrame {
             txtvendedor.setText("");
             txtsubtotal.setText("");
             JOptionPane.showMessageDialog(this, "Guardado con exito");
+        }
 
     }//GEN-LAST:event_btnfacturar1ActionPerformed
 
@@ -316,6 +357,17 @@ public class factura extends javax.swing.JFrame {
                 m.setVisible(true);
                 dispose();
     }//GEN-LAST:event_btnmenu1ActionPerformed
+
+    private void btneliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminar2ActionPerformed
+       int filaselect = tbimprimir1.getSelectedRow();
+        if (filaselect>=0) {
+            modelo.removeRow(filaselect);
+                    
+        }else{
+        
+        JOptionPane.showMessageDialog(this, "Selecione una fila a eliminar");
+        }
+    }//GEN-LAST:event_btneliminar2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -377,6 +429,7 @@ public class factura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable tbimprimir1;
@@ -393,6 +446,5 @@ public class factura extends javax.swing.JFrame {
     public javax.swing.JTextField txtusuario;
     private javax.swing.JTextField txtvendedor;
     // End of variables declaration//GEN-END:variables
- Conexión cc = new Conexión();
-    Connection cn = cc.conexion();
+
 }
