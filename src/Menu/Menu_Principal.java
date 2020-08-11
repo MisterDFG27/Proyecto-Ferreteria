@@ -202,6 +202,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         e.setVisible(true);
         dispose();
         e.txtusuario.setText(txtusuario.getText());
+        e.txtvendedor.setText(txtusuario.getText());
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void ReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReporteActionPerformed

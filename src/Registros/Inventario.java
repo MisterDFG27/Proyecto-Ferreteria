@@ -48,7 +48,7 @@ public class Inventario extends javax.swing.JFrame {
         modelo.addColumn("Tornillostecho");
         modelo.addColumn("Soldadura");
         modelo.addColumn("Marguerareforzadora");
-        ;
+        
 
         tbreporte.setModel(modelo);
         String sql = "";
@@ -189,7 +189,7 @@ public class Inventario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
         jLabel1.setText("Inventario");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 43, 155, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, 155, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Modificacion de productos");

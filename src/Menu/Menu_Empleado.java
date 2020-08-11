@@ -115,6 +115,7 @@ public class Menu_Empleado extends javax.swing.JFrame {
         e.setVisible(true);
         dispose();
         e.txtusuario.setText(txtusuario.getText());
+        e.txtvendedor.setText(txtusuario.getText());
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
