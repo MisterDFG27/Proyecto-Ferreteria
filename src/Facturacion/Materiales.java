@@ -23,15 +23,16 @@ public class Materiales extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id_Productos");
         modelo.addColumn("Descripción");
-        modelo.addColumn("Precio_Unitario");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Cantidad");
 
         tbmateriales.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT Id_producto, Nombre_producto, Precio_Unitario FROM `materiales`";
+            sql = "SELECT Id_producto, Nombre_producto, Precio_Unitario, Cantidad FROM `materiales`";
 
         }
-        String[] datos = new String[3];
+        String[] datos = new String[4];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -40,6 +41,7 @@ public class Materiales extends javax.swing.JFrame {
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
 
                 modelo.addRow(datos);
             }

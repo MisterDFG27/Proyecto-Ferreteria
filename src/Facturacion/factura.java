@@ -9,17 +9,19 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import Modelo.Producto;
+import Modelo.ProductoDAO;
+
 
 public class factura extends javax.swing.JFrame {
 
     DefaultTableModel modelo, modelo1;
-    String date;
-    String datesolo;
-    int cont;
+    ProductoDAO pdao = new ProductoDAO();
+    String date, datesolo;
+    int cont, idp, cant;
 
     public factura() {
         initComponents();
-
         String principal[] = {"Codigo producto", "Descripción", "Precio unitario", "Cantidad"};
         String datos[][] = {};
         modelo = new DefaultTableModel(datos, principal);
@@ -34,31 +36,21 @@ public class factura extends javax.swing.JFrame {
 
     }
 
-    //Tabla stock
-    void mostrardatos(String valor) {
-        String producto = txtprodp.getText();
-        DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Cantidad Stock");
-
-        tbstock.setModel(modelo);
-        String sql = "";
-        if (valor.equals("")) {
-            sql = "SELECT `" + producto + "` FROM inventario ";
-
+    void actualizarStock() {
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            Producto pr = new Producto();
+            idp = Integer.parseInt(tbimprimir1.getValueAt(i, 0).toString());
+            cant = Integer.parseInt(tbimprimir1.getValueAt(i, 3).toString());
+            pr = pdao.listarID(idp);
+            int sa = pr.getCant() - cant;
+            pdao.actualizarStock(sa, idp);
         }
-        String[] datos = new String[1];
-        try {
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-
-                datos[0] = rs.getString(1);
-
-                modelo.addRow(datos);
-            }
-            tbstock.setModel(modelo);
-        } catch (SQLException ex) {
-            System.out.println(ex);
+    }
+    
+    void limpiarTabla(){
+        for (int i = 0; i < modelo.getRowCount(); i++) {
+            modelo.removeRow(i);
+            i=i-1;
         }
     }
 
@@ -93,7 +85,6 @@ public class factura extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
-        jLabel24 = new javax.swing.JLabel();
         txtprodp = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         txtcodp = new javax.swing.JTextField();
@@ -107,9 +98,6 @@ public class factura extends javax.swing.JFrame {
         txtusuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbstock = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -131,7 +119,7 @@ public class factura extends javax.swing.JFrame {
         jPanel2.add(txtvendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 110, 30));
 
         jLabel16.setText("Cantidad:");
-        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, -1, -1));
+        jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, -1));
 
         btnfacturar1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnfacturar1.setText("FACTURAR");
@@ -171,7 +159,7 @@ public class factura extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tbimprimir1);
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 710, 140));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 710, 140));
 
         jLabel17.setText("Nombre:");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
@@ -219,21 +207,18 @@ public class factura extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 140, 30));
-
-        jLabel24.setText("Cantidad en stock:");
-        jPanel2.add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 320, -1, -1));
-        jPanel2.add(txtprodp, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 160, 30));
+        jPanel2.add(txtprodp, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 160, 30));
 
         jLabel25.setText("Cod. producto:");
-        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 260, -1, -1));
-        jPanel2.add(txtcodp, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 70, 30));
+        jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+        jPanel2.add(txtcodp, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 70, 30));
 
         jLabel26.setText("Precio:");
-        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, -1, -1));
-        jPanel2.add(txtpreciop, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 250, 110, 30));
+        jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
+        jPanel2.add(txtpreciop, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 110, 30));
 
         txtcantidad.setModel(new javax.swing.SpinnerNumberModel(1, null, null, 1));
-        jPanel2.add(txtcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 250, 40, 30));
+        jPanel2.add(txtcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 270, 40, 30));
 
         btneliminar2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btneliminar2.setText("ELIMINAR");
@@ -255,7 +240,7 @@ public class factura extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 250, 80, 30));
+        jPanel2.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 80, 30));
 
         txtsubtotal.setEditable(false);
         txtsubtotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -271,30 +256,7 @@ public class factura extends javax.swing.JFrame {
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, -1, -1));
 
         jLabel28.setText("Producto:");
-        jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, -1, -1));
-
-        tbstock.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane1.setViewportView(tbstock);
-
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 300, 170, 60));
-
-        jButton3.setText("Colsultar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 320, -1, -1));
+        jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 710));
 
@@ -357,7 +319,11 @@ public class factura extends javax.swing.JFrame {
             txtvendedor.setText("");
             txtsubtotal.setText("");
             JOptionPane.showMessageDialog(this, "Guardado con exito");
+            actualizarStock();
+            limpiarTabla();
         }
+        
+           
 
     }//GEN-LAST:event_btnfacturar1ActionPerformed
 
@@ -408,10 +374,6 @@ public class factura extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btneliminar2ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        mostrardatos("");
-    }//GEN-LAST:event_jButton3ActionPerformed
-
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -453,7 +415,6 @@ public class factura extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -466,19 +427,16 @@ public class factura extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JTable tbimprimir1;
-    private javax.swing.JTable tbstock;
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JSpinner txtcantidad;

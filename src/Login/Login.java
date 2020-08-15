@@ -18,8 +18,6 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
        
-       
-
     }
 
     void acceder(String usuario, String clave) {
