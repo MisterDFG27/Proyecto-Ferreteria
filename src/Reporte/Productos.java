@@ -277,7 +277,7 @@ public class Productos extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -286,12 +286,6 @@ public class Productos extends javax.swing.JFrame {
         });
         tbDatos.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tbDatos);
-        if (tbDatos.getColumnModel().getColumnCount() > 0) {
-            tbDatos.getColumnModel().getColumn(0).setHeaderValue("Cantidad");
-            tbDatos.getColumnModel().getColumn(1).setHeaderValue("Nombre_productos");
-            tbDatos.getColumnModel().getColumn(2).setHeaderValue("Precio_Unitario");
-            tbDatos.getColumnModel().getColumn(3).setHeaderValue("Precio_Total");
-        }
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 800, 140));
 

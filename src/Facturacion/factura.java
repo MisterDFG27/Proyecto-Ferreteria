@@ -17,8 +17,8 @@ public class factura extends javax.swing.JFrame {
 
     DefaultTableModel modelo, modelo1;
     ProductoDAO pdao = new ProductoDAO();
-    String date, datesolo;
-    int cont, idp, cant;
+    String date, datesolo, prod;
+    int cont, idp, pre, cant;
 
     public factura() {
         initComponents();
@@ -45,6 +45,35 @@ public class factura extends javax.swing.JFrame {
             int sa = pr.getCant() - cant;
             pdao.actualizarStock(sa, idp);
         }
+    }
+    
+    void clientesproductos(){
+        cont = 0;
+        if(txtnombre.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
+            cont++;
+        }
+        if (cont == 0) {
+
+            for (int i = 0; i < modelo.getRowCount(); i++) {
+                prod=tbimprimir1.getValueAt(i, 1).toString();
+            
+            
+            try {
+                Conexión cc = new Conexión();
+                Connection cn = cc.conexion();
+                PreparedStatement pst = cn.prepareStatement("INSERT INTO `clientesproductos`(`Cliente`, `Productos`) VALUES (?,?)");
+                pst.setString(1, txtnombre.getText());
+                pst.setString(2, prod);
+
+                pst.executeUpdate();
+
+            } catch (Exception e) {
+                System.out.print(e);
+            }
+        }
+        }
+            
     }
     
     void limpiarTabla(){
@@ -132,6 +161,11 @@ public class factura extends javax.swing.JFrame {
 
         btneliminar1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btneliminar1.setText("Cargar Proforma");
+        btneliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btneliminar1ActionPerformed(evt);
+            }
+        });
         jPanel2.add(btneliminar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 610, 160, 30));
 
         btnmenu1.setBackground(new java.awt.Color(0, 0, 0));
@@ -175,7 +209,6 @@ public class factura extends javax.swing.JFrame {
         jLabel19.setText("Apellido:");
         jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
 
-        txtapellido.setHorizontalAlignment(javax.swing.JTextField.TRAILING);
         txtapellido.setToolTipText("");
         jPanel2.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 100, -1));
 
@@ -312,19 +345,15 @@ public class factura extends javax.swing.JFrame {
             } catch (Exception e) {
                 System.out.print(e);
             }
-
+           clientesproductos();
             txtapellido.setText("");
             txtcedula.setText("");
             txtnombre.setText("");
-            txtvendedor.setText("");
             txtsubtotal.setText("");
             JOptionPane.showMessageDialog(this, "Guardado con exito");
             actualizarStock();
             limpiarTabla();
         }
-        
-           
-
     }//GEN-LAST:event_btnfacturar1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -373,6 +402,10 @@ public class factura extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Selecione una fila a eliminar");
         }
     }//GEN-LAST:event_btneliminar2ActionPerformed
+
+    private void btneliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminar1ActionPerformed
+      
+    }//GEN-LAST:event_btneliminar1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

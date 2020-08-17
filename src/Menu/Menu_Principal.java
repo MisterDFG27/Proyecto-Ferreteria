@@ -188,8 +188,9 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        Registros.Inventario e = new Registros.Inventario();
-        e.setVisible(true);
+       // Registros.Inventario e = new Registros.Inventario();
+      Registros.InventarioPlanb e = new Registros.InventarioPlanb();  
+       e.setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
