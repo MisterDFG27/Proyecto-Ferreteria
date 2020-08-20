@@ -87,15 +87,15 @@ public class Login extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 153, 51));
         jPanel2.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setText("Usuario");
         jPanel2.add(jLabel1);
         jLabel1.setBounds(470, 150, 100, 30);
 
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("Contraseña");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(470, 280, 100, 22);
+        jLabel2.setBounds(450, 280, 130, 28);
         jPanel2.add(PwClave);
         PwClave.setBounds(440, 340, 150, 30);
         jPanel2.add(txtusuario);
@@ -114,7 +114,7 @@ public class Login extends javax.swing.JFrame {
         btnIngresar.setBackground(new java.awt.Color(0, 0, 0));
         btnIngresar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnIngresar.setText("Ingresar");
-        btnIngresar.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(204, 102, 0)));
+        btnIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnIngresar.setContentAreaFilled(false);
         btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -125,10 +125,10 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(btnIngresar);
         btnIngresar.setBounds(300, 420, 120, 40);
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel3.setText("  Inicio de sesión");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(520, 20, 180, 50);
+        jLabel3.setBounds(450, 20, 270, 50);
 
         lblogo1.setBackground(new java.awt.Color(255, 204, 153));
         lblogo1.setIcon(new javax.swing.ImageIcon("C:\\Users\\PCUser\\Pictures\\ferre1.png")); // NOI18N
