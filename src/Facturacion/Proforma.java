@@ -21,7 +21,7 @@ public class Proforma extends javax.swing.JFrame  {
 
     public Proforma() {
         initComponents();
-        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\1.jpg");
+        ImageIcon icono = new ImageIcon("C:\\Users\\PCUser\\Documents\\NetBeansProjects\\Proyecto-Ferreteria\\src\\Imagenes\\1.jpg");
         lbllogo.setIcon(icono);
         modelo2 = new DefaultTableModel();
         modelo2.addColumn("ID");
