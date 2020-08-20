@@ -38,8 +38,9 @@ public class ProductoDAO {
             while (rs.next()) {
                 p.setId(rs.getInt(1));
                 p.setProd(rs.getString(2));
-                p.setPre(rs.getDouble(3));
-                p.setCant(rs.getInt(4));
+                p.setCant(rs.getInt(3));
+                p.setPre(rs.getDouble(4));
+                
             }
         } catch (Exception e) {
         }

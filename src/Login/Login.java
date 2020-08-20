@@ -21,28 +21,30 @@ public class Login extends javax.swing.JFrame {
     }
 
     void acceder(String usuario, String clave) {
-        String cap = "";
+        String cap = "", nom = "", ape = "";
         String sql = "SELECT * FROM usuarios WHERE nombreUsuario='" + usuario + "' && Contraseña='" + clave + "'";
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
             while (rs.next()) {
-                cap = rs.getString("fk_tipoUsuario");
+                cap = rs.getString("tipo_Usuario");
+                nom = rs.getString("Nombre");
+                ape = rs.getString("primerApellido");
             }
-            if (cap.equals("1")) {
+            if (cap.equals("Administrador")) {
                 Menu.Menu_Principal m = new Menu.Menu_Principal();
                 m.setVisible(true);
                 dispose();
 
-                m.txtusuario.setText(txtusuario.getText());
+                m.txtusuario.setText(nom+" "+ape);
 
                 
-            } else if (cap.equals("2")) {
+            } else if (cap.equals("Empleado")) {
                 Menu.Menu_Empleado m = new Menu.Menu_Empleado();
                 m.setVisible(true);
                 dispose();
   
-                m.txtusuario.setText(txtusuario.getText());
+                m.txtusuario.setText(nom+" "+ape);
 
               
             } else if (timer == 2) {

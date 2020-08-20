@@ -37,16 +37,15 @@ public class Productos extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Productos");
         modelo.addColumn("Cantidad");
-        modelo.addColumn("Precio");
         modelo.addColumn("Total");
 
         tbDatos.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT Nombre_producto, SUM(Cantidad), SUM(Precio), SUM(Total) FROM `facturas` GROUP BY Nombre_producto";
+            sql = "SELECT Productos, SUM(Cantidad), SUM(Total) FROM `clientesproductos` GROUP BY Productos";
 
         }
-        String[] datos = new String[4];
+        String[] datos = new String[3];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -55,7 +54,6 @@ public class Productos extends javax.swing.JFrame {
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
 
                 modelo.addRow(datos);
             }
@@ -74,7 +72,7 @@ public class Productos extends javax.swing.JFrame {
         tbMontoR.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "Select SUM(Total) FROM `facturas`";
+            sql = "Select SUM(Total) FROM `clientesproductos`";
         }
         String[] datos = new String[1];
         try {
@@ -99,17 +97,16 @@ public class Productos extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Productos");
         modelo.addColumn("Cantidad");
-        modelo.addColumn("Precio");
         modelo.addColumn("Total");
 
         processCalendar();
         tbDatos.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT Nombre_producto, SUM(Cantidad), SUM(Precio), SUM(Total) FROM `facturas` WHERE Fecha = '" + datesolo + "' GROUP BY Nombre_producto";
+            sql = "SELECT Productos, SUM(Cantidad),  SUM(Total) FROM `clientesproductos` WHERE Fecha = '" + datesolo + "' GROUP BY Productos";
 
         }
-        String[] datos = new String[4];
+        String[] datos = new String[3];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -118,7 +115,6 @@ public class Productos extends javax.swing.JFrame {
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
 
                 modelo.addRow(datos);
             }
@@ -138,7 +134,7 @@ public class Productos extends javax.swing.JFrame {
         processCalendar();
         String sql = "";
         if (valor.equals("")) {
-            sql = "Select SUM(Total) FROM `facturas` WHERE Fecha = '" + datesolo + "'";
+            sql = "Select SUM(Total) FROM `clientesproductos` WHERE Fecha = '" + datesolo + "'";
 
         }
 
@@ -165,17 +161,16 @@ public class Productos extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Productos");
         modelo.addColumn("Cantidad");
-        modelo.addColumn("Precio");
         modelo.addColumn("Total");
 
         processCalendar2f();
         tbDatos.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT Nombre_producto, SUM(Cantidad), SUM(Precio), SUM(Total) FROM `facturas` WHERE Fecha between = '" + date1 + "' and '" + date2 + "' GROUP BY Nombre_producto";
+            sql = "SELECT Productos, SUM(Cantidad), SUM(Total) FROM `clientesproductos` WHERE Fecha BETWEEN '"+date1+"' AND '"+date2+"' GROUP BY Productos";
 
         }
-        String[] datos = new String[4];
+        String[] datos = new String[3];
         try {
             Statement st = cn.createStatement();
             ResultSet rs = st.executeQuery(sql);
@@ -184,7 +179,6 @@ public class Productos extends javax.swing.JFrame {
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
 
                 modelo.addRow(datos);
             }
@@ -204,7 +198,7 @@ public class Productos extends javax.swing.JFrame {
         processCalendar2f();
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT SUM(Total) FROM `facturas` WHERE Fecha between = '" + date1 + "' and '" + date2 + "'";
+            sql = "SELECT SUM(Total) FROM `clientesproductos` WHERE Fecha BETWEEN '"+date1+"' AND '"+date2+"'";
 
         }
 
@@ -452,7 +446,6 @@ public class Productos extends javax.swing.JFrame {
     private void btnfiltrodiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfiltrodiaActionPerformed
         Consultafechaunica("");
         mostrarMonto("");
-
     }//GEN-LAST:event_btnfiltrodiaActionPerformed
 
     private void btnfiltrofechasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfiltrofechasActionPerformed

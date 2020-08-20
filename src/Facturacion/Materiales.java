@@ -23,13 +23,13 @@ public class Materiales extends javax.swing.JFrame {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Id_Productos");
         modelo.addColumn("Descripción");
-        modelo.addColumn("Precio");
         modelo.addColumn("Cantidad");
+        modelo.addColumn("Precio");
 
         tbmateriales.setModel(modelo);
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT Id_producto, Nombre_producto, Precio_Unitario, Cantidad FROM `materiales`";
+            sql = "SELECT Id_producto, Nombre_producto, Cantidad, Precio_Unitario FROM `materiales`";
 
         }
         String[] datos = new String[4];
@@ -62,6 +62,7 @@ public class Materiales extends javax.swing.JFrame {
         txtprecio = new javax.swing.JTextField();
         txtprod = new javax.swing.JTextField();
         txtcod = new javax.swing.JTextField();
+        txtcant = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,13 +76,13 @@ public class Materiales extends javax.swing.JFrame {
 
         tbmateriales.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Id_Producto", "Descripcion", "Precio_Unitario"
+                "Id_Producto", "Descripcion", "Cantidad", "Precio_Unitario"
             }
         ));
         tbmateriales.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -91,7 +92,7 @@ public class Materiales extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbmateriales);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 610, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 620, -1));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jButton1.setText("Seleccionar");
@@ -113,6 +114,9 @@ public class Materiales extends javax.swing.JFrame {
         txtcod.setEditable(false);
         getContentPane().add(txtcod, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 70, -1));
 
+        txtcant.setText("jTextField1");
+        getContentPane().add(txtcant, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 20, -1, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -120,6 +124,7 @@ public class Materiales extends javax.swing.JFrame {
        factura.txtcodp.setText(txtcod.getText());
        factura.txtprodp.setText(txtprod.getText());
        factura.txtpreciop.setText(txtprecio.getText());
+       factura.txtcantm.setText(txtcant.getText());
        dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -127,10 +132,12 @@ public class Materiales extends javax.swing.JFrame {
         int seleccionar = tbmateriales.rowAtPoint(evt.getPoint());
         txtcod.setText(String.valueOf(tbmateriales.getValueAt(seleccionar,0)));
         txtprod.setText(String.valueOf(tbmateriales.getValueAt(seleccionar,1)));
-        txtprecio.setText(String.valueOf(tbmateriales.getValueAt(seleccionar,2)));
+        txtcant.setText(String.valueOf(tbmateriales.getValueAt(seleccionar,2)));
+        txtprecio.setText(String.valueOf(tbmateriales.getValueAt(seleccionar,3)));
         txtcod.setVisible(false);
         txtprod.setVisible(false);
         txtprecio.setVisible(false);
+        txtcant.setVisible(false);
     }//GEN-LAST:event_tbmaterialesMouseClicked
 
     /**
@@ -175,6 +182,7 @@ public class Materiales extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tbmateriales;
+    public javax.swing.JTextField txtcant;
     public javax.swing.JTextField txtcod;
     public javax.swing.JTextField txtprecio;
     public javax.swing.JTextField txtprod;

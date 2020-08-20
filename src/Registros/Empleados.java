@@ -3,6 +3,8 @@ package Registros;
 import Conexion.Conexión;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.Locale;
+import java.util.UUID;
 import javax.swing.JOptionPane;
 
 public class Empleados extends javax.swing.JFrame {
@@ -20,9 +22,14 @@ public class Empleados extends javax.swing.JFrame {
         lblRequeridoAP2.setVisible(false);
         lblRequeridoCE.setVisible(false);
         lblRequeridoUsuario.setVisible(false);
-        lblRequeridoContraseña.setVisible(false);
 
     }
+    public void contra(){
+        String contra ="";
+        contra = UUID.randomUUID().toString().toUpperCase().substring(0,10);
+        txtcontra.setText(contra);
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -47,23 +54,22 @@ public class Empleados extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         cmbTipoUsuario = new javax.swing.JComboBox();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         lblRequeridoCedula = new javax.swing.JLabel();
         lblRequeridoNombre = new javax.swing.JLabel();
         lblRequeridoAP1 = new javax.swing.JLabel();
         lblRequeridoCE = new javax.swing.JLabel();
         lblRequeridoUsuario = new javax.swing.JLabel();
-        lblRequeridoContraseña = new javax.swing.JLabel();
         lblRequeridoAP2 = new javax.swing.JLabel();
-        txtContraseña = new javax.swing.JPasswordField();
+        txtcontra = new javax.swing.JPasswordField();
         chVerContra = new javax.swing.JCheckBox();
         btnmenu = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        btnguardar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -85,7 +91,7 @@ public class Empleados extends javax.swing.JFrame {
                 btnguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 180, 50));
+        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 160, 40));
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 145, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -129,16 +135,8 @@ public class Empleados extends javax.swing.JFrame {
         jLabel12.setText("Tipo de usuario");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
 
-        cmbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2" }));
-        jPanel1.add(cmbTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, 70, -1));
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Administración");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 330, -1, -1));
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Empleado");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 360, -1, -1));
+        cmbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Empleado" }));
+        jPanel1.add(cmbTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, 110, -1));
 
         jLabel13.setBackground(new java.awt.Color(153, 153, 153));
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -170,16 +168,13 @@ public class Empleados extends javax.swing.JFrame {
         lblRequeridoUsuario.setText("Requerido");
         jPanel1.add(lblRequeridoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, -1, -1));
 
-        lblRequeridoContraseña.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoContraseña.setForeground(new java.awt.Color(255, 51, 51));
-        lblRequeridoContraseña.setText("Requerido");
-        jPanel1.add(lblRequeridoContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 230, -1, -1));
-
         lblRequeridoAP2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblRequeridoAP2.setForeground(new java.awt.Color(255, 51, 51));
         lblRequeridoAP2.setText("Requerido");
         jPanel1.add(lblRequeridoAP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
-        jPanel1.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 110, -1));
+
+        txtcontra.setEditable(false);
+        jPanel1.add(txtcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 110, -1));
 
         chVerContra.setText("Ver contraseña");
         chVerContra.addActionListener(new java.awt.event.ActionListener() {
@@ -216,6 +211,25 @@ public class Empleados extends javax.swing.JFrame {
 
         txtusuario.setEditable(false);
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 130, 30));
+
+        jButton1.setText("Generar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, -1, -1));
+
+        btnguardar1.setBackground(new java.awt.Color(0, 0, 0));
+        btnguardar1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnguardar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnguardar1.setText("Lista empleados");
+        btnguardar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnguardar1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnguardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 160, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 630));
 
@@ -274,14 +288,6 @@ public class Empleados extends javax.swing.JFrame {
 
         }
 
-        if (txtContraseña.getText().equals("")) {
-            lblRequeridoContraseña.setVisible(true);
-            cont++;
-        } else {
-            lblRequeridoContraseña.setVisible(false);
-
-        }
-
         if (cont == 0) {
 
             try {
@@ -289,9 +295,9 @@ public class Empleados extends javax.swing.JFrame {
                 Connection cn = cc.conexion();
 
                 PreparedStatement pst = cn.prepareStatement("INSERT INTO usuarios(nombreUsuario,"
-                        + "contraseña,Cedula,nombre,primerApellido,segundoApellido,email,fk_tipoUsuario) VALUES (?,?,?,?,?,?,?,?)");
+                        + "contraseña,Cedula,nombre,primerApellido,segundoApellido,email,tipo_Usuario) VALUES (?,?,?,?,?,?,?,?)");
                 pst.setString(1, txtUsuario.getText());
-                pst.setString(2, txtContraseña.getText());
+                pst.setString(2, txtcontra.getText());
                 pst.setString(3, txtcedula.getText());
                 pst.setString(4, txtnombre.getText());
                 pst.setString(5, txtPrimerP.getText());
@@ -306,7 +312,7 @@ public class Empleados extends javax.swing.JFrame {
             }
 
             txtUsuario.setText("");
-            txtContraseña.setText("");
+            txtcontra.setText("");
             txtcedula.setText("");
             txtnombre.setText("");
             txtPrimerP.setText("");
@@ -323,9 +329,9 @@ public class Empleados extends javax.swing.JFrame {
     private void chVerContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chVerContraActionPerformed
 
         if (chVerContra.isSelected()) {
-            txtContraseña.setEchoChar((char) 0);
+            txtcontra.setEchoChar((char) 0);
         } else {
-            txtContraseña.setEchoChar('*');
+            txtcontra.setEchoChar('*');
         }
 
 
@@ -339,6 +345,16 @@ public class Empleados extends javax.swing.JFrame {
                 m.txtusuario.setText(txtusuario.getText());  
         
     }//GEN-LAST:event_btnmenuMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       contra();
+   
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnguardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardar1ActionPerformed
+       Listaempleados l = new Listaempleados();
+       l.setVisible(true);
+    }//GEN-LAST:event_btnguardar1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -375,9 +391,11 @@ public class Empleados extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnguardar;
+    private javax.swing.JButton btnguardar1;
     private javax.swing.JPanel btnmenu;
     private javax.swing.JCheckBox chVerContra;
     private javax.swing.JComboBox cmbTipoUsuario;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -388,8 +406,6 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -399,15 +415,14 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel lblRequeridoAP2;
     private javax.swing.JLabel lblRequeridoCE;
     private javax.swing.JLabel lblRequeridoCedula;
-    private javax.swing.JLabel lblRequeridoContraseña;
     private javax.swing.JLabel lblRequeridoNombre;
     private javax.swing.JLabel lblRequeridoUsuario;
-    private javax.swing.JPasswordField txtContraseña;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPrimerP;
     private javax.swing.JTextField txtSegundoP;
     private javax.swing.JTextField txtUsuario;
     private javax.swing.JTextField txtcedula;
+    private javax.swing.JPasswordField txtcontra;
     private javax.swing.JTextField txtnombre;
     public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables

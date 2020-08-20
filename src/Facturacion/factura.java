@@ -11,22 +11,31 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Modelo.Producto;
 import Modelo.ProductoDAO;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.print.PageFormat;
+import java.awt.print.Printable;
+import java.awt.print.PrinterException;
+import java.awt.print.PrinterJob;
 
-
-public class factura extends javax.swing.JFrame {
+public class factura extends javax.swing.JFrame implements Printable {
 
     DefaultTableModel modelo, modelo1;
     ProductoDAO pdao = new ProductoDAO();
     String date, datesolo, prod;
-    int cont, idp, pre, cant;
+    int cont, idp, pre, cant, cant1, iva, desc, total;
+    Proforma p = new Proforma();
 
     public factura() {
         initComponents();
-        String principal[] = {"Codigo producto", "Descripción", "Precio unitario", "Cantidad"};
+        String principal[] = {"Codigo producto", "Descripción", "Cantidad", "Precio"};
         String datos[][] = {};
         modelo = new DefaultTableModel(datos, principal);
         tbimprimir1.setModel(modelo);
         setLocationRelativeTo(null);
+        txttotal.setVisible(false);
+        txtresta.setVisible(false);
+        txtcantm.setVisible(false);
 
     }
 
@@ -36,50 +45,71 @@ public class factura extends javax.swing.JFrame {
 
     }
 
+    public int print(Graphics graphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
+
+        if (pageIndex > 0) {
+            return NO_SUCH_PAGE;
+        }
+
+        Graphics2D g2d = (Graphics2D) graphics;
+        g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
+
+        p.impresion1.printAll(graphics);
+
+        return PAGE_EXISTS;
+
+    }
+
     void actualizarStock() {
         for (int i = 0; i < modelo.getRowCount(); i++) {
             Producto pr = new Producto();
             idp = Integer.parseInt(tbimprimir1.getValueAt(i, 0).toString());
-            cant = Integer.parseInt(tbimprimir1.getValueAt(i, 3).toString());
+            cant = Integer.parseInt(tbimprimir1.getValueAt(i, 2).toString());
             pr = pdao.listarID(idp);
             int sa = pr.getCant() - cant;
             pdao.actualizarStock(sa, idp);
         }
     }
-    
-    void clientesproductos(){
+
+    void clientesproductos() {
         cont = 0;
-        if(txtnombre.getText().equals("")){
+        if (txtnombre.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
             cont++;
         }
         if (cont == 0) {
 
             for (int i = 0; i < modelo.getRowCount(); i++) {
-                prod=tbimprimir1.getValueAt(i, 1).toString();
-            
-            
-            try {
-                Conexión cc = new Conexión();
-                Connection cn = cc.conexion();
-                PreparedStatement pst = cn.prepareStatement("INSERT INTO `clientesproductos`(`Cliente`, `Productos`) VALUES (?,?)");
-                pst.setString(1, txtnombre.getText());
-                pst.setString(2, prod);
 
-                pst.executeUpdate();
+                prod = tbimprimir1.getValueAt(i, 1).toString();
+                cant1 = Integer.parseInt(tbimprimir1.getValueAt(i, 2).toString());
+                total = Integer.parseInt(tbimprimir1.getValueAt(i, 3).toString());
 
-            } catch (Exception e) {
-                System.out.print(e);
+                try {
+                    Conexión cc = new Conexión();
+                    Connection cn = cc.conexion();
+                    processCalendar();
+                    PreparedStatement pst = cn.prepareStatement("INSERT INTO `clientesproductos`(`Cliente`, `Fecha`, `Productos`, `Cantidad`,`Total`) VALUES (?,?,?,?,?)");
+                    pst.setString(1, txtnombre.getText());
+                    pst.setString(2, datesolo);
+                    pst.setString(3, prod);
+                    pst.setInt(4, cant1);
+                    pst.setInt(5, total);
+
+                    pst.executeUpdate();
+
+                } catch (Exception e) {
+                    System.out.print(e);
+                }
             }
         }
-        }
-            
+
     }
-    
-    void limpiarTabla(){
+
+    void limpiarTabla() {
         for (int i = 0; i < modelo.getRowCount(); i++) {
             modelo.removeRow(i);
-            i=i-1;
+            i = i - 1;
         }
     }
 
@@ -127,6 +157,9 @@ public class factura extends javax.swing.JFrame {
         txtusuario = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
+        txttotal = new javax.swing.JTextField();
+        txtcantm = new javax.swing.JTextField();
+        txtresta = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,14 +171,14 @@ public class factura extends javax.swing.JFrame {
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
 
         jLabel14.setText("Vendedor(a):");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 140, -1, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
 
         jLabel15.setText("Subtotal:");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 540, -1, -1));
         jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 100, -1));
 
         txtvendedor.setEditable(false);
-        jPanel2.add(txtvendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 130, 110, 30));
+        jPanel2.add(txtvendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 110, 30));
 
         jLabel16.setText("Cantidad:");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, -1));
@@ -182,16 +215,32 @@ public class factura extends javax.swing.JFrame {
         tbimprimir1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         tbimprimir1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Id_producto", "Productos", "Precio", "Cantidad"
+                "Id_producto", "Productos", "Cantidad", "Precio"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbimprimir1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbimprimir1MouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tbimprimir1);
+        if (tbimprimir1.getColumnModel().getColumnCount() > 0) {
+            tbimprimir1.getColumnModel().getColumn(0).setResizable(false);
+            tbimprimir1.getColumnModel().getColumn(1).setResizable(false);
+            tbimprimir1.getColumnModel().getColumn(2).setResizable(false);
+            tbimprimir1.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 710, 140));
 
@@ -199,12 +248,13 @@ public class factura extends javax.swing.JFrame {
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
 
         jLabel18.setText("Fecha:");
-        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, -1, -1));
+        jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
+        txtFecha.setToolTipText("");
         txtFecha.setDateFormatString("yyyy-MM-dd");
         txtFecha.setMaxSelectableDate(new java.util.Date(253370790110000L));
         txtFecha.setMinSelectableDate(new java.util.Date(-62135744290000L));
-        jPanel2.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 140, 30));
+        jPanel2.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 140, 30));
 
         jLabel19.setText("Apellido:");
         jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
@@ -220,7 +270,7 @@ public class factura extends javax.swing.JFrame {
         jLabel21.setForeground(new java.awt.Color(51, 51, 51));
         jLabel21.setText("Generacion de factura");
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
-        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 770, 10));
+        jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 780, 10));
 
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(153, 153, 153));
@@ -293,6 +343,16 @@ public class factura extends javax.swing.JFrame {
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 710));
 
+        txttotal.setEditable(false);
+        txttotal.setText("jTextField1");
+        getContentPane().add(txttotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, -1));
+
+        txtcantm.setEditable(false);
+        getContentPane().add(txtcantm, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 10, 60, -1));
+
+        txtresta.setEditable(false);
+        getContentPane().add(txtresta, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 60, -1));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -300,28 +360,7 @@ public class factura extends javax.swing.JFrame {
     private void btnfacturar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturar1ActionPerformed
         cont = 0;
 
-        if (txtcedula.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
-            cont++;
-        }
-
-        if (txtnombre.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
-            cont++;
-        }
-
-        
-        if (txtapellido.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
-            cont++;
-        }
-
-        if (txtvendedor.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
-            cont++;
-        }
-
-        if (txtsubtotal.getText().equals("")) {
+        if (txtcedula.getText().equals("") || txtnombre.getText().equals("") || txtapellido.getText().equals("") || txtvendedor.getText().equals("") || txtsubtotal.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Todos los campos deben ser llenados");
             cont++;
         }
@@ -345,54 +384,80 @@ public class factura extends javax.swing.JFrame {
             } catch (Exception e) {
                 System.out.print(e);
             }
-           clientesproductos();
+            clientesproductos();
+            actualizarStock();
             txtapellido.setText("");
             txtcedula.setText("");
             txtnombre.setText("");
             txtsubtotal.setText("");
             JOptionPane.showMessageDialog(this, "Guardado con exito");
-            actualizarStock();
+
             limpiarTabla();
         }
+        txttotal.setVisible(false);
+        txtresta.setVisible(false);
+        txtcantm.setVisible(false);
     }//GEN-LAST:event_btnfacturar1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Materiales m = new Materiales();
         m.setVisible(true);
+        txttotal.setVisible(false);
+        txtresta.setVisible(false);
+        txtcantm.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        try {
+            int c = Integer.parseInt(txtcantidad.getValue().toString()), cm = Integer.parseInt(txtcantm.getText());
 
-        int suma, precio, cantidad, subtotal;
+            if (c > cm) {
+                JOptionPane.showMessageDialog(null, "Cantidad insuficiente en stock \nCantidad maxima de "+txtprodp.getText()+" es de "+txtcantm.getText()+"", "Error", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                int suma, precio, cantidad, subtotal, total;
 
-        precio = Integer.parseInt(txtpreciop.getText());
-        cantidad = Integer.parseInt(txtcantidad.getValue().toString());
-        subtotal = Integer.parseInt(txtsubtotal.getText());
+                precio = Integer.parseInt(txtpreciop.getText());
+                cantidad = Integer.parseInt(txtcantidad.getValue().toString());
+                subtotal = Integer.parseInt(txtsubtotal.getText());
 
-        suma = precio * cantidad + subtotal;
+                suma = precio * cantidad + subtotal;
+                total = precio * cantidad;
 
-        txtsubtotal.setText("" + suma);
+                txtsubtotal.setText("" + suma);
 
-        String codigo = txtcodp.getText();
-        String producto = txtprodp.getText();
-        Object datos[] = {codigo, producto, precio, cantidad};
-        modelo.addRow(datos);
+                String codigo = txtcodp.getText();
+                String producto = txtprodp.getText();
+                Object datos[] = {codigo, producto, cantidad, total};
+                modelo.addRow(datos);
 
-        txtcodp.setText("");
-        txtprodp.setText("");
-        txtpreciop.setText("");
-        txtcantidad.setValue(1);
-
-
+                txtcodp.setText("");
+                txtprodp.setText("");
+                txtpreciop.setText("");
+                txtcantidad.setValue(1);
+            }
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+        txttotal.setVisible(false);
+        txtresta.setVisible(false);
+        txtcantm.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnmenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenu1ActionPerformed
         Menu.Menu_Principal m = new Menu.Menu_Principal();
         m.setVisible(true);
+        m.txtusuario.setText(txtusuario.getText());
         dispose();
     }//GEN-LAST:event_btnmenu1ActionPerformed
 
     private void btneliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminar2ActionPerformed
+        int sub = Integer.parseInt(txtsubtotal.getText());
+        int mcant= Integer.parseInt(txtresta.getText());
+        int resta;
+        
+        resta = sub - mcant;
+        txtsubtotal.setText(""+resta);
+        
         int filaselect = tbimprimir1.getSelectedRow();
         if (filaselect >= 0) {
             modelo.removeRow(filaselect);
@@ -401,11 +466,60 @@ public class factura extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Selecione una fila a eliminar");
         }
+
+txttotal.setVisible(false);
+        txtresta.setVisible(false);
+        txtcantm.setVisible(false);
     }//GEN-LAST:event_btneliminar2ActionPerformed
 
     private void btneliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminar1ActionPerformed
-      
+
+        try {
+            int subtotal = Integer.parseInt(txtsubtotal.getText());
+            double iva = subtotal * 0.13, descuento = subtotal * 0.20;
+            int total = (int) (subtotal + iva - descuento);
+
+            p.setVisible(true);
+
+            for (int i = 0; i < tbimprimir1.getRowCount(); i++) {
+                String Datos[] = new String[4];
+                Datos[0] = tbimprimir1.getValueAt(i, 0).toString();
+                Datos[1] = tbimprimir1.getValueAt(i, 1).toString();
+                Datos[2] = tbimprimir1.getValueAt(i, 2).toString();
+                Datos[3] = tbimprimir1.getValueAt(i, 3).toString();
+                p.modelo2.addRow(Datos);
+            }
+
+            processCalendar();
+            p.lblfecha.setText(datesolo);
+            p.lblnombre.setText(txtnombre.getText() + " " + txtapellido.getText());
+            p.lblvendedor.setText(txtvendedor.getText());
+            p.lblsubtotal.setText(txtsubtotal.getText());
+            p.lbltotal.setText("" + total);
+        } catch (Exception e) {
+            System.out.print(e);
+        }
+
+        try {
+            PrinterJob job = PrinterJob.getPrinterJob();
+            job.setPrintable(this);
+            job.printDialog();
+            job.print();
+        } catch (PrinterException ex) {
+            System.out.println(ex);
+        }
+        txttotal.setVisible(false);
+        txtresta.setVisible(false);
+        txtcantm.setVisible(false);
     }//GEN-LAST:event_btneliminar1ActionPerformed
+
+    private void tbimprimir1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbimprimir1MouseClicked
+       int fila = tbimprimir1.getSelectedRow();
+        if (fila >= 0) {
+            txtresta.setText(tbimprimir1.getValueAt(fila, 3).toString());
+
+        }
+    }//GEN-LAST:event_tbimprimir1MouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -473,12 +587,15 @@ public class factura extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JSpinner txtcantidad;
+    public static javax.swing.JTextField txtcantm;
     private javax.swing.JTextField txtcedula;
     public static javax.swing.JTextField txtcodp;
     private javax.swing.JTextField txtnombre;
     public static javax.swing.JTextField txtpreciop;
     public static javax.swing.JTextField txtprodp;
+    private javax.swing.JTextField txtresta;
     private javax.swing.JTextField txtsubtotal;
+    public javax.swing.JTextField txttotal;
     public javax.swing.JTextField txtusuario;
     public javax.swing.JTextField txtvendedor;
     // End of variables declaration//GEN-END:variables
