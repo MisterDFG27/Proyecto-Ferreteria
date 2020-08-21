@@ -237,17 +237,14 @@ public class Menu_Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_lbllogo2ActionPerformed
 
     private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        Facturacion.facturaCaja f = new Facturacion.facturaCaja();
+        Facturacion.facturaCajaAdmin f = new Facturacion.facturaCajaAdmin();
         f.setVisible(true);
         dispose();
         f.txtusuario.setText(txtusuario.getText());
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        Reporte.Factura f = new Reporte.Factura();
-        f.setVisible(true);
-        dispose();
-        f.txtusuario.setText(txtusuario.getText());
+
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
