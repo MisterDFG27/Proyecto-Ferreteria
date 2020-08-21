@@ -127,6 +127,19 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
         }
         tbproductos.setModel(modelo1);
     }
+    
+     public void eliminar() {
+        String sql = "DELETE FROM `datosfactura` WHERE `datosfactura`.`id` = " + txtid.getText() + "";
+        try {
+            Conexión cc = new Conexión();
+            Connection cn = cc.conexion();
+            PreparedStatement ps = cn.prepareStatement(sql);
+            ps.executeUpdate();
+            mostrardatos("");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -135,6 +148,7 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
         jScrollPane2 = new javax.swing.JScrollPane();
         tbproductos = new javax.swing.JTable();
         txtfecha = new javax.swing.JTextField();
+        txtid = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbFactura = new javax.swing.JTable();
@@ -177,6 +191,8 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
         jScrollPane2.setViewportView(tbproductos);
 
         txtfecha.setText("jTextField1");
+
+        txtid.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -347,18 +363,24 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnfacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfacturarActionPerformed
+       try{
         int filaselect = tbFactura.getSelectedRow();
         if (filaselect >= 0) {
             txtnombre.setText(tbFactura.getValueAt(filaselect, 2).toString());
             txtsubtotal.setText(tbFactura.getValueAt(filaselect, 6).toString());
             txtfecha.setText(tbFactura.getValueAt(filaselect, 4).toString());
-
+            txtid.setText(tbFactura.getValueAt(filaselect, 0).toString());
+            
         } else {
             JOptionPane.showMessageDialog(this, "Fila no seleccionada");
 
         }
-
+        }catch(Exception e){
+            System.out.println(e);
+        }
+               
         productos("");
+        eliminar();
     }//GEN-LAST:event_btnfacturarActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
@@ -1273,6 +1295,7 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
     private javax.swing.JTable tbproductos;
     private javax.swing.JTextField txtcorreo;
     private javax.swing.JTextField txtfecha;
+    private javax.swing.JTextField txtid;
     private javax.swing.JTextField txtnombre;
     private javax.swing.JTextField txtsubtotal;
     public javax.swing.JTextField txtusuario;
