@@ -41,36 +41,6 @@ DefaultTableModel modelo = new DefaultTableModel();
          
     }
     
-    void mostrarusu(String valor) {
-
-        
-        modelo.addColumn("User");
-        modelo.addColumn("Pass");
-        
-        tbusu.setModel(modelo); 
-        String sql = "";
-        if (valor.equals("")) {
-            sql = "SELECT nombreUsuario, contraseña FROM `usuario` WHERE email ='"+txtCorreo.getText()+"'";
-
-        }
-        String[] datos = new String[2];
-        try {
-            Statement st = cn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()) {
-
-                txtusu.setText(datos[0] = rs.getString(1));
-                txtpass.setText(datos[1] = rs.getString(2));
-
-                modelo.addRow(datos);
-            }
-            tbusu.setModel(modelo);
-        } catch (SQLException ex) {
-            System.out.println(ex);
-        }
-        
-    }
-    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -161,18 +131,16 @@ DefaultTableModel modelo = new DefaultTableModel();
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
         lbllogo.setText("jLabel3");
-        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-370, 0, 1090, 240));
+        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-350, 0, 1090, 240));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 240));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 250));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-          mostrarusu("");
-        
-          try {
          
+        try {
             Properties props = new Properties();
             props.setProperty("mail.smtp.host", "smtp.gmail.com");
             props.setProperty("mail.smtp.starttls.enable", "true");
@@ -181,11 +149,11 @@ DefaultTableModel modelo = new DefaultTableModel();
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@blackmail.com";
-            String passwordRemitente = "guapiles123";
+            String correoRemitente = "ferrewakanda@gmail.com";
+            String passwordRemitente = "pantera+22";
             String correoReceptor = txtCorreo.getText();
             String asunto = "Recuperación de usuario y contraseña";
-            String mensaje = "Su Usuario es: "+txtusu.getText() + "  // Su Contraseña es: "+txtpass.getText();
+            String mensaje = "hola";
 
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(correoRemitente));

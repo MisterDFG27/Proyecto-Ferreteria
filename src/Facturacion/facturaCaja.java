@@ -10,6 +10,16 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -18,6 +28,7 @@ import javax.swing.table.DefaultTableModel;
 public class facturaCaja extends javax.swing.JFrame implements Runnable {
 
     DefaultTableModel modelo;
+    DefaultTableModel modelo1;
 
     String date;
 
@@ -36,6 +47,10 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         setLocationRelativeTo(null);
         cmbdesc.setEnabled(false);
         lbcerrar.setVisible(false);
+        lbcorreo.setVisible(false);
+        txtcorreo.setVisible(false);
+        btncorreo.setVisible(false);
+        txtfecha.setVisible(false);
         mostrardatos("");
         hora1 = new Thread(this);
         hora1.start();
@@ -82,10 +97,46 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         tbFactura.setModel(modelo);
     }
 
+    void productos(String valor) {
+        DefaultTableModel modelo1 = new DefaultTableModel();
+        modelo1.addColumn("productos");
+        modelo1.addColumn("Cantidad");
+        modelo1.addColumn("Total");
+        modelo1.addColumn("Fecha");
+
+        tbproductos.setModel(modelo1);
+        String sql = "";
+        if (valor.equals("")) {
+            sql = "SELECT `Productos`, `Cantidad`, `Total`, `Fecha` FROM `clientesproductos` WHERE Cliente = '" + txtnombre.getText() + "' AND Fecha = '" + txtfecha.getText() + "'";
+
+        }
+        String[] datos = new String[4];
+        try {
+            Statement st = cn.createStatement();
+            ResultSet rs = st.executeQuery(sql);
+            while (rs.next()) {
+
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+
+                modelo1.addRow(datos);
+            }
+            tbproductos.setModel(modelo1);
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        tbproductos.setModel(modelo1);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tbproductos = new javax.swing.JTable();
+        txtfecha = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbFactura = new javax.swing.JTable();
@@ -93,15 +144,19 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         btnfacturar = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        txtMonto = new javax.swing.JTextField();
+        txtsubtotal = new javax.swing.JTextField();
         txtnombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        btnImprimir = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        btn2 = new javax.swing.JButton();
+        lbcorreo = new javax.swing.JLabel();
+        txtcorreo = new javax.swing.JTextField();
+        btncorreo = new javax.swing.JButton();
+        btnImprimir = new javax.swing.JButton();
+        lbdesc = new javax.swing.JLabel();
         cmbdesc = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        btndesc = new javax.swing.JButton();
         lbcerrar = new javax.swing.JLabel();
         btnmenu = new javax.swing.JButton();
         lbhora = new javax.swing.JLabel();
@@ -111,6 +166,21 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         txtusuario = new javax.swing.JTextField();
         lbllogo1 = new javax.swing.JLabel();
         lbllogo = new javax.swing.JLabel();
+
+        tbproductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tbproductos);
+
+        txtfecha.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -131,6 +201,11 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
             }
         ));
         tbFactura.setGridColor(new java.awt.Color(255, 255, 255));
+        tbFactura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbFacturaMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbFactura);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 780, 280));
@@ -141,7 +216,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, -1, -1));
 
         btnfacturar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        btnfacturar.setText("Facturar");
+        btnfacturar.setText("Calcular");
         btnfacturar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnfacturar.setContentAreaFilled(false);
         btnfacturar.addActionListener(new java.awt.event.ActionListener() {
@@ -159,16 +234,11 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         jPanel2.setForeground(new java.awt.Color(0, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Descuento");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
-
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Cliente");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
-        jPanel2.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 120, -1));
+        jPanel2.add(txtsubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 120, -1));
         jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 130, -1));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
@@ -177,9 +247,44 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         jLabel11.setText("Factura");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Subtotal");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+
+        btn2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btn2.setForeground(new java.awt.Color(255, 255, 255));
+        btn2.setText("Factura electronica");
+        btn2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btn2.setContentAreaFilled(false);
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btn2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, 40));
+
+        lbcorreo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbcorreo.setForeground(new java.awt.Color(255, 255, 255));
+        lbcorreo.setText("Correo:");
+        jPanel2.add(lbcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, -1));
+        jPanel2.add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 200, 30));
+
+        btncorreo.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btncorreo.setForeground(new java.awt.Color(255, 255, 255));
+        btncorreo.setText("Enviar");
+        btncorreo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btncorreo.setContentAreaFilled(false);
+        btncorreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btncorreoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btncorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 470, 100, 30));
+
         btnImprimir.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
-        btnImprimir.setText("Imprimir");
+        btnImprimir.setText("Facturar");
         btnImprimir.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btnImprimir.setContentAreaFilled(false);
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -187,33 +292,33 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
                 btnImprimirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 110, 40));
+        jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, 100, 40));
 
-        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Subtotal");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+        lbdesc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        lbdesc.setForeground(new java.awt.Color(255, 255, 255));
+        lbdesc.setText("Descuento");
+        jPanel2.add(lbdesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
 
         cmbdesc.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        cmbdesc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "19%", "20%", "21%", "22%", "23%", "24%", "25%" }));
+        cmbdesc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "20%", "21%", "22%", "23%", "24%", "25%" }));
         cmbdesc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbdescActionPerformed(evt);
             }
         });
-        jPanel2.add(cmbdesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
+        jPanel2.add(cmbdesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, -1, -1));
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cambiar");
-        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jButton1.setContentAreaFilled(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btndesc.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        btndesc.setForeground(new java.awt.Color(255, 255, 255));
+        btndesc.setText("Cambiar");
+        btndesc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btndesc.setContentAreaFilled(false);
+        btndesc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btndescActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 90, 40));
+        jPanel2.add(btndesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 90, 30));
 
         lbcerrar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lbcerrar.setForeground(new java.awt.Color(255, 51, 51));
@@ -223,9 +328,9 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
                 lbcerrarMouseClicked(evt);
             }
         });
-        jPanel2.add(lbcerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
+        jPanel2.add(lbcerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 290, 600));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 0, 300, 600));
 
         btnmenu.setBackground(new java.awt.Color(0, 0, 0));
         btnmenu.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -260,7 +365,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         jPanel1.add(lbllogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 210, 110));
 
         lbllogo.setText("jLabel1");
-        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-400, -10, 1230, 840));
+        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -200, 1230, 840));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 600));
 
@@ -271,103 +376,255 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         int filaselect = tbFactura.getSelectedRow();
         if (filaselect >= 0) {
             txtnombre.setText(tbFactura.getValueAt(filaselect, 2).toString());
-            txtMonto.setText(tbFactura.getValueAt(filaselect, 6).toString());
+            txtsubtotal.setText(tbFactura.getValueAt(filaselect, 6).toString());
+            txtfecha.setText(tbFactura.getValueAt(filaselect, 4).toString());
 
-            modelo.removeRow(filaselect);
         } else {
             JOptionPane.showMessageDialog(this, "Fila no seleccionada");
 
         }
 
+        productos("");
     }//GEN-LAST:event_btnfacturarActionPerformed
 
     private void btnImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImprimirActionPerformed
-        int monto = Integer.parseInt(txtMonto.getText());
+
+
+        int monto = Integer.parseInt(txtsubtotal.getText());
+        String desc = cmbdesc.getSelectedItem().toString();
         if (monto < 100000) {
-            double iva = monto * 0.13;
-            double descuento = monto * 0.15;
-            int cargos = 0;
-            double total = monto + iva - descuento;
-            JOptionPane.showMessageDialog(null, "ALMACEN-------------"
-                + "\nCEDULA: 3-029-321847"
-                + "\n100 MTR OESTE PARQUE DE GUACIMO"
-                + "\nTEL: 23956584"
-                + "\n------------------------------"
-                + "\n           CONTADO      "
-                + "\n------------------------------"
-                + "\nCLIENTE: " + txtnombre.getText()
-                + "\nFECHA: " + "30-7-2020"
-                + "\n------------------------"
-                + "\n------------------------"
-                + "\nSUBTOTAL: " + monto
-                + "\nDESCUENTO: " + descuento
-                + "\nIVA: " + iva
-                + "\nOTROS CARGOS: " + cargos
-                + "\n--------------------------"
-                + "\nTOTAL: " + total
-                + "\n--------------------------"
-                + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
-                + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
-                + "\nFECHA 30/09/1987 DE DGTD");
-        } else if (monto >= 100000 & monto < 500000) {
-            double iva = monto * 0.13;
-            double descuento = monto * 0.20;
-            int cargos = 0;
-            double total = monto + iva - descuento;
-            JOptionPane.showMessageDialog(null, "ALMACEN-------------"
-                + "\nCEDULA: 3-029-321847"
-                + "\n100 MTR OESTE PARQUE DE GUACIMO"
-                + "\nTEL: 23956584"
-                + "\n------------------------------"
-                + "\n           CONTADO      "
-                + "\n------------------------------"
-                + "\nCLIENTE: " + txtnombre.getText()
-                + "\nFECHA: " + "30-7-2020"
-                + "\n------------------------"
-                + "\n------------------------"
-                + "\nSUBTOTAL: " + monto
-                + "\nDESCUENTO: " + descuento
-                + "\nIVA: " + iva
-                + "\nOTROS CARGOS: " + cargos
-                + "\n--------------------------"
-                + "\nTOTAL: " + total
-                + "\n--------------------------"
-                + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
-                + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
-                + "\nFECHA 30/09/1987 DE DGTD");
-        } else if (monto >= 500000) {
-            double iva = monto * 0.13;
-            double descuento = monto * 0.25;
-            int cargos = 0;
-            double total = monto + iva - descuento;
-            JOptionPane.showMessageDialog(null, "ALMACEN-------------"
-                + "\nCEDULA: 3-029-321847"
-                + "\n100 MTR OESTE PARQUE DE GUACIMO"
-                + "\nTEL: 23956584"
-                + "\n------------------------------"
-                + "\n           CONTADO      "
-                + "\n------------------------------"
-                + "\nCLIENTE: " + txtnombre.getText()
-                + "\nFECHA: " + "30-7-2020"
-                + "\n------------------------"
-                + "\n------------------------"
-                + "\nSUBTOTAL: " + monto
-                + "\nDESCUENTO: " + descuento
-                + "\nIVA: " + iva
-                + "\nOTROS CARGOS: " + cargos
-                + "\n--------------------------"
-                + "\nTOTAL: " + total
-                + "\n--------------------------"
-                + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
-                + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
-                + "\nFECHA 30/09/1987 DE DGTD");
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.10;
+            double total = (int) monto + iva - descuento;
+            
+            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD");
+            
         }
-
         
+        if (monto >= 100000) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.10;
+            double total = (int) monto + iva - descuento;
 
+            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD");
+            
+        }
+        else if (monto >= 500000) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.15;
+            double total = (int) monto + iva - descuento;
+            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD");
+        } else if (monto >= 1000000 && desc.equals("20%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.20;
+            double total = (int) monto + iva - descuento;
+            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD");
+        } else if (monto >= 1000000 && desc.equals("21%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.21;
+            double total = (int) monto + iva - descuento;
+            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD");
+        } else if (monto >= 1000000 && desc.equals("22%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.22;
+            double total = (int) monto + iva - descuento;
+            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD");
+        } else if (monto >= 1000000 && desc.equals("23%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.23;
+            double total = (int) monto + iva - descuento;
+            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD");
+        } else if (monto >= 1000000 && desc.equals("24%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.24;
+            double total = (int) monto + iva - descuento;
+            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD");
+        } else if (monto >= 1000000 && desc.equals("25%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.25;
+            double total = (int) monto + iva - descuento;
+            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD");
+        }
     }//GEN-LAST:event_btnImprimirActionPerformed
 
     private void btnmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenuActionPerformed
@@ -380,15 +637,617 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbdescActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Login_desc l = new Login_desc();
-       l.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btndescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndescActionPerformed
+       int monto=Integer.parseInt(txtsubtotal.getText());
+        if (monto < 1000000) {
+        JOptionPane.showMessageDialog(null, "Solo se puede realizar cambios de descuento a compras mayores a: ₡1.000.000 ");
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese un usuario Administrador para cambio de descuento");
+            Login_desc l = new Login_desc();
+            l.setVisible(true);
+        }
+    }//GEN-LAST:event_btndescActionPerformed
 
     private void lbcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbcerrarMouseClicked
         cmbdesc.setEnabled(false);
         lbcerrar.setVisible(false);
     }//GEN-LAST:event_lbcerrarMouseClicked
+
+    private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
+        lbcorreo.setVisible(true);
+        txtcorreo.setVisible(true);
+        btncorreo.setVisible(true);
+        
+        
+        
+    }//GEN-LAST:event_btn2ActionPerformed
+
+    private void btncorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncorreoActionPerformed
+       int monto = Integer.parseInt(txtsubtotal.getText());
+        String desc = cmbdesc.getSelectedItem().toString();
+       
+        
+        if (monto < 100000) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.10;
+            double total = (int) monto + iva - descuento;
+            
+            try {
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente = "ferrewakanda@gmail.com";
+            String passwordRemitente = "pantera+22";
+            String correoReceptor = txtcorreo.getText();
+            String asunto = "Factura electronica";
+            String mensaje = "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD";
+            
+           MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+            JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
+            
+
+        } catch (AddressException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+            
+        }
+        
+        
+        
+        
+        
+        
+        if (monto >= 100000) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.10;
+            double total = (int) monto + iva - descuento;
+
+          try {
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente = "ferrewakanda@gmail.com";
+            String passwordRemitente = "pantera+22";
+            String correoReceptor = txtcorreo.getText();
+            String asunto = "Factura electronica";
+            String mensaje = "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD";
+            
+           MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+            JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
+            
+
+        } catch (AddressException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+        }
+        else if (monto >= 500000) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.15;
+            double total = (int) monto + iva - descuento;
+      try {
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente = "ferrewakanda@gmail.com";
+            String passwordRemitente = "pantera+22";
+            String correoReceptor = txtcorreo.getText();
+            String asunto = "Factura electronica";
+            String mensaje = "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD";
+            
+           MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+            JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
+            
+
+        } catch (AddressException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+
+
+        } 
+        
+        
+        
+        
+        else if (monto >= 1000000 && desc.equals("20%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.20;
+            double total = (int) monto + iva - descuento;
+            try {
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente = "ferrewakanda@gmail.com";
+            String passwordRemitente = "pantera+22";
+            String correoReceptor = txtcorreo.getText();
+            String asunto = "Factura electronica";
+            String mensaje = "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD";
+            
+           MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+            JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
+            
+
+        } catch (AddressException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        } 
+        
+        
+        
+        
+        else if (monto >= 1000000 && desc.equals("21%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.21;
+            double total = (int) monto + iva - descuento;
+            try {
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente = "ferrewakanda@gmail.com";
+            String passwordRemitente = "pantera+22";
+            String correoReceptor = txtcorreo.getText();
+            String asunto = "Factura electronica";
+            String mensaje = "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD";
+            
+           MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+            JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
+            
+
+        } catch (AddressException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        }        
+        
+        }
+        
+        
+        
+        
+        else if (monto >= 1000000 && desc.equals("22%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.22;
+            double total = (int) monto + iva - descuento;
+            try {
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente = "ferrewakanda@gmail.com";
+            String passwordRemitente = "pantera+22";
+            String correoReceptor = txtcorreo.getText();
+            String asunto = "Factura electronica";
+            String mensaje = "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD";
+            
+           MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+            JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
+            
+
+        } catch (AddressException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        } 
+        
+        
+        
+        
+        else if (monto >= 1000000 && desc.equals("23%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.23;
+            double total = (int) monto + iva - descuento;
+            try {
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente = "ferrewakanda@gmail.com";
+            String passwordRemitente = "pantera+22";
+            String correoReceptor = txtcorreo.getText();
+            String asunto = "Factura electronica";
+            String mensaje = "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD";
+            
+           MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+            JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
+            
+
+        } catch (AddressException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        } 
+        
+        
+        
+        else if (monto >= 1000000 && desc.equals("24%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.24;
+            double total = (int) monto + iva - descuento;
+        try {
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente = "ferrewakanda@gmail.com";
+            String passwordRemitente = "pantera+22";
+            String correoReceptor = txtcorreo.getText();
+            String asunto = "Factura electronica";
+            String mensaje = "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD";
+            
+           MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+            JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
+            
+
+        } catch (AddressException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        } 
+        
+        
+        
+        
+        else if (monto >= 1000000 && desc.equals("25%")) {
+            double iva = (int) monto * 0.13;
+            double descuento = (int) monto * 0.25;
+            double total = (int) monto + iva - descuento;
+            try {
+            Properties props = new Properties();
+            props.setProperty("mail.smtp.host", "smtp.gmail.com");
+            props.setProperty("mail.smtp.starttls.enable", "true");
+            props.setProperty("mail.smtp.port", "587");
+            props.setProperty("mail.smtp.auth", "true");
+
+            Session session = Session.getDefaultInstance(props);
+
+            String correoRemitente = "ferrewakanda@gmail.com";
+            String passwordRemitente = "pantera+22";
+            String correoReceptor = txtcorreo.getText();
+            String asunto = "Factura electronica";
+            String mensaje = "FERRETERIA WAKANDA"
+                    + "\nCEDULA: 3101761963"
+                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nTELEFONO:(00 237)563-547"
+                    + "\n------------------------------"
+                    + "\n           CONTADO      "
+                    + "\n------------------------------"
+                    + "\nCLIENTE: " + txtnombre.getText()
+                    + "\nFECHA: " + txtfecha.getText()
+                    + "\n------------------------"
+                    + "\n------------------------"
+                    + "\nSUBTOTAL: " + monto
+                    + "\nDESCUENTO: " + descuento
+                    + "\nIVA: " + iva
+                    + "\n--------------------------"
+                    + "\nTOTAL: " + total
+                    + "\n--------------------------"
+                    + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
+                    + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
+                    + "\nFECHA 30/09/1987 DE DGTD";
+            
+           MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(correoRemitente));
+
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
+            message.setSubject(asunto);
+            message.setText(mensaje, "ISO-8859-1", "html");
+
+            Transport t = session.getTransport("smtp");
+            t.connect(correoRemitente, passwordRemitente);
+            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+            t.close();
+
+            JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
+            
+
+        } catch (AddressException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(Fac_electronic.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        }
+        
+    }//GEN-LAST:event_btncorreoActionPerformed
+
+    private void tbFacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbFacturaMouseClicked
+
+    }//GEN-LAST:event_tbFacturaMouseClicked
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -426,29 +1285,36 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn2;
     private javax.swing.JButton btnImprimir;
+    private javax.swing.JButton btncorreo;
+    private javax.swing.JButton btndesc;
     private javax.swing.JButton btnfacturar;
     private javax.swing.JButton btnmenu;
     public static javax.swing.JComboBox<String> cmbdesc;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JLabel lbcerrar;
+    private javax.swing.JLabel lbcorreo;
+    private javax.swing.JLabel lbdesc;
     private javax.swing.JLabel lbhora;
     private javax.swing.JLabel lbllogo;
     private javax.swing.JLabel lbllogo1;
     private javax.swing.JTable tbFactura;
-    private javax.swing.JTextField txtMonto;
+    private javax.swing.JTable tbproductos;
+    private javax.swing.JTextField txtcorreo;
+    private javax.swing.JTextField txtfecha;
     private javax.swing.JTextField txtnombre;
+    private javax.swing.JTextField txtsubtotal;
     public javax.swing.JTextField txtusuario;
     public javax.swing.JTextField txtusuario1;
     // End of variables declaration//GEN-END:variables

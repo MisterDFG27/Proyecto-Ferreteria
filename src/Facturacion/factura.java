@@ -513,8 +513,8 @@ txttotal.setVisible(false);
 
         try {
             int subtotal = Integer.parseInt(txtsubtotal.getText());
-            double iva = subtotal * 0.13, descuento = subtotal * 0.20;
-            int total = (int) (subtotal + iva - descuento);
+            double iva = subtotal * 0.13;
+            int total = (int) (subtotal + iva );
 
             p.setVisible(true);
 

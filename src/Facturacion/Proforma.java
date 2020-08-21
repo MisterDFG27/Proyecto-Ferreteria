@@ -51,7 +51,6 @@ public class Proforma extends javax.swing.JFrame  {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbfactura = new javax.swing.JTable();
-        jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         lbltotal = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
@@ -91,7 +90,7 @@ public class Proforma extends javax.swing.JFrame  {
 
         jLabel10.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N
         jLabel10.setText("IVA:                          13%");
-        impresion1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 480, -1, -1));
+        impresion1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 470, -1, -1));
 
         tbfactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,10 +117,6 @@ public class Proforma extends javax.swing.JFrame  {
         }
 
         impresion1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 770, 200));
-
-        jLabel12.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N
-        jLabel12.setText("Descuento:              20%");
-        impresion1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N
         jLabel13.setText("Total a pagar:");
@@ -248,7 +243,6 @@ public class Proforma extends javax.swing.JFrame  {
     public javax.swing.JPanel impresion1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;

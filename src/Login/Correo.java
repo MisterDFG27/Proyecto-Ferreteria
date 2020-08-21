@@ -160,7 +160,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
         lbllogo.setText("jLabel3");
-        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-370, 0, 1090, 240));
+        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-340, 0, 1090, 240));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 240));
 
