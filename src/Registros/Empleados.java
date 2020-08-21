@@ -66,14 +66,13 @@ public class Empleados extends javax.swing.JFrame {
         lblRequeridoAP2 = new javax.swing.JLabel();
         txtcontra = new javax.swing.JPasswordField();
         chVerContra = new javax.swing.JCheckBox();
-        btnmenu = new javax.swing.JPanel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnguardar1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -87,8 +86,10 @@ public class Empleados extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, -1));
 
         btnguardar.setBackground(new java.awt.Color(0, 0, 0));
-        btnguardar.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnguardar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnguardar.setText("Guardar");
+        btnguardar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnguardar.setContentAreaFilled(false);
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardarActionPerformed(evt);
@@ -133,26 +134,26 @@ public class Empleados extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel9.setText("Datos de Usuario");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setText("Usuario");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
 
         txtUsuario.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 110, -1));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 110, -1));
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setText("Contraseña");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setText("Tipo de usuario");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, -1));
 
         cmbTipoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cmbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Empleado" }));
-        jPanel1.add(cmbTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 110, -1));
+        jPanel1.add(cmbTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 270, 110, -1));
 
         jLabel13.setBackground(new java.awt.Color(153, 153, 153));
         jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
@@ -182,7 +183,7 @@ public class Empleados extends javax.swing.JFrame {
         lblRequeridoUsuario.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblRequeridoUsuario.setForeground(new java.awt.Color(204, 0, 0));
         lblRequeridoUsuario.setText("Requerido");
-        jPanel1.add(lblRequeridoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, -1, -1));
+        jPanel1.add(lblRequeridoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 150, -1, -1));
 
         lblRequeridoAP2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         lblRequeridoAP2.setForeground(new java.awt.Color(204, 0, 0));
@@ -203,22 +204,6 @@ public class Empleados extends javax.swing.JFrame {
         });
         jPanel1.add(chVerContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, -1, -1));
 
-        btnmenu.setBackground(new java.awt.Color(0, 0, 0));
-        btnmenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnmenuMouseClicked(evt);
-            }
-        });
-        btnmenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel14.setBackground(new java.awt.Color(67, 81, 141));
-        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Menú");
-        btnmenu.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 20));
-
-        jPanel1.add(btnmenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 590, 90, 40));
-
         jLabel15.setBackground(new java.awt.Color(255, 255, 255));
         jLabel15.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel15.setText("Bienvenido:");
@@ -231,18 +216,22 @@ public class Empleados extends javax.swing.JFrame {
         txtusuario.setEditable(false);
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 130, 30));
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setText("Generar");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton1.setContentAreaFilled(false);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 190, 70, 30));
 
         btnguardar1.setBackground(new java.awt.Color(0, 0, 0));
-        btnguardar1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        btnguardar1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnguardar1.setText("Lista empleados");
+        btnguardar1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnguardar1.setContentAreaFilled(false);
         btnguardar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardar1ActionPerformed(evt);
@@ -251,7 +240,18 @@ public class Empleados extends javax.swing.JFrame {
         jPanel1.add(btnguardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 160, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Empleados2.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 400, 460));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 400, 460));
+
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton2.setText("Menu");
+        jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton2.setContentAreaFilled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 590, 90, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 630));
 
@@ -359,15 +359,6 @@ public class Empleados extends javax.swing.JFrame {
 
     }//GEN-LAST:event_chVerContraActionPerformed
 
-    private void btnmenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnmenuMouseClicked
-        Menu.Menu_Principal m = new Menu.Menu_Principal();
-                m.setVisible(true);
-                dispose();
-
-                m.txtusuario.setText(txtusuario.getText());  
-        
-    }//GEN-LAST:event_btnmenuMouseClicked
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        contra();
    
@@ -377,6 +368,13 @@ public class Empleados extends javax.swing.JFrame {
        Listaempleados l = new Listaempleados();
        l.setVisible(true);
     }//GEN-LAST:event_btnguardar1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        Menu.Menu_Principal m = new Menu.Menu_Principal();
+        m.setVisible(true);
+        m.txtusuario.setText(txtusuario.getText());
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -414,16 +412,15 @@ public class Empleados extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnguardar;
     private javax.swing.JButton btnguardar1;
-    private javax.swing.JPanel btnmenu;
     private javax.swing.JCheckBox chVerContra;
     private javax.swing.JComboBox cmbTipoUsuario;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;

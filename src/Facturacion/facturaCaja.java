@@ -97,6 +97,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         txtusuario1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -206,6 +207,10 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
 
         txtusuario.setEditable(false);
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 130, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Facturacion/2c3fb9204179968ebd1e96b1e5026336.jpg"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-400, -10, 1230, 840));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 600));
 
@@ -360,6 +365,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnfacturar;
     private javax.swing.JButton btnmenu;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;

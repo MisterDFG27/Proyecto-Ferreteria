@@ -157,6 +157,7 @@ public class factura extends javax.swing.JFrame implements Printable {
         jLabel1 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         txttotal = new javax.swing.JTextField();
         txtcantm = new javax.swing.JTextField();
         txtresta = new javax.swing.JTextField();
@@ -242,7 +243,7 @@ public class factura extends javax.swing.JFrame implements Printable {
             tbimprimir1.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 710, 140));
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 710, 160));
 
         jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel17.setText("Nombre:");
@@ -274,18 +275,18 @@ public class factura extends javax.swing.JFrame implements Printable {
         jPanel2.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 100, -1));
 
         jLabel21.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Generacion de factura");
         jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 780, 10));
 
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
         jLabel22.setText("Datos Cliente:");
         jPanel2.add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
 
         jLabel23.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
         jLabel23.setText("Materiales:");
         jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
         jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 770, 20));
@@ -333,7 +334,7 @@ public class factura extends javax.swing.JFrame implements Printable {
         jPanel2.add(btneliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 610, 110, 30));
 
         jLabel27.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(153, 153, 153));
+        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
         jLabel27.setText("Factura:");
         jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
@@ -369,7 +370,16 @@ public class factura extends javax.swing.JFrame implements Printable {
         jButton3.setText("Menu");
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton3.setContentAreaFilled(false);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 670, 100, 40));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/05ba3e_a72d6582a14a4a84bd8254cc78f1b463_mv2.jpg"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-680, 0, 1450, 710));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 710));
 
@@ -472,10 +482,7 @@ public class factura extends javax.swing.JFrame implements Printable {
         txtresta.setVisible(false);
         txtcantm.setVisible(false);
         
-        /* Menu.Menu_Principal m = new Menu.Menu_Principal();
-        m.setVisible(true);
-        m.txtusuario.setText(txtusuario.getText());
-        dispose();*/
+        /* */
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btneliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminar2ActionPerformed
@@ -549,6 +556,13 @@ txttotal.setVisible(false);
         }
     }//GEN-LAST:event_tbimprimir1MouseClicked
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       Menu.Menu_Principal m = new Menu.Menu_Principal();
+        m.setVisible(true);
+        m.txtusuario.setText(txtusuario.getText());
+        dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -598,6 +612,7 @@ txttotal.setVisible(false);
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
