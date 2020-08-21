@@ -252,6 +252,7 @@ public class Productos extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
@@ -294,7 +295,7 @@ public class Productos extends javax.swing.JFrame {
                 txtVerAllMouseClicked(evt);
             }
         });
-        jPanel1.add(txtVerAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 90, -1, -1));
+        jPanel1.add(txtVerAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 90, -1, -1));
 
         btnTotalR.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnTotalR.setText("Monto total registrado");
@@ -322,7 +323,7 @@ public class Productos extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setText("Reporte productos");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, -1, 50));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, -1, 50));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel5.setText("Consultas");
@@ -412,14 +413,18 @@ public class Productos extends javax.swing.JFrame {
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 270, 410, 10));
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Bienvenido:");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, -1, -1));
 
         txtusuario.setEditable(false);
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 500, 120, 30));
 
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/{07B9E67E-F201-4068-8F87-079C3C29812D}.png.jpg"))); // NOI18N
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/232.jpg"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-70, -20, 1310, 1080));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -10, 1460, 1080));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 540));
 
@@ -518,6 +523,7 @@ public class Productos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;

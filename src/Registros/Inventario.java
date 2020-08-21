@@ -137,6 +137,7 @@ public class Inventario extends javax.swing.JFrame {
         txtid = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtcant = new javax.swing.JTextField();
 
@@ -145,10 +146,10 @@ public class Inventario extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 153, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPanel1.add(txtproovedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, 190, 30));
+        jPanel1.add(txtproovedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 190, 30));
 
         btMenu.setBackground(new java.awt.Color(102, 255, 204));
-        btMenu.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btMenu.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btMenu.setText("Menu");
         btMenu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         btMenu.setContentAreaFilled(false);
@@ -161,15 +162,15 @@ public class Inventario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jLabel1.setText("Inventario");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 160, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 120, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("ID:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 40, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 40, 40));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel6.setText("Cantidad:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 110, 30));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 160, 110, 30));
 
         jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setText("Agregar");
@@ -180,7 +181,7 @@ public class Inventario extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 390, 111, 44));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 360, 111, 44));
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton2.setText("Actualizar tabla");
@@ -191,17 +192,17 @@ public class Inventario extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 120, 44));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 120, 44));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setText("Precio:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 80, 40));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 80, 40));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel9.setText("Proovedor:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 270, 130, 40));
-        jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 320, 120, 30));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 260, 130, 40));
+        jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 120, 30));
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 210, 30));
 
         tbinventario.setModel(new javax.swing.table.DefaultTableModel(
@@ -245,7 +246,7 @@ public class Inventario extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 111, 44));
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 430, 111, 44));
 
         txtcantidad.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jPanel1.add(txtcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 90, 30));
@@ -259,7 +260,7 @@ public class Inventario extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 390, 110, 44));
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 360, 110, 44));
 
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel3.setText("Nombre:");
@@ -267,7 +268,7 @@ public class Inventario extends javax.swing.JFrame {
 
         txtid.setEditable(false);
         txtid.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, 50, 30));
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 50, 30));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -278,10 +279,13 @@ public class Inventario extends javax.swing.JFrame {
         txtusuario.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 130, 30));
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/{06EADC08-7ADB-4F6C-BB2C-CEE75453424B}.png.jpg"))); // NOI18N
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, -1, 60));
+
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Home-common-tools_iphone_750x1334.jpg"))); // NOI18N
         jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel7.setName(""); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -660, 500, 1400));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -620, 500, 1400));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, -1, 560));
 
@@ -399,6 +403,7 @@ public class Inventario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

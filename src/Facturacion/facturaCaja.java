@@ -91,6 +91,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         txtnombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         btnmenu = new javax.swing.JButton();
         lbhora = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -174,6 +175,9 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
             }
         });
         jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 110, 40));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.jpg"))); // NOI18N
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 290, 600));
 
@@ -372,6 +376,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

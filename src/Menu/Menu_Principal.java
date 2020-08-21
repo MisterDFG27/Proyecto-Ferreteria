@@ -21,6 +21,7 @@ public class Menu_Principal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -52,6 +53,9 @@ public class Menu_Principal extends javax.swing.JFrame {
         txtusuario.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         txtusuario.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 260, 50));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.jpg"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 207, -1, 130));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ferre3.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -290,6 +294,7 @@ public class Menu_Principal extends javax.swing.JFrame {
     public javax.swing.JMenu Reporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;

@@ -77,6 +77,7 @@ public class Login extends javax.swing.JFrame {
         txtusuario = new javax.swing.JTextField();
         btnrecuperar = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         lblogo1 = new javax.swing.JLabel();
 
@@ -125,10 +126,14 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(btnIngresar);
         btnIngresar.setBounds(290, 410, 140, 40);
 
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/{07B9E67E-F201-4068-8F87-079C3C29812D}.png.jpg"))); // NOI18N
+        jPanel2.add(jLabel4);
+        jLabel4.setBounds(500, 0, 220, 110);
+
         jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Profile.png"))); // NOI18N
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(480, 90, 60, 50);
+        jLabel3.setBounds(490, 110, 60, 50);
 
         lblogo1.setBackground(new java.awt.Color(255, 204, 153));
         lblogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ferre1.png"))); // NOI18N
@@ -214,6 +219,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel lblogo1;
     public javax.swing.JTextField txtusuario;
