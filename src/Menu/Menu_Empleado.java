@@ -3,11 +3,20 @@ package Menu;
 import Conexion.Conexión;
 import Facturacion.facturaCaja;
 import java.sql.Connection;
+import javax.swing.ImageIcon;
 
 public class Menu_Empleado extends javax.swing.JFrame {
 
     public Menu_Empleado() {
         initComponents();
+        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\descarga.png");
+        ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\exit.png");
+        ImageIcon icono2 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\ferre3.png");
+        ImageIcon icono3 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo2.jpg");
+        lbllogo.setIcon(icono);
+        lbllogo1.setIcon(icono1);
+        lbllogo2.setIcon(icono2);
+        lbllogo3.setIcon(icono3);
         setLocationRelativeTo(null);
 
     }
@@ -21,14 +30,14 @@ public class Menu_Empleado extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lbllogo3 = new javax.swing.JLabel();
+        lbllogo2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        Factura = new javax.swing.JMenu();
+        lbllogo = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
-        CerrarSesion = new javax.swing.JMenu();
+        lbllogo1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -46,13 +55,10 @@ public class Menu_Empleado extends javax.swing.JFrame {
         txtusuario.setBackground(new java.awt.Color(204, 51, 0));
         txtusuario.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 260, 50));
+        jPanel1.add(lbllogo3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, 230, 80));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/{06EADC08-7ADB-4F6C-BB2C-CEE75453424B}.png.jpg"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, -1, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ferre3.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, -1));
+        lbllogo2.setText("jLabel2");
+        jPanel1.add(lbllogo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 880, 340));
 
@@ -63,17 +69,16 @@ public class Menu_Empleado extends javax.swing.JFrame {
         jMenu1.setText("                                                                                                                                                                                               ");
         jMenuBar1.add(jMenu1);
 
-        Factura.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/descarga.png"))); // NOI18N
-        Factura.setText("Facturación   ");
-        Factura.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        Factura.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbllogo.setText("Facturación   ");
+        lbllogo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbllogo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                FacturaMouseClicked(evt);
+                lbllogoMouseClicked(evt);
             }
         });
-        Factura.addActionListener(new java.awt.event.ActionListener() {
+        lbllogo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FacturaActionPerformed(evt);
+                lbllogoActionPerformed(evt);
             }
         });
 
@@ -83,7 +88,7 @@ public class Menu_Empleado extends javax.swing.JFrame {
                 jMenuItem3ActionPerformed(evt);
             }
         });
-        Factura.add(jMenuItem3);
+        lbllogo.add(jMenuItem3);
 
         jMenuItem4.setText("Caja");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -91,39 +96,38 @@ public class Menu_Empleado extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        Factura.add(jMenuItem4);
+        lbllogo.add(jMenuItem4);
 
-        jMenuBar1.add(Factura);
+        jMenuBar1.add(lbllogo);
 
-        CerrarSesion.setForeground(new java.awt.Color(255, 51, 51));
-        CerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/exit.png"))); // NOI18N
-        CerrarSesion.setText("Cerrar Sesión");
-        CerrarSesion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        CerrarSesion.addMouseListener(new java.awt.event.MouseAdapter() {
+        lbllogo1.setForeground(new java.awt.Color(255, 51, 51));
+        lbllogo1.setText("Cerrar Sesión");
+        lbllogo1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        lbllogo1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                CerrarSesionMouseClicked(evt);
+                lbllogo1MouseClicked(evt);
             }
         });
-        jMenuBar1.add(CerrarSesion);
+        jMenuBar1.add(lbllogo1);
 
         setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FacturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturaMouseClicked
+    private void lbllogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbllogoMouseClicked
 
-    }//GEN-LAST:event_FacturaMouseClicked
+    }//GEN-LAST:event_lbllogoMouseClicked
 
-    private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
+    private void lbllogo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbllogo1MouseClicked
         Login.Login m = new Login.Login();
         m.setVisible(true);
         dispose();
-    }//GEN-LAST:event_CerrarSesionMouseClicked
+    }//GEN-LAST:event_lbllogo1MouseClicked
 
-    private void FacturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FacturaActionPerformed
+    private void lbllogoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbllogoActionPerformed
 
-    }//GEN-LAST:event_FacturaActionPerformed
+    }//GEN-LAST:event_lbllogoActionPerformed
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         Facturacion.factura e = new Facturacion.factura();
@@ -180,11 +184,7 @@ public class Menu_Empleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu CerrarSesion;
-    private javax.swing.JMenu Factura;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem3;
@@ -192,6 +192,10 @@ public class Menu_Empleado extends javax.swing.JFrame {
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPopupMenu jPopupMenu1;
+    private javax.swing.JMenu lbllogo;
+    private javax.swing.JMenu lbllogo1;
+    private javax.swing.JLabel lbllogo2;
+    private javax.swing.JLabel lbllogo3;
     public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
    Conexión cc = new Conexión();

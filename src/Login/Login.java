@@ -17,8 +17,10 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-          ImageIcon icono = new ImageIcon("C:\\Users\\Admin\\Documents\\NetBeansProjects\\Proyecto-Ferreteria\\src\\Imagenes\\ferre1.png");
-        lblogo1.setIcon(icono);
+        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\correo2.png");
+        ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\Profile.png");
+        lbllogo.setIcon(icono);
+        lbllogo1.setIcon(icono1);
 
         setLocationRelativeTo(null);
        
@@ -78,8 +80,8 @@ public class Login extends javax.swing.JFrame {
         btnrecuperar = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lblogo1 = new javax.swing.JLabel();
+        lbllogo1 = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 153, 51));
@@ -130,17 +132,15 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jLabel4);
         jLabel4.setBounds(500, 0, 220, 110);
 
-        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Profile.png"))); // NOI18N
-        jPanel2.add(jLabel3);
-        jLabel3.setBounds(490, 110, 60, 50);
+        lbllogo1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jPanel2.add(lbllogo1);
+        lbllogo1.setBounds(490, 110, 60, 50);
 
-        lblogo1.setBackground(new java.awt.Color(255, 204, 153));
-        lblogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ferre1.png"))); // NOI18N
-        lblogo1.setText("Fondo1");
-        lblogo1.setPreferredSize(new java.awt.Dimension(1600, 1568));
-        jPanel2.add(lblogo1);
-        lblogo1.setBounds(-80, 0, 820, 520);
+        lbllogo.setBackground(new java.awt.Color(255, 204, 153));
+        lbllogo.setText("Fondo1");
+        lbllogo.setPreferredSize(new java.awt.Dimension(1600, 1568));
+        jPanel2.add(lbllogo);
+        lbllogo.setBounds(-80, 0, 820, 520);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 530));
 
@@ -218,10 +218,10 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel btnrecuperar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JLabel lblogo1;
+    private javax.swing.JLabel lbllogo;
+    private javax.swing.JLabel lbllogo1;
     public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 

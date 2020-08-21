@@ -17,6 +17,7 @@ import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
 import java.awt.print.PrinterJob;
+import javax.swing.ImageIcon;
 
 public class factura extends javax.swing.JFrame implements Printable {
 
@@ -28,6 +29,8 @@ public class factura extends javax.swing.JFrame implements Printable {
 
     public factura() {
         initComponents();
+        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\fac1.jpg");
+        lbllogo.setIcon(icono);
         String principal[] = {"Codigo producto", "Descripción", "Cantidad", "Precio"};
         String datos[][] = {};
         modelo = new DefaultTableModel(datos, principal);
@@ -157,7 +160,7 @@ public class factura extends javax.swing.JFrame implements Printable {
         jLabel1 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
         txttotal = new javax.swing.JTextField();
         txtcantm = new javax.swing.JTextField();
         txtresta = new javax.swing.JTextField();
@@ -377,9 +380,8 @@ public class factura extends javax.swing.JFrame implements Printable {
         });
         jPanel2.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 670, 100, 40));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/05ba3e_a72d6582a14a4a84bd8254cc78f1b463_mv2.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-680, 0, 1450, 710));
+        lbllogo.setText("jLabel2");
+        jPanel2.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-680, 0, 1450, 710));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 710));
 
@@ -612,7 +614,6 @@ txttotal.setVisible(false);
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -626,6 +627,7 @@ txttotal.setVisible(false);
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JLabel lbllogo;
     private javax.swing.JTable tbimprimir1;
     private com.toedter.calendar.JDateChooser txtFecha;
     private javax.swing.JTextField txtapellido;

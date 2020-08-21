@@ -25,6 +25,7 @@ import javax.mail.internet.MimeMultipart;
 import javax.swing.JOptionPane;
 
 import java.sql.Statement;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -33,7 +34,9 @@ DefaultTableModel modelo = new DefaultTableModel();
     
     public Correo() {
         initComponents();
-          setLocationRelativeTo(null);
+        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\correo1.png");
+        lbllogo.setIcon(icono);
+        setLocationRelativeTo(null);
          
     }
     
@@ -84,7 +87,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         txtCorreo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -156,9 +159,8 @@ DefaultTableModel modelo = new DefaultTableModel();
         jLabel2.setText("Recuperación de usuario y contraseña");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ferre1_1.png"))); // NOI18N
-        jLabel3.setText("jLabel3");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(-370, 0, 1090, 240));
+        lbllogo.setText("jLabel3");
+        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-370, 0, 1090, 240));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 720, 240));
 
@@ -260,11 +262,11 @@ DefaultTableModel modelo = new DefaultTableModel();
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lbllogo;
     private javax.swing.JTable tbusu;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtpass;

@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +28,10 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
 
     public facturaCaja() {
         initComponents();
+        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\caja1.jpg");
+        ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo1.jpg");
+        lbllogo.setIcon(icono);
+        lbllogo1.setIcon(icono1);
         setLocationRelativeTo(null);
         mostrardatos("");
         hora1 = new Thread(this);
@@ -91,14 +96,14 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         txtnombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        lbllogo1 = new javax.swing.JLabel();
         btnmenu = new javax.swing.JButton();
         lbhora = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtusuario1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -176,8 +181,8 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         });
         jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 110, 40));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.jpg"))); // NOI18N
-        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
+        lbllogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.jpg"))); // NOI18N
+        jPanel2.add(lbllogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 290, 600));
 
@@ -212,9 +217,8 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         txtusuario.setEditable(false);
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 130, 30));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Facturacion/2c3fb9204179968ebd1e96b1e5026336.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-400, -10, 1230, 840));
+        lbllogo.setText("jLabel1");
+        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-400, -10, 1230, 840));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 600));
 
@@ -369,19 +373,19 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnfacturar;
     private javax.swing.JButton btnmenu;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbhora;
+    private javax.swing.JLabel lbllogo;
+    private javax.swing.JLabel lbllogo1;
     private javax.swing.JTable tbFactura;
     private javax.swing.JTextField txtMonto;
     private javax.swing.JTextField txtnombre;
