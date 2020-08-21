@@ -96,7 +96,6 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         txtnombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
-        lbllogo1 = new javax.swing.JLabel();
         btnmenu = new javax.swing.JButton();
         lbhora = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -104,6 +103,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         jLabel4 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
         lbllogo = new javax.swing.JLabel();
+        lbllogo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -111,6 +111,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         jPanel1.setBackground(new java.awt.Color(255, 153, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tbFactura.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tbFactura.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -181,9 +182,6 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         });
         jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 110, 40));
 
-        lbllogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.jpg"))); // NOI18N
-        jPanel2.add(lbllogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 380, -1, -1));
-
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 290, 600));
 
         btnmenu.setBackground(new java.awt.Color(0, 0, 0));
@@ -219,6 +217,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
 
         lbllogo.setText("jLabel1");
         jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-400, -10, 1230, 840));
+        jPanel1.add(lbllogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 240, 140));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 600));
 

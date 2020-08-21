@@ -14,8 +14,10 @@ public class Empleados extends javax.swing.JFrame {
 
     public Empleados() {
         initComponents();
-         ImageIcon icono = new ImageIcon("C:\\Users\\Admin\\Documents\\NetBeansProjects\\Proyecto-Ferreteria\\src\\Imagenes\\Empleados2.png");
-        jLabel4.setIcon(icono);
+        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\Empleados2.png");
+        lbllogo.setIcon(icono);
+        ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo3.jpg");
+        lbllogo1.setIcon(icono1);
         setLocationRelativeTo(null);
    
 
@@ -71,9 +73,9 @@ public class Empleados extends javax.swing.JFrame {
         txtusuario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnguardar1 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        lbllogo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -239,9 +241,7 @@ public class Empleados extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnguardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 160, 40));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Empleados2.png"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 400, 460));
+        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 400, 460));
 
         jButton2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jButton2.setText("Menu");
@@ -253,9 +253,7 @@ public class Empleados extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 590, 90, 40));
-
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/{07B9E67E-F201-4068-8F87-079C3C29812D}.png.jpg"))); // NOI18N
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(lbllogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 60));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 630));
 
@@ -429,8 +427,6 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -442,6 +438,8 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel lblRequeridoCedula;
     private javax.swing.JLabel lblRequeridoNombre;
     private javax.swing.JLabel lblRequeridoUsuario;
+    private javax.swing.JLabel lbllogo;
+    private javax.swing.JLabel lbllogo1;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtPrimerP;
     private javax.swing.JTextField txtSegundoP;

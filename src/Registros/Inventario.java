@@ -19,8 +19,11 @@ public class Inventario extends javax.swing.JFrame {
 
     public Inventario() {
         initComponents();
-        ImageIcon icono = new ImageIcon("C:\\Users\\Admin\\Documents\\NetBeansProjects\\Proyecto-Ferreteria\\src\\Imagenes\\inventario3.png");
-        jLabel7.setIcon(icono);
+        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\inventario1.jpg");
+        lbllogo.setIcon(icono);
+         ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo2.jpg");
+        lbllogo1.setIcon(icono1);
+        txtcant.setVisible(false);
         setLocationRelativeTo(null);
         mostrardatos("");
     }
@@ -137,8 +140,8 @@ public class Inventario extends javax.swing.JFrame {
         txtid = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        lbllogo1 = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
         txtcant = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -162,11 +165,11 @@ public class Inventario extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
         jLabel1.setText("Inventario");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 120, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 120, -1));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("ID:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 110, 40, 40));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, 40, 40));
 
         jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel6.setText("Cantidad:");
@@ -192,7 +195,7 @@ public class Inventario extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 420, 120, 44));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 120, 44));
 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setText("Precio:");
@@ -205,6 +208,7 @@ public class Inventario extends javax.swing.JFrame {
         jPanel1.add(txtprecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 120, 30));
         jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 210, 30));
 
+        tbinventario.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tbinventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -268,24 +272,27 @@ public class Inventario extends javax.swing.JFrame {
 
         txtid.setEditable(false);
         txtid.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, 50, 30));
+        txtid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtid, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 50, 30));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Bienvenido:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, -1, -1));
 
         txtusuario.setEditable(false);
         txtusuario.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 0, 130, 30));
+        jPanel1.add(lbllogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 490, 210, 60));
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/{06EADC08-7ADB-4F6C-BB2C-CEE75453424B}.png.jpg"))); // NOI18N
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 500, -1, 60));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Home-common-tools_iphone_750x1334.jpg"))); // NOI18N
-        jLabel7.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jLabel7.setName(""); // NOI18N
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -620, 500, 1400));
+        lbllogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lbllogo.setName(""); // NOI18N
+        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -640, 500, 1400));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 0, -1, 560));
 
@@ -342,6 +349,10 @@ public class Inventario extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         eliminar();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void txtidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -402,11 +413,11 @@ public class Inventario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbllogo;
+    private javax.swing.JLabel lbllogo1;
     private javax.swing.JTable tbinventario;
     private javax.swing.JTextField txtcant;
     private javax.swing.JSpinner txtcantidad;

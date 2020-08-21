@@ -15,8 +15,11 @@ public class Productos extends javax.swing.JFrame {
 
     public Productos() {
         initComponents();
-             ImageIcon icono = new ImageIcon("C:\\Users\\iamjorgecruz\\Desktop\\Proyecto-Ferreteria\\src\\Imagenes\\12.png");
-     jLabel4.setIcon(icono);
+        //232.jpg
+        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\232.jpg");
+        lbllogo.setIcon(icono);
+         ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo2.jpg");
+        lbllogo1.setIcon(icono1);
         setLocationRelativeTo(null);
         mostrardatos("");
         mostrarMontototal("");
@@ -252,8 +255,8 @@ public class Productos extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        lbllogo1 = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
 
@@ -264,6 +267,7 @@ public class Productos extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tbDatos.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         tbDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -419,12 +423,8 @@ public class Productos extends javax.swing.JFrame {
 
         txtusuario.setEditable(false);
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 500, 120, 30));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/{07B9E67E-F201-4068-8F87-079C3C29812D}.png.jpg"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/232.jpg"))); // NOI18N
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -10, 1460, 1080));
+        jPanel1.add(lbllogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 230, 80));
+        jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -10, 1460, 1080));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 540));
 
@@ -521,9 +521,7 @@ public class Productos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
@@ -531,6 +529,8 @@ public class Productos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JLabel lbllogo;
+    private javax.swing.JLabel lbllogo1;
     private javax.swing.JTable tbDatos;
     private javax.swing.JTable tbMontoR;
     private javax.swing.JLabel txtVerAll;

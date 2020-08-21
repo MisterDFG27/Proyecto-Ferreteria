@@ -173,8 +173,6 @@ public class Proforma extends javax.swing.JFrame  {
         lblhora.setBounds(70, 40, 100, 15);
 
         impresion1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 190, 70));
-
-        lbllogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/1.jpg"))); // NOI18N
         impresion1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 110));
 
         jLabel8.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N

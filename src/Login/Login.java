@@ -100,7 +100,7 @@ public class Login extends javax.swing.JFrame {
         jPanel2.add(jLabel2);
         jLabel2.setBounds(450, 280, 130, 28);
         jPanel2.add(PwClave);
-        PwClave.setBounds(440, 320, 150, 30);
+        PwClave.setBounds(430, 320, 150, 30);
         jPanel2.add(txtusuario);
         txtusuario.setBounds(440, 210, 150, 30);
 
@@ -127,8 +127,6 @@ public class Login extends javax.swing.JFrame {
         });
         jPanel2.add(btnIngresar);
         btnIngresar.setBounds(290, 410, 140, 40);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/{07B9E67E-F201-4068-8F87-079C3C29812D}.png.jpg"))); // NOI18N
         jPanel2.add(jLabel4);
         jLabel4.setBounds(500, 0, 220, 110);
 
@@ -140,9 +138,9 @@ public class Login extends javax.swing.JFrame {
         lbllogo.setText("Fondo1");
         lbllogo.setPreferredSize(new java.awt.Dimension(1600, 1568));
         jPanel2.add(lbllogo);
-        lbllogo.setBounds(-80, 0, 820, 520);
+        lbllogo.setBounds(-70, 0, 820, 520);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 530));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 520));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,7 +168,7 @@ public class Login extends javax.swing.JFrame {
 
                 //Cargamos el Driver MySQL
                 Class.forName("com.mysql.jdbc.Driver");
-                conect = DriverManager.getConnection("jdbc:mysql://localhost/ferreteriabd", "root", "");
+                conect = DriverManager.getConnection("jdbc:mysql://localhost:3308/ferreteriabd", "root", "");
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error " + e);
