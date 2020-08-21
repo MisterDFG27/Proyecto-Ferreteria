@@ -164,26 +164,33 @@ public class factura extends javax.swing.JFrame implements Printable {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 153, 0));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel13.setText("Materiales:");
         jPanel2.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 220, -1, -1));
 
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel14.setText("Vendedor(a):");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 150, -1, -1));
 
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel15.setText("Subtotal:");
         jPanel2.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 540, -1, -1));
-        jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 70, 100, -1));
+
+        txtnombre.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 100, -1));
 
         txtvendedor.setEditable(false);
-        jPanel2.add(txtvendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 110, 30));
+        txtvendedor.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jPanel2.add(txtvendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 110, 30));
 
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel16.setText("Cantidad:");
         jPanel2.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 280, -1, -1));
 
-        btnfacturar1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnfacturar1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnfacturar1.setText("FACTURAR");
         btnfacturar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +199,7 @@ public class factura extends javax.swing.JFrame implements Printable {
         });
         jPanel2.add(btnfacturar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 610, 110, 30));
 
-        btneliminar1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btneliminar1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btneliminar1.setText("Cargar Proforma");
         btneliminar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,9 +251,11 @@ public class factura extends javax.swing.JFrame implements Printable {
 
         jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 710, 140));
 
+        jLabel17.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel17.setText("Nombre:");
         jPanel2.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, -1, -1));
 
+        jLabel18.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel18.setText("Fecha:");
         jPanel2.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 150, -1, -1));
 
@@ -254,22 +263,27 @@ public class factura extends javax.swing.JFrame implements Printable {
         txtFecha.setDateFormatString("yyyy-MM-dd");
         txtFecha.setMaxSelectableDate(new java.util.Date(253370790110000L));
         txtFecha.setMinSelectableDate(new java.util.Date(-62135744290000L));
-        jPanel2.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, 140, 30));
+        jPanel2.add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 140, 30));
 
+        jLabel19.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel19.setText("Apellido:");
         jPanel2.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, -1));
 
+        txtapellido.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         txtapellido.setToolTipText("");
-        jPanel2.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 100, -1));
+        jPanel2.add(txtapellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 100, -1));
 
+        jLabel20.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel20.setText("Cedula:");
         jPanel2.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
-        jPanel2.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 70, 100, -1));
+
+        txtcedula.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jPanel2.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 100, -1));
 
         jLabel21.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(51, 51, 51));
         jLabel21.setText("Generacion de factura");
-        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, -1, -1));
+        jPanel2.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
         jPanel2.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 780, 10));
 
         jLabel22.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -283,40 +297,50 @@ public class factura extends javax.swing.JFrame implements Printable {
         jPanel2.add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
         jPanel2.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 770, 20));
 
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton1.setText("Lista de materiales");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 140, 30));
-        jPanel2.add(txtprodp, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 160, 30));
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, 150, 30));
 
+        txtprodp.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jPanel2.add(txtprodp, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 160, 30));
+
+        jLabel25.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel25.setText("Cod. producto:");
         jPanel2.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
-        jPanel2.add(txtcodp, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, 70, 30));
 
+        txtcodp.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jPanel2.add(txtcodp, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 270, 70, 30));
+
+        jLabel26.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel26.setText("Precio:");
         jPanel2.add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, -1, -1));
+
+        txtpreciop.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jPanel2.add(txtpreciop, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, 110, 30));
 
         txtcantidad.setModel(new javax.swing.SpinnerNumberModel(1, null, null, 1));
         jPanel2.add(txtcantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 270, 40, 30));
 
-        btneliminar2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btneliminar2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btneliminar2.setText("ELIMINAR");
         btneliminar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btneliminar2ActionPerformed(evt);
             }
         });
-        jPanel2.add(btneliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 610, 100, 30));
+        jPanel2.add(btneliminar2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 610, 110, 30));
 
         jLabel27.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(153, 153, 153));
         jLabel27.setText("Factura:");
         jPanel2.add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
+        jButton2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jButton2.setText("Cargar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,7 +352,7 @@ public class factura extends javax.swing.JFrame implements Printable {
         txtsubtotal.setEditable(false);
         txtsubtotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         txtsubtotal.setText("0");
-        jPanel2.add(txtsubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 530, 130, 40));
+        jPanel2.add(txtsubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, 130, 40));
 
         txtusuario.setEditable(false);
         jPanel2.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 680, 130, 30));
@@ -338,6 +362,7 @@ public class factura extends javax.swing.JFrame implements Printable {
         jLabel1.setText("Bienvenido:");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, -1, -1));
 
+        jLabel28.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         jLabel28.setText("Producto:");
         jPanel2.add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 280, -1, -1));
 

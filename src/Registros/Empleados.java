@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.Locale;
 import java.util.UUID;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Empleados extends javax.swing.JFrame {
@@ -13,6 +14,8 @@ public class Empleados extends javax.swing.JFrame {
 
     public Empleados() {
         initComponents();
+         ImageIcon icono = new ImageIcon("C:\\Users\\Admin\\Documents\\NetBeansProjects\\Proyecto-Ferreteria\\src\\Imagenes\\Empleados2.png");
+        jLabel4.setIcon(icono);
         setLocationRelativeTo(null);
    
 
@@ -70,6 +73,7 @@ public class Empleados extends javax.swing.JFrame {
         txtusuario = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         btnguardar1 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,111 +82,113 @@ public class Empleados extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel1.setText("Registro de empleados");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, -1));
 
         btnguardar.setBackground(new java.awt.Color(0, 0, 0));
-        btnguardar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnguardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnguardar.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnguardar.setText("Guardar");
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 160, 40));
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 260, 145, -1));
+        jPanel1.add(btnguardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, 160, 40));
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 220, 145, -1));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("Nombre");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 230, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel3.setText("Cédula");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, -1, -1));
-        jPanel1.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 145, -1));
-        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 450, 141, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 120, -1, -1));
+        jPanel1.add(txtcedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 150, 145, -1));
+        jPanel1.add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 460, 141, -1));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setText("Primer Apellido");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 290, -1, -1));
-        jPanel1.add(txtPrimerP, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, 145, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
+        jPanel1.add(txtPrimerP, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 145, -1));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel6.setText("Correo electrónico");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 430, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel8.setText("Segundo Apellido");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
-        jPanel1.add(txtSegundoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 380, 145, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
+        jPanel1.add(txtSegundoP, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 380, 145, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel9.setText("Datos de Usuario");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 60, -1, -1));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel10.setText("Usuario");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 180, -1, -1));
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 180, 110, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, -1, -1));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 110, -1));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel11.setText("Contraseña");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 230, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel12.setText("Tipo de usuario");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 330, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
 
+        cmbTipoUsuario.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         cmbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Administrador", "Empleado" }));
-        jPanel1.add(cmbTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 330, 110, -1));
+        jPanel1.add(cmbTipoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 310, 110, -1));
 
         jLabel13.setBackground(new java.awt.Color(153, 153, 153));
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel13.setText("Datos Personales");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, -1, -1));
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, -1, -1));
 
-        lblRequeridoCedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoCedula.setForeground(new java.awt.Color(255, 51, 51));
+        lblRequeridoCedula.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblRequeridoCedula.setForeground(new java.awt.Color(204, 0, 0));
         lblRequeridoCedula.setText("Requerido");
-        jPanel1.add(lblRequeridoCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+        jPanel1.add(lblRequeridoCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
 
-        lblRequeridoNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoNombre.setForeground(new java.awt.Color(255, 51, 51));
+        lblRequeridoNombre.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblRequeridoNombre.setForeground(new java.awt.Color(204, 0, 0));
         lblRequeridoNombre.setText("Requerido");
-        jPanel1.add(lblRequeridoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, -1, -1));
+        jPanel1.add(lblRequeridoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
 
-        lblRequeridoAP1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoAP1.setForeground(new java.awt.Color(255, 51, 51));
+        lblRequeridoAP1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblRequeridoAP1.setForeground(new java.awt.Color(204, 0, 0));
         lblRequeridoAP1.setText("Requerido");
-        jPanel1.add(lblRequeridoAP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, -1, -1));
+        jPanel1.add(lblRequeridoAP1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, -1, -1));
 
-        lblRequeridoCE.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoCE.setForeground(new java.awt.Color(255, 51, 51));
+        lblRequeridoCE.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblRequeridoCE.setForeground(new java.awt.Color(204, 0, 0));
         lblRequeridoCE.setText("Requerido");
-        jPanel1.add(lblRequeridoCE, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, -1));
+        jPanel1.add(lblRequeridoCE, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, -1, -1));
 
-        lblRequeridoUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoUsuario.setForeground(new java.awt.Color(255, 51, 51));
+        lblRequeridoUsuario.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblRequeridoUsuario.setForeground(new java.awt.Color(204, 0, 0));
         lblRequeridoUsuario.setText("Requerido");
-        jPanel1.add(lblRequeridoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 180, -1, -1));
+        jPanel1.add(lblRequeridoUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, -1, -1));
 
-        lblRequeridoAP2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblRequeridoAP2.setForeground(new java.awt.Color(255, 51, 51));
+        lblRequeridoAP2.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lblRequeridoAP2.setForeground(new java.awt.Color(204, 0, 0));
         lblRequeridoAP2.setText("Requerido");
         jPanel1.add(lblRequeridoAP2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, -1, -1));
 
         txtcontra.setEditable(false);
-        jPanel1.add(txtcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 110, -1));
+        jPanel1.add(txtcontra, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 190, 110, -1));
 
+        chVerContra.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         chVerContra.setText("Ver contraseña");
+        chVerContra.setContentAreaFilled(false);
         chVerContra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 chVerContraActionPerformed(evt);
             }
         });
-        jPanel1.add(chVerContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 260, 130, -1));
+        jPanel1.add(chVerContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 220, -1, -1));
 
         btnmenu.setBackground(new java.awt.Color(0, 0, 0));
         btnmenu.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -193,7 +199,7 @@ public class Empleados extends javax.swing.JFrame {
         btnmenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel14.setBackground(new java.awt.Color(67, 81, 141));
-        jLabel14.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Menú");
         btnmenu.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 50, 20));
@@ -212,24 +218,27 @@ public class Empleados extends javax.swing.JFrame {
         txtusuario.setEditable(false);
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 600, 130, 30));
 
+        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jButton1.setText("Generar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 230, -1, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 190, -1, -1));
 
         btnguardar1.setBackground(new java.awt.Color(0, 0, 0));
-        btnguardar1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btnguardar1.setForeground(new java.awt.Color(255, 255, 255));
+        btnguardar1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         btnguardar1.setText("Lista empleados");
         btnguardar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnguardar1ActionPerformed(evt);
             }
         });
-        jPanel1.add(btnguardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 480, 160, 40));
+        jPanel1.add(btnguardar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 460, 160, 40));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Empleados2.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 60, 410, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 630));
 
@@ -406,6 +415,7 @@ public class Empleados extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

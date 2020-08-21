@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 public class Productos extends javax.swing.JFrame {
@@ -14,6 +15,8 @@ public class Productos extends javax.swing.JFrame {
 
     public Productos() {
         initComponents();
+             ImageIcon icono = new ImageIcon("C:\\Users\\iamjorgecruz\\Desktop\\Proyecto-Ferreteria\\src\\Imagenes\\12.png");
+     jLabel4.setIcon(icono);
         setLocationRelativeTo(null);
         mostrardatos("");
         mostrarMontototal("");
@@ -249,13 +252,14 @@ public class Productos extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
 
         jLabel3.setText("jLabel3");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 51));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -281,25 +285,25 @@ public class Productos extends javax.swing.JFrame {
         tbDatos.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tbDatos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 800, 140));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 800, 140));
 
-        txtVerAll.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtVerAll.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         txtVerAll.setText("Ver todos los registros facturados");
         txtVerAll.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtVerAllMouseClicked(evt);
             }
         });
-        jPanel1.add(txtVerAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 100, -1, -1));
+        jPanel1.add(txtVerAll, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
-        btnTotalR.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnTotalR.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnTotalR.setText("Monto total registrado");
         btnTotalR.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnTotalRMouseClicked(evt);
             }
         });
-        jPanel1.add(btnTotalR, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 290, -1, -1));
+        jPanel1.add(btnTotalR, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 390, -1, -1));
 
         tbMontoR.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -314,25 +318,25 @@ public class Productos extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tbMontoR);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 330, 170, 50));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 170, 50));
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel11.setText("Reporte productos");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 0, -1, 50));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setText("Consultas");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 30, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel9.setText("Fecha Unica");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 150, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 150, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel8.setText("Fecha Final");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 350, -1, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 350, -1, -1));
 
-        btnFiltrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnFiltrar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnFiltrar.setText("Filtrar por 1 fecha");
         btnFiltrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -341,14 +345,14 @@ public class Productos extends javax.swing.JFrame {
         });
         jPanel1.add(btnFiltrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 110, -1, -1));
 
-        btnFitrar2Fechas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnFitrar2Fechas.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnFitrar2Fechas.setText("Filtrar por 2 fechas");
         btnFitrar2Fechas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnFitrar2FechasMouseClicked(evt);
             }
         });
-        jPanel1.add(btnFitrar2Fechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 300, -1, 20));
+        jPanel1.add(btnFitrar2Fechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 300, -1, 20));
 
         btnmenu1.setBackground(new java.awt.Color(0, 0, 0));
         btnmenu1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -366,51 +370,54 @@ public class Productos extends javax.swing.JFrame {
 
         jPanel1.add(btnmenu1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1150, 500, 90, 40));
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 1, 20)); // NOI18N
         jLabel10.setText("Fecha Inicial");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 350, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 350, -1, -1));
 
         dateunica.setDateFormatString("yyyy-MM-dd");
         jPanel1.add(dateunica, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 150, 100, 30));
 
         dateinicial.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(dateinicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 380, 110, 30));
+        jPanel1.add(dateinicial, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 380, 110, 30));
 
         datefinal.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(datefinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 380, 110, 30));
+        jPanel1.add(datefinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(1120, 380, 110, 30));
 
         jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jPanel1.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, 20, 530));
 
         btnfiltrofechas.setBackground(new java.awt.Color(0, 0, 0));
         btnfiltrofechas.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnfiltrofechas.setForeground(new java.awt.Color(255, 255, 255));
+        btnfiltrofechas.setForeground(new java.awt.Color(51, 0, 51));
         btnfiltrofechas.setText("Filtrar");
         btnfiltrofechas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnfiltrofechasActionPerformed(evt);
             }
         });
-        jPanel1.add(btnfiltrofechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 430, 80, 30));
+        jPanel1.add(btnfiltrofechas, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 440, 80, 30));
 
         btnfiltrodia.setBackground(new java.awt.Color(0, 0, 0));
         btnfiltrodia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnfiltrodia.setForeground(new java.awt.Color(255, 255, 255));
+        btnfiltrodia.setForeground(new java.awt.Color(51, 0, 51));
         btnfiltrodia.setText("Filtrar");
         btnfiltrodia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnfiltrodiaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnfiltrodia, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 200, 80, 30));
+        jPanel1.add(btnfiltrodia, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 200, 80, 30));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 270, 410, 10));
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setText("Bienvenido:");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, -1, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 500, -1, -1));
 
         txtusuario.setEditable(false);
-        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 120, 30));
+        jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 500, 120, 30));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/12.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(228, 260, 810, 290));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1240, 540));
 
@@ -507,6 +514,7 @@ public class Productos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

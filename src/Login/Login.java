@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 public class Login extends javax.swing.JFrame {
@@ -16,6 +17,9 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
+          ImageIcon icono = new ImageIcon("C:\\Users\\Admin\\Documents\\NetBeansProjects\\Proyecto-Ferreteria\\src\\Imagenes\\ferre1.png");
+        lblogo1.setIcon(icono);
+
         setLocationRelativeTo(null);
        
     }
@@ -74,28 +78,30 @@ public class Login extends javax.swing.JFrame {
         btnrecuperar = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        lblogo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 153, 51));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(255, 153, 51));
         jPanel2.setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setText("Usuario");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(200, 140, 59, 22);
+        jLabel1.setBounds(470, 150, 100, 30);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("Contraseña");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(180, 230, 88, 22);
+        jLabel2.setBounds(450, 280, 130, 28);
         jPanel2.add(PwClave);
-        PwClave.setBounds(160, 270, 136, 20);
+        PwClave.setBounds(440, 340, 150, 30);
         jPanel2.add(txtusuario);
-        txtusuario.setBounds(160, 170, 136, 20);
+        txtusuario.setBounds(440, 200, 150, 30);
 
-        btnrecuperar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btnrecuperar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnrecuperar.setText("Recuperación de contraseña");
         btnrecuperar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -103,26 +109,35 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnrecuperar);
-        btnrecuperar.setBounds(254, 522, 220, 22);
+        btnrecuperar.setBounds(560, 490, 172, 17);
 
         btnIngresar.setBackground(new java.awt.Color(0, 0, 0));
-        btnIngresar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
+        btnIngresar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnIngresar.setText("Ingresar");
+        btnIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnIngresar.setContentAreaFilled(false);
+        btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIngresarActionPerformed(evt);
             }
         });
         jPanel2.add(btnIngresar);
-        btnIngresar.setBounds(140, 340, 179, 45);
+        btnIngresar.setBounds(300, 420, 120, 40);
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("Inicio de sesión");
+        jLabel3.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel3.setText("  Inicio de sesión");
         jPanel2.add(jLabel3);
-        jLabel3.setBounds(160, 70, 160, 50);
+        jLabel3.setBounds(470, 40, 270, 50);
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 550));
+        lblogo1.setBackground(new java.awt.Color(255, 204, 153));
+        lblogo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ferre1.png"))); // NOI18N
+        lblogo1.setText("Fondo1");
+        lblogo1.setPreferredSize(new java.awt.Dimension(1600, 1568));
+        jPanel2.add(lblogo1);
+        lblogo1.setBounds(-80, 0, 820, 520);
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 770, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -150,7 +165,7 @@ public class Login extends javax.swing.JFrame {
 
                 //Cargamos el Driver MySQL
                 Class.forName("com.mysql.jdbc.Driver");
-                conect = DriverManager.getConnection("jdbc:mysql://localhost:3308/ferreteriabd", "root", "");
+                conect = DriverManager.getConnection("jdbc:mysql://localhost/ferreteriabd", "root", "");
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error " + e);
@@ -200,6 +215,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblogo1;
     public javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 

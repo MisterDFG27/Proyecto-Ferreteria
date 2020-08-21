@@ -101,7 +101,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(255, 153, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tbFactura.setModel(new javax.swing.table.DefaultTableModel(
@@ -118,35 +118,36 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         tbFactura.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tbFactura);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 780, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 780, 260));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
         jLabel2.setText("Bienvenido:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 680, -1, -1));
 
+        btnfacturar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         btnfacturar.setText("Facturar");
         btnfacturar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnfacturarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnfacturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 370, -1));
+        jPanel1.add(btnfacturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 370, -1));
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabel12.setText("CAJA");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setForeground(new java.awt.Color(0, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Monto");
         jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Cliente");
         jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
@@ -154,20 +155,21 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 90, -1));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Factura");
         jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
+        btnImprimir.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnImprimir.setText("Imprimir");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnImprimirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 350, -1, -1));
+        jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 330, -1, -1));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, -10, 290, 670));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 290, 600));
 
         btnmenu.setBackground(new java.awt.Color(0, 0, 0));
         btnmenu.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -182,7 +184,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
 
         lbhora.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         lbhora.setText("jLabel1");
-        jPanel1.add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 130, 40));
+        jPanel1.add(lbhora, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 130, 40));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
