@@ -32,7 +32,10 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo1.jpg");
         lbllogo.setIcon(icono);
         lbllogo1.setIcon(icono1);
+        lbhora.setVisible(false);
         setLocationRelativeTo(null);
+        cmbdesc.setEnabled(false);
+        lbcerrar.setVisible(false);
         mostrardatos("");
         hora1 = new Thread(this);
         hora1.start();
@@ -96,14 +99,18 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         txtnombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         btnImprimir = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        cmbdesc = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        lbcerrar = new javax.swing.JLabel();
         btnmenu = new javax.swing.JButton();
         lbhora = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtusuario1 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtusuario = new javax.swing.JTextField();
-        lbllogo = new javax.swing.JLabel();
         lbllogo1 = new javax.swing.JLabel();
+        lbllogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -126,7 +133,7 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         tbFactura.setGridColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tbFactura);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 780, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 780, 280));
 
         jLabel2.setBackground(new java.awt.Color(255, 255, 255));
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 18)); // NOI18N
@@ -142,33 +149,33 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
                 btnfacturarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnfacturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 370, -1));
+        jPanel1.add(btnfacturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 360, 370, -1));
 
-        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel12.setText("CAJA");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 20, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 51));
         jPanel2.setForeground(new java.awt.Color(0, 153, 153));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Monto");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+        jLabel7.setText("Descuento");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Cliente");
-        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
-        jPanel2.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 220, 90, -1));
-        jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 90, -1));
+        jPanel2.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, -1, -1));
+        jPanel2.add(txtMonto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 120, -1));
+        jPanel2.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 130, -1));
 
         jLabel11.setBackground(new java.awt.Color(255, 255, 255));
         jLabel11.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Factura");
-        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+        jPanel2.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
         btnImprimir.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         btnImprimir.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,9 +187,45 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
                 btnImprimirActionPerformed(evt);
             }
         });
-        jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 110, 40));
+        jPanel2.add(btnImprimir, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 110, 40));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 290, 600));
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Subtotal");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
+
+        cmbdesc.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        cmbdesc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "19%", "20%", "21%", "22%", "23%", "24%", "25%" }));
+        cmbdesc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbdescActionPerformed(evt);
+            }
+        });
+        jPanel2.add(cmbdesc, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, -1, -1));
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Cambiar");
+        jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 90, 40));
+
+        lbcerrar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        lbcerrar.setForeground(new java.awt.Color(255, 51, 51));
+        lbcerrar.setText("Cerrar sesión");
+        lbcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lbcerrarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(lbcerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 280, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 0, 290, 600));
 
         btnmenu.setBackground(new java.awt.Color(0, 0, 0));
         btnmenu.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
@@ -214,10 +257,10 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
 
         txtusuario.setEditable(false);
         jPanel1.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 560, 130, 30));
+        jPanel1.add(lbllogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 420, 210, 110));
 
         lbllogo.setText("jLabel1");
         jPanel1.add(lbllogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-400, -10, 1230, 840));
-        jPanel1.add(lbllogo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 240, 140));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 600));
 
@@ -333,6 +376,20 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
         dispose();
     }//GEN-LAST:event_btnmenuActionPerformed
 
+    private void cmbdescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbdescActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbdescActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+       Login_desc l = new Login_desc();
+       l.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void lbcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbcerrarMouseClicked
+        cmbdesc.setEnabled(false);
+        lbcerrar.setVisible(false);
+    }//GEN-LAST:event_lbcerrarMouseClicked
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -372,6 +429,8 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
     private javax.swing.JButton btnImprimir;
     private javax.swing.JButton btnfacturar;
     private javax.swing.JButton btnmenu;
+    public static javax.swing.JComboBox<String> cmbdesc;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
@@ -379,9 +438,11 @@ public class facturaCaja extends javax.swing.JFrame implements Runnable {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    public static javax.swing.JLabel lbcerrar;
     private javax.swing.JLabel lbhora;
     private javax.swing.JLabel lbllogo;
     private javax.swing.JLabel lbllogo1;
