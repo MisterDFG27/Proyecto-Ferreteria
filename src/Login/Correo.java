@@ -180,8 +180,8 @@ DefaultTableModel modelo = new DefaultTableModel();
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@blackmail.com";
-            String passwordRemitente = "guapiles123";
+            String correoRemitente = "laferrebaratilla2020@gmail.com";
+            String passwordRemitente = "queso1234";
             String correoReceptor = txtCorreo.getText();
             String asunto = "Recuperación de usuario y contraseña";
             String mensaje = "Su Usuario es: "+txtusu.getText() + "  // Su Contraseña es: "+txtpass.getText();

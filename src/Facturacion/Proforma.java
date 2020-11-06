@@ -144,7 +144,6 @@ public class Proforma extends javax.swing.JFrame  {
         impresion1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 440, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.setLayout(null);
 
         jLabel11.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N
@@ -175,7 +174,7 @@ public class Proforma extends javax.swing.JFrame  {
         impresion1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, -1, -1));
 
         jLabel14.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N
-        jLabel14.setText("Dirección: Africa, Wakanda 50mts, norte de la torre del rey");
+        jLabel14.setText("Dirección:Guápiles, edificio antiguo bar el Viajero.");
         impresion1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, -1, -1));
 
         jLabel16.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N
@@ -183,11 +182,11 @@ public class Proforma extends javax.swing.JFrame  {
         impresion1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, -1, -1));
 
         jLabel17.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N
-        jLabel17.setText("Email: ferrewakanda@blackmail.com");
+        jLabel17.setText("Email: farmabara@gmail.com");
         impresion1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, -1, -1));
 
         jLabel19.setFont(new java.awt.Font("Bookman Old Style", 0, 12)); // NOI18N
-        jLabel19.setText("Ferreteria Wakanda");
+        jLabel19.setText("Farmacia La Barata");
         impresion1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -626,6 +626,7 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
     private void btnmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmenuActionPerformed
         Menu.Menu_Principal m = new Menu.Menu_Principal();
         m.setVisible(true);
+         m.txtusuario.setText(txtusuario.getText());
         dispose();
     }//GEN-LAST:event_btnmenuActionPerformed
 

@@ -35,7 +35,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     
     public Fac_electronic() {
         initComponents();
-        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\correo1.png");
+        ImageIcon icono = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\img4.jpg");
         lbllogo.setIcon(icono);
         setLocationRelativeTo(null);
          
@@ -183,9 +183,9 @@ DefaultTableModel modelo = new DefaultTableModel();
     }//GEN-LAST:event_tbusuKeyPressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       Login_desc l = new Login_desc();
-       l.setVisible(true);
-      dispose();
+//       Login_desc l = new Login_desc();
+//       l.setVisible(true);
+//      dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
     
     /**

@@ -17,8 +17,8 @@ public class Login extends javax.swing.JFrame {
 
     public Login() {
         initComponents();
-        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\correo2.png");
-        ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\Profile.png");
+        ImageIcon icono = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\ima1.jpg");
+        ImageIcon icono1 = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\");
         lbllogo.setIcon(icono);
         lbllogo1.setIcon(icono1);
 
@@ -46,11 +46,11 @@ public class Login extends javax.swing.JFrame {
 
                 
             } else if (cap.equals("Empleado")) {
-                Menu.Menu_Empleado m = new Menu.Menu_Empleado();
-                m.setVisible(true);
-                dispose();
+               // Menu.Menu_Empleado m = new Menu.Menu_Empleado();
+              //  m.setVisible(true);
+                //dispose();
   
-                m.txtusuario.setText(nom+" "+ape);
+                //m.txtusuario.setText(nom+" "+ape);
 
               
             } else if (timer == 2) {
@@ -93,16 +93,16 @@ public class Login extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel1.setText("Usuario");
         jPanel2.add(jLabel1);
-        jLabel1.setBounds(470, 170, 100, 30);
+        jLabel1.setBounds(310, 40, 100, 30);
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("Contraseña");
         jPanel2.add(jLabel2);
-        jLabel2.setBounds(450, 280, 130, 28);
+        jLabel2.setBounds(290, 200, 130, 29);
         jPanel2.add(PwClave);
-        PwClave.setBounds(430, 320, 150, 30);
+        PwClave.setBounds(280, 270, 150, 30);
         jPanel2.add(txtusuario);
-        txtusuario.setBounds(440, 210, 150, 30);
+        txtusuario.setBounds(280, 100, 150, 30);
 
         btnrecuperar.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         btnrecuperar.setText("Recuperación de contraseña");
@@ -115,9 +115,9 @@ public class Login extends javax.swing.JFrame {
         btnrecuperar.setBounds(560, 490, 172, 17);
 
         btnIngresar.setBackground(new java.awt.Color(0, 0, 0));
-        btnIngresar.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        btnIngresar.setFont(new java.awt.Font("Tw Cen MT", 1, 24)); // NOI18N
         btnIngresar.setText("Ingresar");
-        btnIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        btnIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(null));
         btnIngresar.setContentAreaFilled(false);
         btnIngresar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnIngresar.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnIngresar);
-        btnIngresar.setBounds(290, 410, 140, 40);
+        btnIngresar.setBounds(530, 180, 140, 40);
         jPanel2.add(jLabel4);
         jLabel4.setBounds(500, 0, 220, 110);
 
@@ -138,7 +138,7 @@ public class Login extends javax.swing.JFrame {
         lbllogo.setText("Fondo1");
         lbllogo.setPreferredSize(new java.awt.Dimension(1600, 1568));
         jPanel2.add(lbllogo);
-        lbllogo.setBounds(-70, 0, 820, 520);
+        lbllogo.setBounds(-80, -50, 820, 520);
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 520));
 
@@ -168,7 +168,7 @@ public class Login extends javax.swing.JFrame {
 
                 //Cargamos el Driver MySQL
                 Class.forName("com.mysql.jdbc.Driver");
-                conect = DriverManager.getConnection("jdbc:mysql://localhost:3308/ferreteriabd", "root", "");
+                conect = DriverManager.getConnection("jdbc:mysql://localhost/ferreteriabd", "root", "");
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error " + e);

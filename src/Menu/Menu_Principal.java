@@ -1,7 +1,7 @@
 package Menu;
 
 import Conexion.Conexión;
-import Facturacion.facturaCaja;
+//import Facturacion.facturaCaja;
 import java.sql.Connection;
 import javax.swing.ImageIcon;
 
@@ -9,12 +9,12 @@ public class Menu_Principal extends javax.swing.JFrame {
 
     public Menu_Principal() {
         initComponents();
-         ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\note.png");
-        ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\descarga.png");
-        ImageIcon icono2 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\cog.png");
-        ImageIcon icono3 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\exit.png");
-        ImageIcon icono4 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\ferre3.png");
-        ImageIcon icono5 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo1.jpg");
+         ImageIcon icono = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\note.png");
+        ImageIcon icono1 = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\descarga.png");
+        ImageIcon icono2 = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\cog.png");
+        ImageIcon icono3 = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\exit.png");
+        ImageIcon icono4 = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\img7.png");
+        ImageIcon icono5 = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\img8.jpg");
         lbllogo.setIcon(icono);
         lbllogo1.setIcon(icono1);
         lbllogo2.setIcon(icono2);
@@ -45,7 +45,6 @@ public class Menu_Principal extends javax.swing.JFrame {
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
         lbllogo2 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
         lbllogo3 = new javax.swing.JMenu();
 
@@ -151,14 +150,6 @@ public class Menu_Principal extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem5.setText("Factura");
-        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem5ActionPerformed(evt);
-            }
-        });
-        lbllogo2.add(jMenuItem5);
-
         jMenuItem6.setText("Productos");
         jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,10 +234,6 @@ public class Menu_Principal extends javax.swing.JFrame {
         f.txtusuario.setText(txtusuario.getText());
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
-    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-
-    }//GEN-LAST:event_jMenuItem5ActionPerformed
-
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
        Reporte.Productos f = new Reporte.Productos();
         f.setVisible(true);
@@ -297,7 +284,6 @@ public class Menu_Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JOptionPane jOptionPane1;
     private javax.swing.JPanel jPanel1;
