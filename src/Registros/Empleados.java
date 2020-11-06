@@ -14,9 +14,9 @@ public class Empleados extends javax.swing.JFrame {
 
     public Empleados() {
         initComponents();
-        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\Empleados2.png");
+        ImageIcon icono = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\Empleados2.png");
         lbllogo.setIcon(icono);
-        ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo3.jpg");
+        ImageIcon icono1 = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\logo3.jpg");
         lbllogo1.setIcon(icono1);
         setLocationRelativeTo(null);
    

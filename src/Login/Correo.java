@@ -34,7 +34,7 @@ DefaultTableModel modelo = new DefaultTableModel();
     
     public Correo() {
         initComponents();
-        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\correo1.png");
+        ImageIcon icono = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\img4.png");
         lbllogo.setIcon(icono);
         setLocationRelativeTo(null);
          

@@ -29,7 +29,7 @@ public class factura extends javax.swing.JFrame implements Printable {
 
     public factura() {
         initComponents();
-        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\fac1.jpg");
+        ImageIcon icono = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\fac1.jpg");
         lbllogo.setIcon(icono);
         String principal[] = {"Codigo producto", "Descripción", "Cantidad", "Precio"};
         String datos[][] = {};

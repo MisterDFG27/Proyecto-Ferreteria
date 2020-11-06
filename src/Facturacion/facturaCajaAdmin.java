@@ -39,8 +39,8 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
 
     public facturaCajaAdmin() {
         initComponents();
-        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\caja1.jpg");
-        ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo1.jpg");
+        ImageIcon icono = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\caja1.jpg");
+        ImageIcon icono1 = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\logo1.jpg");
         lbllogo.setIcon(icono);
         lbllogo1.setIcon(icono1);
         lbhora.setVisible(false);
@@ -393,9 +393,9 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
             double descuento = (int) monto * 0.10;
             double total = (int) monto + iva - descuento;
             
-            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+            JOptionPane.showMessageDialog(null, "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION: Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -422,9 +422,9 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
             double descuento = (int) monto * 0.10;
             double total = (int) monto + iva - descuento;
 
-            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+            JOptionPane.showMessageDialog(null, "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION: Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -449,9 +449,9 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
             double iva = (int) monto * 0.13;
             double descuento = (int) monto * 0.15;
             double total = (int) monto + iva - descuento;
-            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+            JOptionPane.showMessageDialog(null, "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION: Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -467,16 +467,16 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
                     + "\nTOTAL: " + total
                     + "\n--------------------------"
                     + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
                     + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
                     + "\nFECHA 30/09/1987 DE DGTD");
         } else if (monto >= 1000000 && desc.equals("20%")) {
             double iva = (int) monto * 0.13;
             double descuento = (int) monto * 0.20;
             double total = (int) monto + iva - descuento;
-            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+            JOptionPane.showMessageDialog(null,"Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION: Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -492,16 +492,16 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
                     + "\nTOTAL: " + total
                     + "\n--------------------------"
                     + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
                     + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
                     + "\nFECHA 30/09/1987 DE DGTD");
         } else if (monto >= 1000000 && desc.equals("21%")) {
             double iva = (int) monto * 0.13;
             double descuento = (int) monto * 0.21;
             double total = (int) monto + iva - descuento;
-            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+            JOptionPane.showMessageDialog(null, "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION: Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -517,16 +517,16 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
                     + "\nTOTAL: " + total
                     + "\n--------------------------"
                     + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
                     + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
                     + "\nFECHA 30/09/1987 DE DGTD");
         } else if (monto >= 1000000 && desc.equals("22%")) {
             double iva = (int) monto * 0.13;
             double descuento = (int) monto * 0.22;
             double total = (int) monto + iva - descuento;
-            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+            JOptionPane.showMessageDialog(null, "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION: Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -542,16 +542,16 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
                     + "\nTOTAL: " + total
                     + "\n--------------------------"
                     + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
                     + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
                     + "\nFECHA 30/09/1987 DE DGTD");
         } else if (monto >= 1000000 && desc.equals("23%")) {
             double iva = (int) monto * 0.13;
             double descuento = (int) monto * 0.23;
             double total = (int) monto + iva - descuento;
-            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+            JOptionPane.showMessageDialog(null, "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION: Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -567,16 +567,16 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
                     + "\nTOTAL: " + total
                     + "\n--------------------------"
                     + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
                     + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
                     + "\nFECHA 30/09/1987 DE DGTD");
         } else if (monto >= 1000000 && desc.equals("24%")) {
             double iva = (int) monto * 0.13;
             double descuento = (int) monto * 0.24;
             double total = (int) monto + iva - descuento;
-            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+            JOptionPane.showMessageDialog(null, "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION: Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -592,16 +592,16 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
                     + "\nTOTAL: " + total
                     + "\n--------------------------"
                     + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
                     + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
                     + "\nFECHA 30/09/1987 DE DGTD");
         } else if (monto >= 1000000 && desc.equals("25%")) {
             double iva = (int) monto * 0.13;
             double descuento = (int) monto * 0.25;
             double total = (int) monto + iva - descuento;
-            JOptionPane.showMessageDialog(null, "FERRETERIA WAKANDA"
+            JOptionPane.showMessageDialog(null, "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION: Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -617,7 +617,7 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
                     + "\nTOTAL: " + total
                     + "\n--------------------------"
                     + "\nNO SE ACEPTAN DEVOLUCIONES DE NINGUN TIPO"
-                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTUCRA."
+                    + "\nLUEGO DE 8 DIAS DE EMITIDA LA FACTURA."
                     + "\nAUTORIZACION MEDIANTE EL OFICIO NO.04-007-97 DE"
                     + "\nFECHA 30/09/1987 DE DGTD");
         }
@@ -662,13 +662,13 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@gmail.com";
-            String passwordRemitente = "pantera+22";
+            String correoRemitente = "laferrebaratilla2020@gmail.com";
+            String passwordRemitente = "queso1234";
             String correoReceptor = txtcorreo.getText();
             String asunto = "Factura electronica";
-            String mensaje = "FERRETERIA WAKANDA"
+            String mensaje = "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION:  Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -730,13 +730,13 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@gmail.com";
-            String passwordRemitente = "pantera+22";
+            String correoRemitente = "laferrebaratilla2020@gmail.com";
+            String passwordRemitente = "queso1234";
             String correoReceptor = txtcorreo.getText();
             String asunto = "Factura electronica";
-            String mensaje = "FERRETERIA WAKANDA"
+            String mensaje = "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION:  Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -790,13 +790,13 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@gmail.com";
-            String passwordRemitente = "pantera+22";
+            String correoRemitente = "laferrebaratilla2020@gmail.com";
+            String passwordRemitente = "queso1234";
             String correoReceptor = txtcorreo.getText();
             String asunto = "Factura electronica";
-            String mensaje = "FERRETERIA WAKANDA"
+            String mensaje = "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION:  Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -856,13 +856,13 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@gmail.com";
-            String passwordRemitente = "pantera+22";
+            String correoRemitente = "laferrebaratilla2020@gmail.com";
+            String passwordRemitente = "queso1234";
             String correoReceptor = txtcorreo.getText();
             String asunto = "Factura electronica";
-            String mensaje = "FERRETERIA WAKANDA"
+            String mensaje = "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION:  Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -920,13 +920,13 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@gmail.com";
-            String passwordRemitente = "pantera+22";
+             String correoRemitente = "laferrebaratilla2020@gmail.com";
+            String passwordRemitente = "queso1234";
             String correoReceptor = txtcorreo.getText();
             String asunto = "Factura electronica";
-            String mensaje = "FERRETERIA WAKANDA"
+            String mensaje = "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION:  Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -985,13 +985,13 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@gmail.com";
-            String passwordRemitente = "pantera+22";
+            String correoRemitente = "laferrebaratilla2020@gmail.com";
+            String passwordRemitente = "queso1234";
             String correoReceptor = txtcorreo.getText();
             String asunto = "Factura electronica";
-            String mensaje = "FERRETERIA WAKANDA"
+            String mensaje = "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION:  Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -1049,13 +1049,13 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@gmail.com";
-            String passwordRemitente = "pantera+22";
+             String correoRemitente = "laferrebaratilla2020@gmail.com";
+            String passwordRemitente = "queso1234";
             String correoReceptor = txtcorreo.getText();
             String asunto = "Factura electronica";
-            String mensaje = "FERRETERIA WAKANDA"
+            String mensaje = "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION:  Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -1112,13 +1112,13 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@gmail.com";
-            String passwordRemitente = "pantera+22";
+            String correoRemitente = "laferrebaratilla2020@gmail.com";
+            String passwordRemitente = "queso1234";
             String correoReceptor = txtcorreo.getText();
             String asunto = "Factura electronica";
-            String mensaje = "FERRETERIA WAKANDA"
+            String mensaje = "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION:  Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "
@@ -1176,13 +1176,13 @@ public class facturaCajaAdmin extends javax.swing.JFrame implements Runnable {
 
             Session session = Session.getDefaultInstance(props);
 
-            String correoRemitente = "ferrewakanda@gmail.com";
-            String passwordRemitente = "pantera+22";
+             String correoRemitente = "laferrebaratilla2020@gmail.com";
+            String passwordRemitente = "queso1234";
             String correoReceptor = txtcorreo.getText();
             String asunto = "Factura electronica";
-            String mensaje = "FERRETERIA WAKANDA"
+            String mensaje = "Farmacia la Barata"
                     + "\nCEDULA: 3101761963"
-                    + "\nDIRECCION: Africa, Wakanda 50mts, norte de la torre del rey"
+                    + "\nDIRECCION:  Guápiles, antiguo local bar el viajero"
                     + "\nTELEFONO:(00 237)563-547"
                     + "\n------------------------------"
                     + "\n           CONTADO      "

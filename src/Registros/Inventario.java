@@ -19,9 +19,9 @@ public class Inventario extends javax.swing.JFrame {
 
     public Inventario() {
         initComponents();
-        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\inventario1.jpg");
+        ImageIcon icono = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imageness\\img6.jpg");
         lbllogo.setIcon(icono);
-         ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo2.jpg");
+         ImageIcon icono1 = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\logo2.jpg");
         lbllogo1.setIcon(icono1);
         txtcant.setVisible(false);
         setLocationRelativeTo(null);

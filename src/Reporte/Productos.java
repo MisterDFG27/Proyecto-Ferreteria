@@ -16,9 +16,9 @@ public class Productos extends javax.swing.JFrame {
     public Productos() {
         initComponents();
         //232.jpg
-        ImageIcon icono = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\232.jpg");
+        ImageIcon icono = new ImageIcon("C:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\232.jpg");
         lbllogo.setIcon(icono);
-         ImageIcon icono1 = new ImageIcon("C:\\Users\\DELL\\Desktop\\Proyecto topicos\\Proyecto-Ferreteria\\src\\Imagenes\\logo2.jpg");
+         ImageIcon icono1 = new ImageIcon("CC:\\Users\\Johan\\Desktop\\prograIII\\ProyectoFarmacia\\src\\Imagenes\\logo2.jpg");
         lbllogo1.setIcon(icono1);
         setLocationRelativeTo(null);
         mostrardatos("");
