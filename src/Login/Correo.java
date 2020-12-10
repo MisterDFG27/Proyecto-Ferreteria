@@ -169,43 +169,9 @@ DefaultTableModel modelo = new DefaultTableModel();
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
           mostrarusu("");
+         JOptionPane.showMessageDialog(null,"Su usuario es: "+txtusu.getText()+ " Su contraseña es: "+txtpass.getText());
         
-          try {
          
-            Properties props = new Properties();
-            props.setProperty("mail.smtp.host", "smtp.gmail.com");
-            props.setProperty("mail.smtp.starttls.enable", "true");
-            props.setProperty("mail.smtp.port", "587");
-            props.setProperty("mail.smtp.auth", "true");
-
-            Session session = Session.getDefaultInstance(props);
-
-            String correoRemitente = "laferrebaratilla2020@gmail.com";
-            String passwordRemitente = "queso1234";
-            String correoReceptor = txtCorreo.getText();
-            String asunto = "Recuperación de usuario y contraseña";
-            String mensaje = "Su Usuario es: "+txtusu.getText() + "  // Su Contraseña es: "+txtpass.getText();
-
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(correoRemitente));
-
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(correoReceptor));
-            message.setSubject(asunto);
-            message.setText(mensaje, "ISO-8859-1", "html");
-
-            Transport t = session.getTransport("smtp");
-            t.connect(correoRemitente, passwordRemitente);
-            t.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
-            t.close();
-
-            JOptionPane.showMessageDialog(null, "Correo Electronico Enviado");
-            
-
-        } catch (AddressException ex) {
-            Logger.getLogger(Correo.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (MessagingException ex) {
-            Logger.getLogger(Correo.class.getName()).log(Level.SEVERE, null, ex);
-        } 
 
     }//GEN-LAST:event_btnEnviarActionPerformed
 
