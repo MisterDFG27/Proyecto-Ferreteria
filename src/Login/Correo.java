@@ -49,7 +49,7 @@ DefaultTableModel modelo = new DefaultTableModel();
         tbusu.setModel(modelo); 
         String sql = "";
         if (valor.equals("")) {
-            sql = "SELECT nombreUsuario, contraseña FROM `usuario` WHERE email ='"+txtCorreo.getText()+"'";
+            sql = "SELECT nombreUsuario, Contraseña FROM `usuarios` WHERE Email ='"+txtCorreo.getText()+"'";
 
         }
         String[] datos = new String[2];
